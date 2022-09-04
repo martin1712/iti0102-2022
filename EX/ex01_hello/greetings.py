@@ -1,7 +1,8 @@
 
 
-# This program writes a greeting and a recipient of your choice.
-# Then you can set the number of times greeting repeats itself.
+"""This program writes a greeting and a recipient of your choice."""
+"""Then you can set the number of times greeting repeats itself."""
+
 print("Enter a greeting")
 greeting = input()
 print("Enter a recipient")

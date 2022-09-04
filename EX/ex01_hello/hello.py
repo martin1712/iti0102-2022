@@ -1,5 +1,7 @@
 
 
+"""Program that asks your name and two numbers to get their sum."""
+
 print("What is your name?")
 name = input()
 print("Hello,", name + "!" + " " + "Enter a random number:")
