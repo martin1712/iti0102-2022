@@ -13,4 +13,5 @@ five = (c // 5)
 d = c - 5 * five
 one = (d // 1)
 e = d - 1 * one
-print(fifty + twenty + ten + five + one)
+coins = fifty + twenty + ten + five + one
+print(f"Amount of coins needed: {coins}")
