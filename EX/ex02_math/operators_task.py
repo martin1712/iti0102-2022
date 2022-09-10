@@ -1,6 +1,6 @@
 
 
-""" Add function. """
+# Add function.
 
 
 def add(x: int, y: int):
@@ -8,7 +8,7 @@ def add(x: int, y: int):
     return x + y
 
 
-""" Sub function. """
+# Sub finction.
 
 
 def sub(x: int, y: int):
@@ -16,7 +16,7 @@ def sub(x: int, y: int):
     return x - y
 
 
-""" Multiply function. """
+# Multiply function.
 
 
 def multiply(x: int, y: int):
@@ -24,7 +24,7 @@ def multiply(x: int, y: int):
     return x * y
 
 
-""" Div function. """
+# Div function.
 
 
 def div(x: int, y: int):
@@ -32,7 +32,7 @@ def div(x: int, y: int):
     return x / y
 
 
-""" Modulus function. """
+# Modulus function.
 
 
 def modulus(x: int, y: int):
@@ -40,7 +40,7 @@ def modulus(x: int, y: int):
     return x % y
 
 
-""" Floor_div function. """
+# Floor div function.
 
 
 def floor_div(x: int, y: int):
@@ -48,7 +48,7 @@ def floor_div(x: int, y: int):
     return x // y
 
 
-""" Exponent function. """
+# Exponent function.
 
 
 def exponent(x: int, y: int):
@@ -56,21 +56,23 @@ def exponent(x: int, y: int):
     return x ** y
 
 
-""" First_greater_or_equal function. """
+# First_greater_or_equal function.
+
 
 def first_greater_or_equal(x: int, y: int):
     x >= y
     return x >= y
 
 
-""" Second_less_or_equal function. """
+# Second_less_or_equal function.
+
 
 def second_less_or_equal(x: int, y: int):
     y <= x
     return y <= x
 
 
-""" x_is_y function. """
+# x_is_y function.
 
 
 def x_is_y(x: int, y: int):
@@ -78,14 +80,15 @@ def x_is_y(x: int, y: int):
     return x == y
 
 
-""" x_is_not_y function. """
+# x_is_not_y function.
+
 
 def x_is_not_y(x: int, y: int):
     x != y
     return x != y
 
 
-""" Surface function. """
+# Surface function.
 
 
 def surface(x: int, y: int):
@@ -93,7 +96,7 @@ def surface(x: int, y: int):
     return x * y
 
 
-""" Volume function. """
+# Volume function.
 
 
 def volume(a: int, b: int, c: int):
@@ -101,7 +104,7 @@ def volume(a: int, b: int, c: int):
     return a * b * c
 
 
-""" Clock function. """
+# Clock function.
 
 
 def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
@@ -112,7 +115,7 @@ def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
     return a + b + c + d
 
 
-""" Calculate function. """
+# Calculate function.
 
 
 def calculate(a: int, b: int, c: int):
@@ -126,7 +129,7 @@ def calculate(a: int, b: int, c: int):
         return b / c
 
 
-""" If_else function. """
+# If_else function.
 
 
 def if_else(a: int, b: int, c: int, d: int):
