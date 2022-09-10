@@ -65,6 +65,7 @@ def second_less_or_equal(x: int, y: int):
 
 """ Add function. """
 
+
 def x_is_y(x: int, y: int):
     x == y
     return x == y
@@ -79,6 +80,7 @@ def x_is_not_y(x: int, y: int):
 
 """ Add function. """
 
+
 def surface(x: int, y: int):
     x * y
     return x * y
@@ -86,12 +88,14 @@ def surface(x: int, y: int):
 
 """ Add function. """
 
+
 def volume(a: int, b: int, c: int):
     a * b * c
     return a * b * c
 
 
 """ Add function. """
+
 
 def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
     a = päevad * 1440
@@ -102,6 +106,7 @@ def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
 
 
 """ Add function. """
+
 
 def calculate(a: int, b: int, c: int):
     if a == 0:
@@ -115,6 +120,7 @@ def calculate(a: int, b: int, c: int):
 
 
 """ Add function. """
+
 
 def if_else(a: int, b: int, c: int, d: int):
     first = a * b
