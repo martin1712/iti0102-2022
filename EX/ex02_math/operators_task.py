@@ -2,68 +2,75 @@
 
 """ Add function. """
 
+
 def add(x: int, y: int):
     x + y
     return x + y
 
 
-""" Add function. """
+""" Sub function. """
+
 
 def sub(x: int, y: int):
     x - y
     return x - y
 
 
-""" Add function. """
+""" Multiply function. """
+
 
 def multiply(x: int, y: int):
     x * y
     return x * y
 
 
-""" Add function. """
+""" Div function. """
+
 
 def div(x: int, y: int):
     x / y
     return x / y
 
 
-""" Add function. """
+""" Modulus function. """
+
 
 def modulus(x: int, y: int):
     x % y
     return x % y
 
 
-""" Add function. """
+""" Floor_div function. """
+
 
 def floor_div(x: int, y: int):
     x // y
     return x // y
 
 
-""" Add function. """
+""" Exponent function. """
+
 
 def exponent(x: int, y: int):
     x ** y
     return x ** y
 
 
-""" Add function. """
+""" First_greater_or_equal function. """
 
 def first_greater_or_equal(x: int, y: int):
     x >= y
     return x >= y
 
 
-""" Add function. """
+""" Second_less_or_equal function. """
 
 def second_less_or_equal(x: int, y: int):
     y <= x
     return y <= x
 
 
-""" Add function. """
+""" x_is_y function. """
 
 
 def x_is_y(x: int, y: int):
@@ -71,14 +78,14 @@ def x_is_y(x: int, y: int):
     return x == y
 
 
-""" Add function. """
+""" x_is_not_y function. """
 
 def x_is_not_y(x: int, y: int):
     x != y
     return x != y
 
 
-""" Add function. """
+""" Surface function. """
 
 
 def surface(x: int, y: int):
@@ -86,7 +93,7 @@ def surface(x: int, y: int):
     return x * y
 
 
-""" Add function. """
+""" Volume function. """
 
 
 def volume(a: int, b: int, c: int):
@@ -94,7 +101,7 @@ def volume(a: int, b: int, c: int):
     return a * b * c
 
 
-""" Add function. """
+""" Clock function. """
 
 
 def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
@@ -105,7 +112,7 @@ def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
     return a + b + c + d
 
 
-""" Add function. """
+""" Calculate function. """
 
 
 def calculate(a: int, b: int, c: int):
@@ -119,7 +126,7 @@ def calculate(a: int, b: int, c: int):
         return b / c
 
 
-""" Add function. """
+""" If_else function. """
 
 
 def if_else(a: int, b: int, c: int, d: int):
