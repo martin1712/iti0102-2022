@@ -33,8 +33,8 @@ def first_greater_or_equal(x: int, y: int):
     return x >= y
 
 def second_less_or_equal(x: int, y: int):
-    x <= y
-    return x <= y
+    y <= x
+    return y <= x
 
 def x_is_y(x: int, y: int):
     x == y
@@ -43,6 +43,21 @@ def x_is_y(x: int, y: int):
 def x_is_not_y(x: int, y: int):
     x != y
     return x != y
+
+def surface(x: int, y: int):
+    x * y
+    return x * y
+
+def volume(a: int, b: int, c: int):
+    a * b * c
+    return a * b * c
+
+def clock(päevad: int, tunnid: int, minutid: int, sekundid: int):
+    a = päevad * 1440
+    b = tunnid * 60
+    c = minutid
+    d = sekundid / 60
+    return a + b + c + d
 
 def if_else(a: int, b: int, c: int, d: int):
     first = a * b
@@ -53,4 +68,3 @@ def if_else(a: int, b: int, c: int, d: int):
         return second
     if first == second:
         return 0
-
