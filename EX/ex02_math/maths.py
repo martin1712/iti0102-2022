@@ -1,6 +1,6 @@
 
 
-def average(a: int, b: int, c: int, d: int):
+def average(a: int, b: int, c: int, d: int) -> float:
     """Average function."""
     a_1 = a * 1
     b_1 = b * 2
@@ -9,13 +9,13 @@ def average(a: int, b: int, c: int, d: int):
     return (a_1 + b_1 + c_1 + d_1) / 2
 
 
-def school_pressure(ects: int, weeks: int):
+def school_pressure(ects: int, weeks: int) -> float:
     """School_pressure function."""
     a = ects * 26
     return a / weeks
 
 
-def add_fractions(a: int, b: int, c: int, d: int):
+def add_fractions(a: int, b: int, c: int, d: int) -> str:
     """Add_fractions function."""
     x = a / b
     y = c / d
