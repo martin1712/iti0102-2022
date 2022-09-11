@@ -23,6 +23,6 @@ def school_pressure(ects: int, weeks: int) -> float:
 
 def add_fractions(a: int, b: int, c: int, d: int) -> str:
     """Add_fractions function."""
-    x = a * d + b * c
-    y = b * d
-    return "x/y"
+    x = a / b
+    y = c / d
+    return str(x / y)
