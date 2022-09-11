@@ -2,6 +2,7 @@
 
 """EX02 - Math."""
 
+
 def add(x: int, y: int):
     """Add function."""
     x + y
