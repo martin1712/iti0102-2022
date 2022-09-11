@@ -12,6 +12,9 @@ def average(a: int, b: int, c: int, d: int) -> float:
 def school_pressure(ects: int, weeks: int) -> float:
     """School_pressure function."""
     a = ects * 26
+    b = weeks * 168
+    if a > b:
+        return -1
     if weeks > 0:
         return a / weeks
     if weeks == 0:
@@ -22,4 +25,4 @@ def add_fractions(a: int, b: int, c: int, d: int) -> str:
     """Add_fractions function."""
     x = a * d + b * c
     y = b * d
-    return x / y
+    return "x / y"
