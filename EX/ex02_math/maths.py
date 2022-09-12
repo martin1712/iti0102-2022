@@ -30,5 +30,5 @@ def add_fractions(a: int, b: int, c: int, d: int) -> str:
     y = b * d
     if y == 0:
         return "-1"
-    if y != 0:
+    else:
         return "x/y"
