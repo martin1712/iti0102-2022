@@ -29,6 +29,6 @@ def add_fractions(a: int, b: int, c: int, d: int) -> str:
     x = a * d + b * c
     y = b * d
     if y == 0:
-        return -1
+        return "-1"
     if y != 0:
-        return str(int("x / y"))
+        return str(int("x/y"))
