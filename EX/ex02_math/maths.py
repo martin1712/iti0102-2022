@@ -1,5 +1,7 @@
 
 
+""" Maths exercise."""
+
 def average(a: int, b: int, c: int, d: int) -> float:
     """Average function."""
     a_1 = a * 1
@@ -23,6 +25,6 @@ def school_pressure(ects: int, weeks: int) -> float:
 
 def add_fractions(a: int, b: int, c: int, d: int) -> str:
     """Add_fractions function."""
-    x = a / b
-    y = c / d
-    return str(x/y)
+    x = a // b
+    y = c // d
+    return str(int(x/y))
