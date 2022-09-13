@@ -2,7 +2,9 @@
 
 """Caesar program."""
 
+
 def encode(message: str, shift: int) -> str:
+    """tgtgtgt"""
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     result = ""
     ord_first_letter_lower = ord("a")
@@ -12,6 +14,5 @@ def encode(message: str, shift: int) -> str:
         else:
             result += i
 
-    return result
 
-print(encode("dog eats", 5))
+    return result
