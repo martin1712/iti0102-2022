@@ -1,6 +1,6 @@
 
 
-"""A program that counts how many cents are included in the number you enter."""
+"""A program that counts how many coins are included in the number you enter."""
 
 amount = int(input("Enter a sum: "))
 fifty = (amount // 50)
