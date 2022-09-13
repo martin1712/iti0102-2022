@@ -1,9 +1,8 @@
 
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+
 def encode(message: str, shift: int) -> str:
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
     if message.isalpha():
-        position = alphabet.find(character)
-        new_position = position(position + shift) % 26
-        new_character = alphabet[new_position]
-        new_message += new_character
+        for i in range(alphabet, shift):
+
