@@ -4,7 +4,7 @@
 
 
 def encode(message: str, shift: int) -> str:
-    """tgtgtgt"""
+    """Tgtgtgt."""
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     result = ""
     ord_first_letter_lower = ord("a")
@@ -13,6 +13,4 @@ def encode(message: str, shift: int) -> str:
             result += chr(((ord(i) - ord_first_letter_lower + shift) % 26) + ord_first_letter_lower)
         else:
             result += i
-
-
     return result
