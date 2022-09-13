@@ -4,6 +4,10 @@
 def encode(message: str, shift: int) -> str:
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     result = ""
-    if message.isalpha():
-        for i in range(len(message)):
-            result = message[i] + shift
+    for i in message:
+        place = alphabet.find(i)
+        new_place = place + shift
+        if i in alphabet:
+            return alphabet[new_place]
+        else:
+            i
