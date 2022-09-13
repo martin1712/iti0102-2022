@@ -1,5 +1,7 @@
 
 
+"""Caesar program."""
+
 def encode(message: str, shift: int) -> str:
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     result = ""
