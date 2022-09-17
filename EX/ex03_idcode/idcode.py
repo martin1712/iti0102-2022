@@ -1,6 +1,4 @@
 
-text = input("Enter a string: ")
-
 
 def find_id_code(text: str):
     num = 0
@@ -12,5 +10,3 @@ def find_id_code(text: str):
         elif num < 11:
             return "Not enough numbers!"
     return num
-
-
