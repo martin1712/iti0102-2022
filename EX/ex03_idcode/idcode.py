@@ -10,3 +10,6 @@ def find_id_code(text: str):
         elif num < 11:
             return "Not enough numbers!"
     return num
+
+
+def the_first_control_number_algorithm(text: str)
