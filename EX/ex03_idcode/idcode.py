@@ -36,11 +36,13 @@ def the_first_control_number_algorithm(text: str) -> str:
     tenth_num = result[9]
     for i in text:
         if i.isdigit():
-            result = result + i
-            if result != 11:
-                return "Incorrect ID code"
-            else:
-                sum = first_num * 1 + second_num * 2 + third_num * 3 + fourth_num * 4 + fifth_num * 5 + sixth_num * 6 + seventh_num * 7 + eight_num * 8 +  ninth_num * 9 + tenth_num * 1
-                if sum % 11 > 10:
-                    return "Needs the second algorithm!"
-                return "result"
+            result += i
+    a = len(result)
+    if a != 11:
+        return "Incorrect ID code"
+    else:
+        b = first_num * 1 + second_num * 2 + third_num * 3 + fourth_num * 4 + fifth_num * 5 + sixth_num * 6 + seventh_num * 7 + eight_num * 8 +  ninth_num * 9 + tenth_num * 1
+    if b % 11 >= 10:
+        return "Needs the second algorithm!"
+    else:
+        return result
