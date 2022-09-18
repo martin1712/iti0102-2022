@@ -4,13 +4,22 @@ def find_id_code(text: str) -> str:
     result = ""
     for i in text:
         if i.isdigit():
-            result = result + i
-            if int(result) < 11:
-                return "Not enough numbers!"
-            else:
-                if int(result) > 11:
-                    return "Too many numbers!"
-    return "result"
+            result += i
+    a = len(result)
+    if a < 11:
+        return "Not enough numbers!"
+    if a > 11:
+        return "Too many numbers!"
+    else:
+        return result
+
+
+if __name__ == '__main__':
+    print("\nFind ID code:")
+    print(find_id_code(""))  # -> "Not enough numbers!"
+    print(find_id_code("123456789123456789"))  # -> "Too many numbers!"
+    print(find_id_code("ID code is: 49403136526"))  # -> "49403136526"
+    print(find_id_code("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
 
 
 def the_first_control_number_algorithm(text: str) -> str:
