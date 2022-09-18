@@ -28,6 +28,8 @@ def the_first_control_number_algorithm(text: str) -> str:
     b = int(result[0]) * 1 + int(result[1]) * 2 + int(result[2]) * 3 + int(result[3]) * 4 + int(result[4]) * 5 + int(result[5]) * 6 + int(result[6]) * 7 + int(result[7]) * 8 + int(result[8]) * 9 + int(result[9]) * 1
     if b % 11 >= 10:
         return "Needs the second algorithm!"
+    if b % 11 < 10 and b != int(result[10]):
+        return "Incorrect ID code"
     if b % 11 == int(result[10]):
         return result
 
@@ -45,4 +47,4 @@ if __name__ == '__main__':
     print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
     print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
     print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
-    # the second algorithm!"
+    # the second algorithm!
