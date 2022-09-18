@@ -24,25 +24,24 @@ if __name__ == '__main__':
 
 def the_first_control_number_algorithm(text: str) -> str:
     result = ""
-    first_num = result[0]
-    second_num = result[1]
-    third_num = result[2]
-    fourth_num = result[3]
-    fifth_num = result[4]
-    sixth_num = result[5]
-    seventh_num = result[6]
-    eight_num = result[7]
-    ninth_num = result[8]
-    tenth_num = result[9]
     for i in text:
         if i.isdigit():
             result += i
     a = len(result)
     if a != 11:
         return "Incorrect ID code"
-    else:
-        b = first_num * 1 + second_num * 2 + third_num * 3 + fourth_num * 4 + fifth_num * 5 + sixth_num * 6 + seventh_num * 7 + eight_num * 8 +  ninth_num * 9 + tenth_num * 1
-    if b % 11 >= 10:
+    b = result[0] * 1 + result[1] * 2 + result[2] * 3 + result[3] * 4 + result[4] * 5 + result[5] * 6 + result[6] * 7 + result[7] * 8 + result[8] * 9 + result[9] * 1
+    if b % 11 <= "10":
         return "Needs the second algorithm!"
     else:
         return result
+
+
+if __name__ == '__main__':
+    print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
+    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
+    # the second algorithm!"
