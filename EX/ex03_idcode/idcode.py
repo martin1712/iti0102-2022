@@ -5,10 +5,10 @@ def find_id_code(text: str) -> str:
     for i in text:
         if i.isdigit():
             result = result + i
-            if result < 11:
+            if int(result) < 11:
                 return "Not enough numbers!"
             else:
-                if result > 11:
+                if int(result) > 11:
                     return "Too many numbers!"
     return "result"
 
