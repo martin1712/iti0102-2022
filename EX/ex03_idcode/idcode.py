@@ -1,15 +1,20 @@
 
 
-def find_id_code(text: str):
-    num = 0
+def find_id_code(text: str) -> str:
+    result = ""
     for i in text:
         if i.isdigit():
-            num += 1
-        elif num > 11:
-            return "Too many numbers!"
-        elif num < 11:
-            return "Not enough numbers!"
-    return num
+            result = result + i
+            if result < 11:
+                return "Not enough numbers!"
+        else:
+            if result > 11:
+                return "Too many numbers!"
+    return "result"
 
 
-def the_first_control_number_algorithm(text: str)
+if __name__ == '__main__':
+    print(find_id_code("12334etrhrty54645"))
+
+
+
