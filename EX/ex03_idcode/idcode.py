@@ -1,5 +1,8 @@
 
 
+"""Great!"""
+
+
 def find_id_code(text: str) -> str:
     result = ""
     for i in text:
