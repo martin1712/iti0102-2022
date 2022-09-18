@@ -7,9 +7,9 @@ def find_id_code(text: str) -> str:
             result = result + i
             if result < 11:
                 return "Not enough numbers!"
-        else:
-            if result > 11:
-                return "Too many numbers!"
+            else:
+                if result > 11:
+                    return "Too many numbers!"
     return "result"
 
 
