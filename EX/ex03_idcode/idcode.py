@@ -29,9 +29,9 @@ def the_first_control_number_algorithm(text: str) -> str:
         result[5]) * 6 + int(result[6]) * 7 + int(result[7]) * 8 + int(result[8]) * 9 + int(result[9]) * 1
     if b % 11 == int(result[10]):
         return result
-    if b % 11 >= 10:
+    elif b % 11 >= 10:
         return "Needs the second algorithm!"
-    if b % 11 < 10 and b != int(result[10]):
+    elif b % 11 < 10 and b != int(result[10]):
         return "Incorrect ID code"
 
 
