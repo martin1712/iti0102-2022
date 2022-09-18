@@ -28,5 +28,5 @@ def the_first_control_number_algorithm(text: str) -> str:
         return "Needs the second algorithm!"
     if c < 10 and c != result[10]:
         return "Incorrect ID code!"
-    else:
+    if c < 10 and c == result[10]:
         return result
