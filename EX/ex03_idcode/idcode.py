@@ -1,7 +1,5 @@
 
 
-import math
-
 """Great!"""
 
 
@@ -53,11 +51,12 @@ def get_gender(number: int) -> str:
 
 def is_valid_year_number(year_number: int) -> bool:
     """Check if given value is correct for year number in ID code."""
-    while (math.log10(year_number) + 1) :
-        return True
-    else:
+    number = str(year_number)
+    a = len(number)
+    if a != 2:
         return False
-
+    else:
+        return True
 
 def is_valid_month_number(month_number: int) -> bool:
     """Check if given value is correct for month number in ID code."""
