@@ -36,28 +36,34 @@ def the_first_control_number_algorithm(text: str) -> str:
 
 
 def is_valid_gender_number(number: int) -> bool:
-    for i in range(9):
-        print(f"{i} {is_valid_gender_number(i)}")
-        if i == [0, 7, 8]:
-            return False
-        else:
-            return True
+    if number == [1, 2, 3, 4, 5, 6]:
+        return True
+    else:
+        return False
+
+
+def get_gender(soo_number: int) -> str:
+    for soo_number in range(7):
+        if soo_number == [1, 3, 5]:
+            return "male"
+        if soo_number == [2, 4, 6]:
+            return "female"
 
 
 
+def is_valid_year_number(year_number: int) -> bool:
+    """Check if given value is correct for year number in ID code."""
+    return year_number < 100
 
 
-if __name__ == '__main__':
-    print("\nFind ID code:")
-    print(find_id_code(""))  # -> "Not enough numbers!"
-    print(find_id_code("123456789123456789"))  # -> "Too many numbers!"
-    print(find_id_code("ID code is: 49403136526"))  # -> "49403136526"
-    print(find_id_code("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
+def is_valid_month_number(month_number: int) -> bool:
+    """Check if given value is correct for month number in ID code."""
+    return month_number < 13
 
-    print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
-    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
-    print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
-    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
-    # the second algorithm!
+
+
+def is_valid_birth_number(birth_number: int) -> bool:
+    """Check if given value is correct for birth number in ID code."""
+    return birth_number < 32
+
+
