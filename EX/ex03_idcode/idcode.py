@@ -80,7 +80,7 @@ if __name__ == '__main__':
     print(get_gender(5))  # -> "male"
 
     print("\nYear number:")
-    print(is_valid_year_number(06))  # -> False
+    print(is_valid_year_number(69))  # -> False
     print(is_valid_year_number(99))  # -> True
 
     print("\nMonth number:")
