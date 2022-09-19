@@ -51,12 +51,10 @@ def get_gender(number: int) -> str:
 
 def is_valid_year_number(year_number: int) -> bool:
     """Check if given value is correct for year number in ID code."""
-    number = str(year_number)
-    a = len(number)
-    if a != 2:
-        return False
-    else:
+    if year_number >= 0 and year_number < 100:
         return True
+    else:
+        return False
 
 def is_valid_month_number(month_number: int) -> bool:
     """Check if given value is correct for month number in ID code."""
@@ -82,8 +80,8 @@ if __name__ == '__main__':
     print(get_gender(5))  # -> "male"
 
     print("\nYear number:")
-    print(is_valid_year_number(00))  # -> False
-    print(is_valid_year_number(123))  # -> True
+    print(is_valid_year_number(06))  # -> False
+    print(is_valid_year_number(99))  # -> True
 
     print("\nMonth number:")
     print(is_valid_month_number(2))  # -> True
