@@ -76,34 +76,71 @@ def is_valid_birth_number(birth_number: int) -> bool:
 def is_leap_year(leap_year: int) -> bool:
     if (leap_year % 400 == 0) and (leap_year % 100 == 0):
         return True
-    elif (leap_year % 4 ==0) and (leap_year % 100 != 0):
+    elif (leap_year % 4 == 0) and (leap_year % 100 != 0):
         return True
     else:
         return False
 
 
+def get_full_year(gender_number: int, year_number: int) -> int:
+    if gender_number in [1, 2] and 0 <= year_number < 100:
+        return 1800 + year_number
+    if gender_number in [3, 4] and 0 <= year_number < 100:
+        return 1900 + year_number
+    if gender_number in [5, 6] and 0 <= year_number < 100:
+        return 2000 + year_number
+
+
+def get_birth_place(birth_number: int) -> str:
+    if 0 < birth_number < 11:
+        return "Kuressaare"
+    if 10 < birth_number < 20:
+        return "Tartu"
+    if 20 < birth_number < 221:
+        return "Tallinn"
+    if 220 < birth_number < 271:
+        return "Kohtla-Järve"
+    if 270 < birth_number < 371:
+        return "Tartu"
+    if 370 < birth_number < 421:
+        return "Narva"
+    if 420 < birth_number < 471:
+        return "Pärnu "
+    if 470 < birth_number < 711:
+        return "Tallinn"
+    else:
+        return "Wrong input!"
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
-    print("\nGender number:")
-    for i in range(9):
-        print(f"{i} {is_valid_gender_number(i)}")
-        # 0 -> False
-        # 1...6 -> True
-        # 7...8 -> False
+    print("\nLeap year:")
+    print(is_leap_year(1804))  # -> True
+    print(is_leap_year(1800))  # -> False
 
-    print("\nGet gender:")
-    print(get_gender(2))  # -> "female"
-    print(get_gender(5))  # -> "male"
+    print("\nGet full year:")
+    print(get_full_year(1, 28))  # -> 1828
+    print(get_full_year(4, 85))  # -> 1985
+    print(get_full_year(5, 1))  # -> 2001
 
-    print("\nYear number:")
-    print(is_valid_year_number(00))  # -> False
-    print(is_valid_year_number(99))  # -> True
+    print("\nChecking where the person was born")
+    print(get_birth_place(0))  # -> "Wrong input!"
+    print(get_birth_place(1))  # -> "Kuressaare"
+    print(get_birth_place(273))  # -> "Tartu"
+    print(get_birth_place(220))  # -> "Tallinn"
 
-    print("\nMonth number:")
-    print(is_valid_month_number(2))  # -> True
-    print(is_valid_month_number(15))  # -> False
 
-    print("\nBorn order number:")
-    print(is_valid_birth_number(0))  # -> False
-    print(is_valid_birth_number(1))  # -> True
-    print(is_valid_birth_number(850))  # -> True
+
+
+
+
+
+
+
+
