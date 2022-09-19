@@ -112,37 +112,3 @@ def get_birth_place(birth_number: int) -> str:
         return "undefined."
     else:
         return "Wrong input!"
-
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    print("\nLeap year:")
-    print(is_leap_year(1804))  # -> True
-    print(is_leap_year(1800))  # -> False
-
-    print("\nGet full year:")
-    print(get_full_year(1, 28))  # -> 1828
-    print(get_full_year(4, 85))  # -> 1985
-    print(get_full_year(5, 1))  # -> 2001
-
-    print("\nChecking where the person was born")
-    print(get_birth_place(3467456))  # -> "Wrong input!"
-    print(get_birth_place(420))  # -> "Kuressaare"
-    print(get_birth_place(421))  # -> "Tartu"
-    print(get_birth_place(422))  # -> "Tallinn"
-
-
-
-
-
-
-
-
-
-
