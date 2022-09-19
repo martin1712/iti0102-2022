@@ -36,17 +36,17 @@ def the_first_control_number_algorithm(text: str) -> str:
 
 
 def is_valid_gender_number(number: int) -> bool:
-    if number == [1, 2, 3, 4, 5, 6]:
+    while number not in [0, 7, 8]:
         return True
     else:
         return False
 
 
 def get_gender(number: int) -> str:
-    if number == [2, 4, 6]:
-        return "female"
-    if number == [1, 3, 5]:
+    while number not in [2, 4, 6]:
         return "male"
+    while number not in [1, 3, 5]:
+        return "female"
 
 
 def is_valid_year_number(year_number: int) -> bool:
@@ -65,3 +65,27 @@ def is_valid_birth_number(birth_number: int) -> bool:
     return birth_number < 32
 
 
+if __name__ == '__main__':
+    print("\nGender number:")
+    for i in range(9):
+        print(f"{i} {is_valid_gender_number(i)}")
+        # 0 -> False
+        # 1...6 -> True
+        # 7...8 -> False
+
+    print("\nGet gender:")
+    print(get_gender(2))  # -> "female"
+    print(get_gender(5))  # -> "male"
+
+    print("\nYear number:")
+    print(is_valid_year_number(100))  # -> False
+    print(is_valid_year_number(50))  # -> True
+
+    print("\nMonth number:")
+    print(is_valid_month_number(2))  # -> True
+    print(is_valid_month_number(15))  # -> False
+
+    print("\nBorn order number:")
+    print(is_valid_birth_number(0))  # -> False
+    print(is_valid_birth_number(1))  # -> True
+    print(is_valid_birth_number(850))  # -> True
