@@ -51,7 +51,8 @@ def get_gender(number: int) -> str:
 
 def is_valid_year_number(year_number: int) -> bool:
     """Check if given value is correct for year number in ID code."""
-    if year_number >= 1 and year_number < 100:
+    a = str(year_number)
+    if len(a) < 3 and len(a) > 0:
         return True
     else:
         return False
