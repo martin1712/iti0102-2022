@@ -66,7 +66,7 @@ def is_valid_month_number(month_number: int) -> bool:
 
 def is_valid_birth_number(birth_number: int) -> bool:
     """Check if given value is correct for birth number in ID code."""
-    if 0 < birth_number < 32:
+    if 0 < birth_number < 1000:
         return True
     else:
         return False
