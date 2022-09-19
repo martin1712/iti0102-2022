@@ -56,6 +56,7 @@ def is_valid_year_number(year_number: int) -> bool:
     else:
         return False
 
+
 def is_valid_month_number(month_number: int) -> bool:
     """Check if given value is correct for month number in ID code."""
     if 0 < month_number < 13:
@@ -67,6 +68,15 @@ def is_valid_month_number(month_number: int) -> bool:
 def is_valid_birth_number(birth_number: int) -> bool:
     """Check if given value is correct for birth number in ID code."""
     if 0 < birth_number < 1000:
+        return True
+    else:
+        return False
+
+
+def is_leap_year(leap_year: int) -> bool:
+    if (leap_year % 400 == 0) and (leap_year % 100 == 0):
+        return True
+    elif (leap_year % 4 ==0) and (leap_year % 100 != 0):
         return True
     else:
         return False
