@@ -42,13 +42,11 @@ def is_valid_gender_number(number: int) -> bool:
         return False
 
 
-def get_gender(soo_number: int) -> str:
-    for soo_number in range(7):
-        if soo_number == [1, 3, 5]:
-            return "male"
-        if soo_number == [2, 4, 6]:
-            return "female"
-
+def get_gender(number: int) -> str:
+    if number == [2, 4, 6]:
+        return "female"
+    if number == [1, 3, 5]:
+        return "male"
 
 
 def is_valid_year_number(year_number: int) -> bool:
