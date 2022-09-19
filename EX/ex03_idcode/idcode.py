@@ -108,6 +108,8 @@ def get_birth_place(birth_number: int) -> str:
         return "Pärnu "
     if 470 < birth_number < 711:
         return "Tallinn"
+    if 710 < birth_number < 1000:
+        return "undefined."
     else:
         return "Wrong input!"
 
@@ -130,10 +132,10 @@ if __name__ == '__main__':
     print(get_full_year(5, 1))  # -> 2001
 
     print("\nChecking where the person was born")
-    print(get_birth_place(0))  # -> "Wrong input!"
-    print(get_birth_place(1))  # -> "Kuressaare"
-    print(get_birth_place(273))  # -> "Tartu"
-    print(get_birth_place(220))  # -> "Tallinn"
+    print(get_birth_place(3467456))  # -> "Wrong input!"
+    print(get_birth_place(420))  # -> "Kuressaare"
+    print(get_birth_place(421))  # -> "Tartu"
+    print(get_birth_place(422))  # -> "Tallinn"
 
 
 
