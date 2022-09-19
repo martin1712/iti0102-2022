@@ -94,7 +94,7 @@ def get_full_year(gender_number: int, year_number: int) -> int:
 def get_birth_place(birth_number: int) -> str:
     if 0 < birth_number < 11:
         return "Kuressaare"
-    if 10 < birth_number < 20:
+    if 10 < birth_number < 21:
         return "Tartu"
     if 20 < birth_number < 221:
         return "Tallinn"
