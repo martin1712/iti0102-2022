@@ -35,6 +35,18 @@ def the_first_control_number_algorithm(text: str) -> str:
         return "Incorrect ID code!"
 
 
+def is_valid_gender_number(number: int) -> bool:
+    for i in range(9):
+        print(f"{i} {is_valid_gender_number(i)}")
+        if i == [0, 7, 8]:
+            return False
+        else:
+            return True
+
+
+
+
+
 if __name__ == '__main__':
     print("\nFind ID code:")
     print(find_id_code(""))  # -> "Not enough numbers!"
