@@ -117,12 +117,17 @@ def get_birth_place(birth_number: int) -> str:
 def is_valid_control_number(id_code: str) -> bool:
     if the_first_control_number_algorithm(id_code) == id_code:
         return True
-    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(id_code[4]) * 7 + int(
+    if the_first_control_number_algorithm(id_code) != id_code:
+        return False
+    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
+        id_code[4]) * 7 + int(
         id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(id_code[9]) * 3
-    if the_first_control_number_algorithm(id_code) != id_code and a % 11 <= 10:
+    if the_first_control_number_algorithm(id_code) != id_code and a % 11 < 10:
         return True
     if the_first_control_number_algorithm(id_code) != id_code and a % 11 > 10:
-        return False
+        return True
+
+
 
 
 
@@ -182,4 +187,12 @@ def get_data_from_id(id_code: str) -> str:
 if __name__ == '__main__':
     print("\nControl number:")
     print(is_valid_control_number("49808270244"))  # -> True
-    print(is_valid_control_number("60102031670"))  # -> False, it must be 6
+    print(is_valid_control_number("601092"))  # -> False, it must be 6
+
+    print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
+    print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
+    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
+    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
+    # the second algorithm!"
