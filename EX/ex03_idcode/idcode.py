@@ -122,12 +122,13 @@ def is_valid_control_number(id_code: str) -> bool:
     a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
         id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(
         id_code[9]) * 3
+    if the_first_control_number_algorithm("Needs the second algorithm!") and a == 0:
+        return True
     if the_first_control_number_algorithm("Needs the second algorithm!") and a == id_code[10]:
         return True
     if the_first_control_number_algorithm("Needs the second algorithm!") and a != id_code[10]:
         return False
-    else:
-        return False
+
 
 
 
@@ -185,7 +186,7 @@ def get_data_from_id(id_code: str) -> str:
 
 if __name__ == '__main__':
     print("\nControl number:")
-    print(is_valid_control_number("49808270244"))  # -> True
+    print(is_valid_control_number("49000000000"))  # -> True
     print(is_valid_control_number("60109200187"))  # -> False, it must be 6
 
     print("\nDay number:")
@@ -205,10 +206,4 @@ if __name__ == '__main__':
     print(is_id_valid("49808270244"))  # -> True
     print(is_id_valid("12345678901"))  # -> False
 
-    print("\nFull message:")
-    print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
-    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
 
-    # print("\nTest now your own ID code:")
-    # personal_id = input()  # type your own id in command prompt
-    # print(is_id_valid(personal_id))  # -> True
