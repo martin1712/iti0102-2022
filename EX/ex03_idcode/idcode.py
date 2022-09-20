@@ -126,16 +126,16 @@ def is_valid_control_number(id_code: str) -> bool:
         result[5]) * 6 + int(result[6]) * 7 + int(result[7]) * 8 + int(result[8]) * 9 + int(result[9]) * 1
     if b % 11 == int(result[10]):
         return True
+    if b % 11 != int(result[10]):
+        return False
     c = int(result[0]) * 3 + int(result[1]) * 4 + int(result[2]) * 5 + int(result[3]) * 6 + int(result[4]) * 7 + int(
         result[5]) * 8 + int(result[6]) * 9 + int(result[7]) * 1 + int(result[8]) * 2 + int(result[9]) * 3
     if b % 11 != int(result[10]) and c % 11 == int(result[10]):
         return True
-    elif c % 11 == 0:
-        return True
-    elif b % 11 < 10 and b != int(result[10]):
+    if b % 11 != int(result[10]) and c % 11 != int(result[10]):
         return False
-    else:
-        return False
+
+
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
