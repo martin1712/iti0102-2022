@@ -115,25 +115,16 @@ def get_birth_place(birth_number: int) -> str:
 
 
 def is_valid_control_number(id_code: str) -> bool:
-    result = ""
-    for i in id_code:
-        if i.isdigit():
-            result += i
-    a = len(result)
-    if a != 11:
-        return False
-    b = int(result[0]) * 1 + int(result[1]) * 2 + int(result[2]) * 3 + int(result[3]) * 4 + int(result[4]) * 5 + int(
-        result[5]) * 6 + int(result[6]) * 7 + int(result[7]) * 8 + int(result[8]) * 9 + int(result[9]) * 1
-    if b % 11 == int(result[10]):
+    if the_first_control_number_algorithm("result"):
         return True
-    if b % 11 != int(result[10]):
-        return False
-    c = int(result[0]) * 3 + int(result[1]) * 4 + int(result[2]) * 5 + int(result[3]) * 6 + int(result[4]) * 7 + int(
-        result[5]) * 8 + int(result[6]) * 9 + int(result[7]) * 1 + int(result[8]) * 2 + int(result[9]) * 3
-    if b % 11 != int(result[10]) and c % 11 == int(result[10]):
+    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(id_code[9]) * 3
+    b = a % 11 <= 10
+    if the_first_control_number_algorithm("Needs the second algorithm!") and b == id_code[10]:
         return True
-    if b % 11 != int(result[10]) and c % 11 != int(result[10]):
+    else:
         return False
+
+
 
 
 
