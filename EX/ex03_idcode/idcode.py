@@ -115,24 +115,14 @@ def get_birth_place(birth_number: int) -> str:
 
 
 def is_valid_control_number(id_code: str) -> bool:
-    if the_first_control_number_algorithm(""):
+    if the_first_control_number_algorithm(id_code) == id_code:
         return True
-    if the_first_control_number_algorithm("Incorrect ID code!"):
+    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(id_code[4]) * 7 + int(
+        id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(id_code[9]) * 3
+    if the_first_control_number_algorithm(id_code) != id_code and a <= 10:
+        return True
+    else:
         return False
-    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
-        id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(
-        id_code[9]) * 3
-    if the_first_control_number_algorithm("Needs the second algorithm!") and a == 0:
-        return True
-    if the_first_control_number_algorithm("Needs the second algorithm!") and a == id_code[10]:
-        return True
-    if the_first_control_number_algorithm("Needs the second algorithm!") and a != id_code[10]:
-        return False
-
-
-
-
-
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
@@ -186,24 +176,6 @@ def get_data_from_id(id_code: str) -> str:
 
 if __name__ == '__main__':
     print("\nControl number:")
-    print(is_valid_control_number("49000000000"))  # -> True
+    print(is_valid_control_number("50012172220"))  # -> True
     print(is_valid_control_number("60109200187"))  # -> False, it must be 6
-
-    print("\nDay number:")
-    print(is_valid_day_number(4, 5, 12, 25))  # -> True
-    print(is_valid_day_number(3, 10, 8, 32))  # -> False
-    print("\nFebruary check:")
-    print(
-        is_valid_day_number(4, 96, 2, 30))  # -> False (February cannot contain more than 29 days in any circumstances)
-    print(is_valid_day_number(4, 99, 2, 29))  # -> False (February contains 29 days only during leap year)
-    print(is_valid_day_number(4, 8, 2, 29))  # -> True
-    print("\nMonth contains 30 or 31 days check:")
-    print(is_valid_day_number(4, 22, 4, 31))  # -> False (April contains max 30 days)
-    print(is_valid_day_number(4, 18, 10, 31))  # -> True
-    print(is_valid_day_number(4, 15, 9, 31))  # -> False (September contains max 30 days)
-
-    print("\nOverall ID check::")
-    print(is_id_valid("49808270244"))  # -> True
-    print(is_id_valid("12345678901"))  # -> False
-
 
