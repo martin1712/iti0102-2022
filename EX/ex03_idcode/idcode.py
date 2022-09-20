@@ -165,7 +165,7 @@ def is_id_valid(id_code: str) -> bool:
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
     control_number = (id_code[10])
-    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(day_number) and is_valid_birth_number(birth_number) and is_valid_control_number(control_number):
+    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(day_number) and is_valid_birth_number(birth_number) and is_valid_control_number(control_number) is True:
         return True
     else:
         return False
@@ -178,7 +178,7 @@ def get_data_from_id(id_code: str) -> str:
         year_number = int(id_code[1:3])
         day_number = int(id_code[5:7])
         month_number = int(id_code[3:5])
-        birth_place = (id_code[7:10])
+        birth_place = int(id_code[7:10])
         full_year = get_full_year(gender_number, year_number)
         return f"This is a {get_gender(gender)} born on {day_number}.{month_number}.{get_full_year(full_year)} in {get_birth_place(birth_place)}"
     else:
