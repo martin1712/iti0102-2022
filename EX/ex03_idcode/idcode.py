@@ -134,6 +134,8 @@ def is_valid_control_number(id_code: str) -> bool:
         return True
     elif b % 11 < 10 and b != int(result[10]):
         return False
+    else:
+        return False
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
