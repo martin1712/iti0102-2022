@@ -123,9 +123,9 @@ def is_valid_control_number(id_code: str) -> bool:
         id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(
         id_code[9]) * 3
     b = a % 11 <= 10
-    if the_first_control_number_algorithm == "Needs the second algorithm!" and b == id_code[10]:
+    if the_first_control_number_algorithm("Needs the second algorithm!") and b == id_code[10]:
         return True
-    else:
+    if the_first_control_number_algorithm("Needs the second algorithm!") and b != id_code[10]:
         return False
 
 
