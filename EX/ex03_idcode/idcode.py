@@ -115,7 +115,7 @@ def get_birth_place(birth_number: int) -> str:
 
 
 def is_valid_control_number(id_code: str) -> bool:
-    if the_first_control_number_algorithm("result"):
+    if the_first_control_number_algorithm(""):
         return True
     if the_first_control_number_algorithm("Incorrect ID code!"):
         return False
