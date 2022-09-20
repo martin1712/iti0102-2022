@@ -119,19 +119,11 @@ def is_valid_control_number(id_code: str) -> bool:
         return True
     a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(id_code[4]) * 7 + int(
         id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(id_code[9]) * 3
-    if the_first_control_number_algorithm(id_code) != id_code and a <= 10:
+    if the_first_control_number_algorithm(id_code) != id_code and a % 11 <= 10:
         return True
-    if the_first_control_number_algorithm("result"):
-        return True
-    if the_first_control_number_algorithm("Incorrect ID code!"):
+    else:
         return False
-    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
-        id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(
-        id_code[9]) * 3
-    if the_first_control_number_algorithm("Needs the second algorithm!") and a == id_code[10]:
-        return True
-    if the_first_control_number_algorithm("Needs the second algorithm!") and a != id_code[10]:
-        return False
+
 
 
 
@@ -189,6 +181,5 @@ def get_data_from_id(id_code: str) -> str:
 
 if __name__ == '__main__':
     print("\nControl number:")
-    print(is_valid_control_number("50012172888"))  # -> True
-    print(is_valid_control_number("60109200186"))  # -> False, it must be 6
-
+    print(is_valid_control_number("49808270244"))  # -> True
+    print(is_valid_control_number("60102031670"))  # -> False, it must be 6
