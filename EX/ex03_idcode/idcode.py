@@ -128,7 +128,7 @@ def is_valid_control_number(id_code: str) -> bool:
         return True
     c = int(result[0]) * 3 + int(result[1]) * 4 + int(result[2]) * 5 + int(result[3]) * 6 + int(result[4]) * 7 + int(
         result[5]) * 8 + int(result[6]) * 9 + int(result[7]) * 1 + int(result[8]) * 2 + int(result[9]) * 3
-    if b % 11 >= 10 and c % 11 == int(result[10]):
+    if b % 11 != int(result[10]) and c % 11 == int(result[10]):
         return True
     elif c % 11 == 0:
         return True
