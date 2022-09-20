@@ -115,15 +115,17 @@ def get_birth_place(birth_number: int) -> str:
 
 
 def is_valid_control_number(id_code: str) -> bool:
-    if the_first_control_number_algorithm("result"):
+    if the_first_control_number_algorithm == "":
         return True
-    if the_first_control_number_algorithm("Incorrect ID code!"):
+    if the_first_control_number_algorithm == "Incorrect ID code!":
         return False
-    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(id_code[9]) * 3
+    a = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
+        id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(id_code[8]) * 2 + int(
+        id_code[9]) * 3
     b = a % 11 <= 10
-    if the_first_control_number_algorithm("Needs the second algorithm!") and b == id_code[10]:
+    if the_first_control_number_algorithm == "Needs the second algorithm!" and b == id_code[10]:
         return True
-    if the_first_control_number_algorithm("Needs the second algorithm!") and b != id_code[10]:
+    else:
         return False
 
 
