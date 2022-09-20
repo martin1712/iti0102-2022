@@ -150,7 +150,7 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
             return True
         if leap_year is False and day_number > 28:
             return False
-    if month_number in [4, 9] and day_number > 30:
+    if month_number in [4, 6, 9, 11] and day_number > 30:
         return False
     else:
         return True
