@@ -126,6 +126,8 @@ def is_valid_control_number(id_code: str) -> bool:
         return True
     if the_first_control_number_algorithm("Needs the second algorithm!") and a != id_code[10]:
         return False
+    else:
+        return False
 
 
 
