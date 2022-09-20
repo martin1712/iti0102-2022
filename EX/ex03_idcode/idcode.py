@@ -114,18 +114,31 @@ def get_birth_place(birth_number: int) -> str:
         return "Wrong input!"
 
 
+def is_valid_control_number(id_code: str) -> bool:
+    result = ""
+    for i in id_code:
+        if i.isdigit():
+            result += i
+    a = len(result)
+    if a != 11:
+        return False
+    b = int(result[0]) * 1 + int(result[1]) * 2 + int(result[2]) * 3 + int(result[3]) * 4 + int(result[4]) * 5 + int(
+        result[5]) * 6 + int(result[6]) * 7 + int(result[7]) * 8 + int(result[8]) * 9 + int(result[9]) * 1
+    if b % 11 == int(result[10]):
+        return True
+    c = int(result[0]) * 3 + int(result[1]) * 4 + int(result[2]) * 5 + int(result[3]) * 6 + int(result[4]) * 7 + int(
+        result[5]) * 8 + int(result[6]) * 9 + int(result[7]) * 1 + int(result[8]) * 2 + int(result[9]) * 3
+    if b % 11 >= 10 and c % 11 == int(result[10]):
+        return True
+    elif c % 11 == 0:
+        return True
+    elif b % 11 < 10 and b != int(result[10]):
+        return False
+
+
+
 if __name__ == '__main__':
-    print("\nLeap year:")
-    print(is_leap_year(1804))  # -> True
-    print(is_leap_year(1800))  # -> False
+    print("\nControl number:")
+    print(is_valid_control_number("49808270244"))  # -> True
+    print(is_valid_control_number("60109200187"))  # -> False, it must be 6
 
-    print("\nGet full year:")
-    print(get_full_year(1, 28))  # -> 1828
-    print(get_full_year(4, 85))  # -> 1985
-    print(get_full_year(5, 1))  # -> 2001
-
-    print("\nChecking where the person was born")
-    print(get_birth_place(0))  # -> "Wrong input!"
-    print(get_birth_place(1))  # -> "Kuressaare"
-    print(get_birth_place(421))  # -> "Tartu"
-    print(get_birth_place(220))  # -> "Tallinn"
