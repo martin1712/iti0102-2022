@@ -1,6 +1,6 @@
 
 
-"""Great!"""
+"""Great."""
 
 
 def find_id_code(text: str) -> str:
@@ -146,7 +146,7 @@ def is_valid_control_number(id_code: str) -> bool:
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
-    """Control if day is correct"""
+    """Control if day is correct."""
     if day_number > 31:
         return False
     if month_number == 2:
@@ -167,7 +167,7 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
 
 def is_id_valid(id_code: str) -> bool:
-    """Control whole your id"""
+    """Control whole your id."""
     if len(find_id_code(id_code)) != 11:
         return False
     gender_number = int(id_code[0])
@@ -183,7 +183,7 @@ def is_id_valid(id_code: str) -> bool:
 
 
 def get_data_from_id(id_code: str) -> str:
-    """Hello World!"""
+    """Hello World."""
     if is_id_valid(id_code) is True:
         gender_number = int(id_code[0])
         year_number = int(id_code[1:3])
