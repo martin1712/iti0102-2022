@@ -146,7 +146,7 @@ def is_valid_control_number(id_code: str) -> bool:
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
-    """control if day is correct"""
+    """Control if day is correct"""
     if day_number > 31:
         return False
     if month_number == 2:
@@ -212,4 +212,3 @@ if __name__ == '__main__':
     print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
 
     print(get_data_from_id("50009172220"))  # -> "Given invalid ID code!"
-
