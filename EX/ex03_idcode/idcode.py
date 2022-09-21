@@ -46,7 +46,7 @@ def is_valid_gender_number(number: int) -> bool:
 
 
 def get_gender(number: int) -> str:
-    """Gets gender."""
+    """Check gender."""
     while number in [1, 3, 5]:
         return "male"
     while number in [2, 4, 6]:
@@ -143,14 +143,6 @@ def is_valid_control_number(id_code: str) -> bool:
             return True
     if first_algorithm_control == "Incorrect ID code!":
         return False
-
-
-
-
-
-
-
-
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
