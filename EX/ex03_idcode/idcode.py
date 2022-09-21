@@ -182,15 +182,14 @@ def is_id_valid(id_code: str) -> bool:
 
 def get_data_from_id(id_code: str) -> str:
     if is_id_valid(id_code) is True:
-        gender = int(id_code)
         gender_number = int(id_code[0])
         year_number = int(id_code[1:3])
         day_number = int(id_code[5:7])
         month_number = int(id_code[3:5])
         birth_place = int(id_code[7:10])
         full_year = get_full_year(gender_number, year_number)
-        return f"This is a {get_gender(gender)} born on {day_number}.{month_number}.{full_year} in {get_birth_place(birth_place)}"
-    if is_id_valid is False:
+        return f"This is a {get_gender(gender_number)} born on {day_number}.{month_number}.{full_year} in {get_birth_place(birth_place)}"
+    else:
         return "Given invalid ID code!"
 
 
