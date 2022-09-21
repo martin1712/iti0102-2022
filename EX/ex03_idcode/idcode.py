@@ -36,7 +36,7 @@ def the_first_control_number_algorithm(text: str) -> str:
 
 
 def is_valid_gender_number(number: int) -> bool:
-    while number not in [0, 7, 8]:
+    while number in [1, 2, 3, 4, 5, 6]:
         return True
     else:
         return False
