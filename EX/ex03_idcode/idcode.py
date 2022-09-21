@@ -188,7 +188,14 @@ def get_data_from_id(id_code: str) -> str:
         month_number = int(id_code[3:5])
         birth_place = int(id_code[7:10])
         full_year = get_full_year(gender_number, year_number)
-        return f"This is a {get_gender(gender_number)} born on {day_number}.{month_number}.{full_year} in {get_birth_place(birth_place)}."
+        if month_number and day_number < 10:
+            return f"This is a {get_gender(gender_number)} born on 0{day_number}.0{month_number}.{full_year} in {get_birth_place(birth_place)}."
+        if month_number > 10 and day_number < 10:
+            return f"This is a {get_gender(gender_number)} born on 0{day_number}.{month_number}.{full_year} in {get_birth_place(birth_place)}."
+        if month_number < 10 and day_number > 10:
+            return f"This is a {get_gender(gender_number)} born on {day_number}.0{month_number}.{full_year} in {get_birth_place(birth_place)}."
+        if month_number and day_number > 10:
+            return f"This is a {get_gender(gender_number)} born on {day_number}.{month_number}.{full_year} in {get_birth_place(birth_place)}."
     else:
         return "Given invalid ID code!"
 
@@ -200,5 +207,6 @@ if __name__ == '__main__':
 
     print("\nFull message:")
     print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
-    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
+
+    print(get_data_from_id("50009172220"))  # -> "Given invalid ID code!"
 
