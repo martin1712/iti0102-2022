@@ -173,8 +173,8 @@ def is_id_valid(id_code: str) -> bool:
     month_number = int(id_code[3:5])
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
-    control_number = (id_code[10])
-    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(day_number) and is_valid_birth_number(birth_number) and is_valid_control_number(control_number) is True:
+    control_number = str(id_code)
+    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(gender_number, year_number, month_number, day_number) and is_valid_birth_number(birth_number) and is_valid_control_number(control_number) is True:
         return True
     else:
         return False
@@ -195,14 +195,11 @@ def get_data_from_id(id_code: str) -> str:
 
 
 if __name__ == '__main__':
-    print("\nControl number:")
-    print(is_valid_control_number("49808270244"))  # -> True
-    print(is_valid_control_number("60109200187"))  # -> False, it must be 6
+    print("\nOverall ID check::")
+    print(is_id_valid("49808270244"))  # -> True
+    print(is_id_valid("12345678901"))  # -> False
 
-    print(the_first_control_number_algorithm(""))  # -> "Incorrect ID code!"
-    print(the_first_control_number_algorithm("123456789123456789"))  # -> "Incorrect ID code!"
-    print(the_first_control_number_algorithm("ID code is: 49403136526"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("efs4  9   #4aw0h 3r 1a36g5j2!!6-"))  # -> "49403136526"
-    print(the_first_control_number_algorithm("50412057633"))  # -> "50412057633"
-    print(the_first_control_number_algorithm("Peeter's ID is euf50weird2fs0fsk51ef6t0s2yr7fyf4"))  # -> "Needs
-    # the second algorithm!"
+    print("\nFull message:")
+    print(get_data_from_id("49808270244"))  # -> "This is a female born on 27.08.1998 in Tallinn."
+    print(get_data_from_id("60109200187"))  # -> "Given invalid ID code!"
+
