@@ -123,14 +123,15 @@ def is_valid_control_number(id_code: str) -> bool:
     if a != 11:
         return False
     first_algorithm_control = the_first_control_number_algorithm(id_code)
+    if first_algorithm_control == id_code:
+        return True
     b = int(id_code[0]) * 3 + int(id_code[1]) * 4 + int(id_code[2]) * 5 + int(id_code[3]) * 6 + int(
         id_code[4]) * 7 + int(id_code[5]) * 8 + int(id_code[6]) * 9 + int(id_code[7]) * 1 + int(
         id_code[8]) * 2 + int(id_code[9]) * 3
     if first_algorithm_control == "Needs the second algorithm!":
-        c = b % 11 > 10
-        if c > 10:
+        if b % 11 > 10:
             return False
-        if c <= 10:
+        if b % 11 <= 10:
             return True
     if first_algorithm_control == "Incorrect ID code!":
         return False
