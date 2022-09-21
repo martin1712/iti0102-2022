@@ -4,6 +4,7 @@
 
 
 def find_id_code(text: str) -> str:
+    """Check if id code have 11 numbers."""
     result = ""
     for i in text:
         if i.isdigit():
@@ -18,6 +19,7 @@ def find_id_code(text: str) -> str:
 
 
 def the_first_control_number_algorithm(text: str) -> str:
+    """Check first control number."""
     result = ""
     for i in text:
         if i.isdigit():
@@ -36,6 +38,7 @@ def the_first_control_number_algorithm(text: str) -> str:
 
 
 def is_valid_gender_number(number: int) -> bool:
+    """Check if gender number is correct."""
     while number in [1, 2, 3, 4, 5, 6]:
         return True
     else:
@@ -43,6 +46,7 @@ def is_valid_gender_number(number: int) -> bool:
 
 
 def get_gender(number: int) -> str:
+    """Gets gender."""
     while number in [1, 3, 5]:
         return "male"
     while number in [2, 4, 6]:
@@ -74,6 +78,7 @@ def is_valid_birth_number(birth_number: int) -> bool:
 
 
 def is_leap_year(leap_year: int) -> bool:
+    """Control if year is leap or not."""
     if (leap_year % 400 == 0) and (leap_year % 100 == 0):
         return True
     elif (leap_year % 4 == 0) and (leap_year % 100 != 0):
@@ -83,6 +88,7 @@ def is_leap_year(leap_year: int) -> bool:
 
 
 def get_full_year(gender_number: int, year_number: int) -> int:
+    """Convert gender and year numbers into full year."""
     if gender_number in [1, 2] and 0 <= year_number < 100:
         return 1800 + year_number
     if gender_number in [3, 4] and 0 <= year_number < 100:
@@ -92,6 +98,7 @@ def get_full_year(gender_number: int, year_number: int) -> int:
 
 
 def get_birth_place(birth_number: int) -> str:
+    """Get."""
     if 0 < birth_number < 11:
         return "Kuressaare"
     if 10 < birth_number < 21:
@@ -115,6 +122,7 @@ def get_birth_place(birth_number: int) -> str:
 
 
 def is_valid_control_number(id_code: str) -> bool:
+    """Control last number in id code."""
     result = ""
     for i in id_code:
         if i.isdigit():
@@ -146,6 +154,7 @@ def is_valid_control_number(id_code: str) -> bool:
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
+    """control if day is correct"""
     if day_number > 31:
         return False
     if month_number == 2:
@@ -166,6 +175,7 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
 
 
 def is_id_valid(id_code: str) -> bool:
+    """Control whole your id"""
     if len(find_id_code(id_code)) != 11:
         return False
     gender_number = int(id_code[0])
@@ -181,6 +191,7 @@ def is_id_valid(id_code: str) -> bool:
 
 
 def get_data_from_id(id_code: str) -> str:
+    """Hello World!"""
     if is_id_valid(id_code) is True:
         gender_number = int(id_code[0])
         year_number = int(id_code[1:3])
