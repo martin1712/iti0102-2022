@@ -26,7 +26,7 @@ def car_models(all_cars: str) -> list:
     a = all_cars.split(",")
     for car in a:
         tokens = car.split(" ")
-        if tokens[1] in tokens:
+        if 1 < len(tokens):
             if tokens[1] not in all_makes:
                 all_makes.append(tokens[1])
         if all_cars == "":
