@@ -4,6 +4,8 @@
 
 
 def list_of_cars(all_cars: str) -> list:
+    if all_cars == "":
+        return []
     return all_cars.split(",")
 
 
