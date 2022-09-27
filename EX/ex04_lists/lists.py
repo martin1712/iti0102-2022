@@ -4,12 +4,14 @@
 
 
 def list_of_cars(all_cars: str) -> list:
+    """Great."""
     if all_cars == "":
         return []
     return all_cars.split(",")
 
 
 def car_makes(all_cars: str) -> list:
+    """Great."""
     all_makes = []
     a = all_cars.split(",")
     for car in a:
@@ -22,6 +24,7 @@ def car_makes(all_cars: str) -> list:
 
 
 def car_models(all_cars: str) -> list:
+    """Great."""
     all_makes = []
     a = all_cars.split(",")
     for car in a:
@@ -35,6 +38,7 @@ def car_models(all_cars: str) -> list:
 
 
 def search_by_make(all_cars: str, make: str) -> list:
+    """Great."""
     all_makes = []
     a = all_cars.split(",")
     for car in a:
@@ -52,6 +56,7 @@ def search_by_make(all_cars: str, make: str) -> list:
 
 
 def search_by_model(all_cars: str, model: str) -> list:
+    """Great."""
     all_makes = []
     a = all_cars.split(",")
     for car in a:
@@ -69,7 +74,6 @@ def search_by_model(all_cars: str, model: str) -> list:
         if model == "":
             return []
     return all_makes
-
 
 
 print(list_of_cars("Audi A4,Skoda Superb,Audi A4"))  # ["Audi A4", "Skoda Superb", "Audi A4"]
