@@ -57,7 +57,7 @@ def search_by_model(all_cars: str, model: str) -> list:
     for car in a:
         tokens = car.split(" ", 1)
         if 1 < len(tokens):
-            tokens_string = ", ".join(tokens[1:])
+            tokens_string = " ".join(tokens[1:])
             tokens_string_lower = tokens_string.lower()
             model_lower = model.lower()
             if model_lower in tokens_string_lower:
