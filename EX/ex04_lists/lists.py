@@ -40,7 +40,7 @@ def search_by_make(all_cars: str, make: str) -> list:
     for car in a:
         tokens = car.split(" ")
         make_lower = make.lower()
-        tokens_string = ", ".join(tokens)
+        tokens_string = ", ".join(tokens[0])
         tokens_string_lower = tokens_string.lower()
         if make_lower in tokens_string_lower:
             all_makes.append(" ".join(tokens[:]))
@@ -74,6 +74,6 @@ print(car_makes(""))  # []
 
 print(car_models("Audi A4 SUPER,Skoda Superb,Audi A4,Audi A6"))  # ["A4", "Superb", "A6"]
 
-print(search_by_make("Audi A4,Audi A4,audi A5,AUDI a6 A7,AUDI a6 A7,Skoda Superb", "audi"))
+print(search_by_make("audi A4", "a4"))
 
 print(search_by_model("Audi A4,Audi a4 2021,Audi A40"))
