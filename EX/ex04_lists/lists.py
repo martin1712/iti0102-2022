@@ -60,12 +60,11 @@ def search_by_model(all_cars: str, model: str) -> list:
     all_makes = []
     a = all_cars.split(",")
     for car in a:
-        tokens = car.split(" ", 1)
+        tokens = car.split(" ")
         if 1 < len(tokens):
-            tokens_string = " ".join(tokens[1:])
-            tokens_string_lower = tokens_string.lower()
+            string_list = [x.lower() for x in tokens]
             model_lower = model.lower()
-            if model_lower in tokens_string_lower:
+            if model_lower in string_list:
                 all_makes.append(" ".join(tokens[:]))
         if " " in model:
             return []
@@ -76,16 +75,5 @@ def search_by_model(all_cars: str, model: str) -> list:
     return all_makes
 
 
-print(list_of_cars("Audi A4,Skoda Superb,Audi A4"))  # ["Audi A4", "Skoda Superb", "Audi A4"]
 
-print(car_makes("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))  # ['Audi', 'Skoda', 'BMW', 'Seat']
-
-print(car_makes("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # ['Mazda']
-
-print(car_makes(""))  # []
-
-print(car_models("Audi A4 SUPER,Skoda Superb,Audi A4,Audi A6"))  # ["A4", "Superb", "A6"]
-
-print(search_by_make("Audi A4 SUPER,Skoda Superb,Audi A4,Audi A6", "a"))
-
-print(search_by_model("Audi A4,Audi a4 2021,Audi A40", "a4"))
+print(search_by_model("Audi A4 s6 2021,Audi a4 2021,Audi A40 s6 20220", "s6"))
