@@ -75,5 +75,15 @@ def search_by_model(all_cars: str, model: str) -> list:
     return all_makes
 
 
+def car_make_and_models(all_cars: str) -> list:
+    """Great."""
+    car_list = []
+    a = all_cars.split(",")
+    for car in a:
+        tokens = car.split(" ")
+        print(tokens)
+    return car_list
 
-print(search_by_model("Audi A4 s6 2021,Audi a4 2021,Audi A40 s6 20220", "audi"))
+
+print(car_make_and_models("Audi A4 u6,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
+# [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
