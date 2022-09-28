@@ -64,7 +64,7 @@ def search_by_model(all_cars: str, model: str) -> list:
         if 1 < len(tokens):
             string_list = [x.lower() for x in tokens]
             model_lower = model.lower()
-            if model_lower in string_list:
+            if model_lower in string_list[1:]:
                 all_makes.append(" ".join(tokens[:]))
         if " " in model:
             return []
@@ -76,4 +76,4 @@ def search_by_model(all_cars: str, model: str) -> list:
 
 
 
-print(search_by_model("Audi A4 s6 2021,Audi a4 2021,Audi A40 s6 20220", "s6"))
+print(search_by_model("Audi A4 s6 2021,Audi a4 2021,Audi A40 s6 20220", "audi"))
