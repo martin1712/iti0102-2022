@@ -78,7 +78,6 @@ def search_by_model(all_cars: str, model: str) -> list:
 def car_make_and_models(all_cars: str) -> list:
     """Great."""
     car_make = []
-    car_model = []
     cars_list = []
     a = all_cars.split(",")
     for car in a:
@@ -87,13 +86,13 @@ def car_make_and_models(all_cars: str) -> list:
             if tokens[0] not in car_make:
                 car_make.append(tokens[0])
                 cars_list.append([tokens[0], tokens[1:]])
-                for car in cars_list:
-                    if car[0] == tokens[0]:
-                        if tokens[1] not in car[1]:
-                            car[1].append(tokens[1])
+        for car in cars_list:
+            if car[0] == tokens[0]:
+                if tokens[1] not in car[1]:
+                    car[1].append(tokens[1])
         if all_cars == "":
             return []
-    return cars_list[1:]
+    return cars_list
 
 
 def add_cars(car_list: list, all_cars: str) -> list:
@@ -104,11 +103,7 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return result
 
 
-
 print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
 # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
 print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [['Mazda', ['6']]]
-print(car_make_and_models(""))  # []
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
-               "Audi A6,BMW A B C,Audi A4"))
-# [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
+print(car_make_and_models(""))
