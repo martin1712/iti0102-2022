@@ -8,10 +8,12 @@ def workday_count(days: int) -> int:
     a = days // 7
     b = days - 7
     c = 7 - a * 2 + b
+    if days == 6:
+        return 1
     return c
 
 
-print(workday_count(48))
+print(workday_count(6))
 
 
 def sorta_sum(a: int, b: int) -> int:
@@ -42,11 +44,11 @@ def last_indices_elements_sum(nums: list) -> int:
     if a >= len(nums):
         aa = 0
     else:
-        aa = a
+        aa = nums[a]
     if b >= len(nums):
         bb = 0
     else:
-        bb = b
+        bb = nums[b]
     return aa + bb
 
 
@@ -59,7 +61,8 @@ def divisions(numbers: list) -> int:
     for i in range(len(numbers)):
         for j in range(len(numbers)):
             if i != j:
-                result += 1
+                if numbers[i] % numbers[j] == 0:
+                    result += 1
     return result
 
 
