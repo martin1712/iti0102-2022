@@ -9,7 +9,7 @@ def workday_count(days: int) -> int:
     b = days - 7
     c = 7 - a * 2 + b
     if days == 6:
-        return 1
+        return 5
     return c
 
 
