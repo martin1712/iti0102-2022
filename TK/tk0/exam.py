@@ -13,7 +13,7 @@ def workday_count(days: int) -> int:
     return c
 
 
-print(workday_count(6))
+print(workday_count(11))
 
 
 def sorta_sum(a: int, b: int) -> int:
