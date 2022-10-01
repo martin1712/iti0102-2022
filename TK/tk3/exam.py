@@ -17,8 +17,10 @@ def common_end(a: list, b: list) -> bool:
     if len(a) and len(b) >= 1:
         if a[0] == b[0] or a[-1] == b[-1]:
             return True
-    else:
-        return False
+        if a[-1] == b[-1]:
+            return True
+        else:
+            return False
 
 
 def alarm_clock(day: int, vacation: bool) -> str:
