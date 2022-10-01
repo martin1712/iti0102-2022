@@ -1,3 +1,5 @@
+
+
 """TK3."""
 
 
@@ -54,9 +56,6 @@ def alarm_clock(day: int, vacation: bool) -> str:
         if day in [5, 6]:
             return "off"
 
-print(alarm_clock(6, True))
-
-
 
 def sum_of_a_beach(s: str) -> int:
     """
@@ -79,8 +78,6 @@ def sum_of_a_beach(s: str) -> int:
     d = string_lower.count("sun")
     return a + b + c + d
 
-print(sum_of_a_beach("gOfIshsunesunFiSh"))
-
 
 def min_index_value(nums: list) -> int:
     """
@@ -97,8 +94,14 @@ def min_index_value(nums: list) -> int:
     :param nums: List of non-negative integers.
     :return: Minimum value of two elements at positions of the first and the last element value.
     """
-
-
+    a = nums[0]
+    b = nums[-1]
+    if a >= len(nums):
+        return -1
+    if b >= len(nums):
+        return -1
+    else:
+        return min(nums[a], nums[b])
 
 
 def mirror_ends(s: str) -> str:
