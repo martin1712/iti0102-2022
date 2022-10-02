@@ -96,6 +96,7 @@ def car_make_and_models(all_cars: str) -> list:
 
 
 def add_cars(car_list: list, all_cars: str) -> list:
+    last_result = []
     result = car_list
     cars = car_make_and_models(all_cars)
     for car in cars:
@@ -103,8 +104,8 @@ def add_cars(car_list: list, all_cars: str) -> list:
             car_list.append([car[0], car[1]])
         if cars[0][1][0] not in car_list[0][1]:
                 car_list[0][1].append(cars[0][1][0])
-    return result
-
+                last_result.append(result)
+    return last_result
 
 
 print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Audi A4"))
