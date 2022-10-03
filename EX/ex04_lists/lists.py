@@ -117,5 +117,4 @@ def add_cars(car_list: list, all_cars: str) -> list:
 print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Skoda a7,Audi A8,BMW A9,BMW A10,Skoda POP,volvo MID,volvo MID Q9"))
 # [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
 # [['Audi', ['A6', 'A8']], ['BMW', ['A B C', 'A9', 'A10']], ['Skoda', ['a7', 'POP']], ['volvo', ['MID', 'MID Q9']]] - cars
-# [['Audi', ['A4']], ['Skoda', ['Superb']]] - car_list
-# [['Audi', ['A6', 'A4']], ['BMW', ['A B C']], ['Skoda', ['a7']]]
+
