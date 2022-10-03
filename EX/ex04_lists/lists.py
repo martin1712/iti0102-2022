@@ -114,7 +114,13 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return car_list
 
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]], "Audi A6,BMW A B C,Skoda a7,Audi A8,BMW A9,BMW A10,Skoda POP,volvo MID,volvo MID Q9"))
+print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
+        # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
+
+print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [['Mazda', ['6']]]
+print(car_make_and_models("")) # []
+
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
+               "Audi A6,BMW A B C,Audi A4"))
 # [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
-# [['Audi', ['A6', 'A8']], ['BMW', ['A B C', 'A9', 'A10']], ['Skoda', ['a7', 'POP']], ['volvo', ['MID', 'MID Q9']]] - cars
 
