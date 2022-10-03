@@ -99,13 +99,18 @@ def add_cars(car_list: list, all_cars: str) -> list:
     result = car_list
     cars = car_make_and_models(all_cars)
     all_makes = []
+    a = all_cars.split(",")
+    for car in a:
+        tokens = car.split(" ", 1)
+        for car in car_list:
+            if car[0] == tokens[0]:
+                if tokens[1] not in car[1]:
+                    car[1].append(tokens[1])
     for car in car_list:
         all_makes.append(car[0])
     for car in cars:
         if car[0] not in all_makes:
             car_list.append([car[0], car[1]])
-
-
     return car_list
 
 
