@@ -134,12 +134,13 @@ def car_list_as_string(cars: list) -> str:
             result += ','
         else:
             result += f"{i[0]}" + " " + f"{' '.join(i[1])}"
+            result += ','
     new_result = result.rstrip(',')
     return new_result
 
 
 
-print(car_list_as_string([['Audi', ['A4', 'A9']], ['Skoda', ['Superb']]]))
+print(car_list_as_string([['Audi', ['A4', 'A9']], ['Skoda', ['Superb']], ['Mazda', ['Omega']]]))
 #  "Audi A4,Skoda Superb"
 
 
