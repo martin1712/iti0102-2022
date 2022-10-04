@@ -114,13 +114,21 @@ def add_cars(car_list: list, all_cars: str) -> list:
     return car_list
 
 
-print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
-        # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
+def number_of_cars(all_cars: str) -> list:
+    numbers = []
+    makes = car_makes(all_cars)
+    for car in makes:
+        all_cars.count(car)
+        numbers.append(all_cars.count(car))
+    tuple_result = [(makes[i], numbers[i]) for i in range(0, len(makes))]
+    return tuple_result
 
-print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [['Mazda', ['6']]]
-print(car_make_and_models("")) # []
 
-print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
-               "Audi A6,BMW A B C,Audi A4"))
-# [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']
+
+print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6"))  # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
+
+
+
+
+
 
