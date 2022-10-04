@@ -96,6 +96,7 @@ def car_make_and_models(all_cars: str) -> list:
 
 
 def add_cars(car_list: list, all_cars: str) -> list:
+    """Great."""
     result = car_list
     cars = car_make_and_models(all_cars)
     all_makes = []
@@ -115,6 +116,7 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
 
 def number_of_cars(all_cars: str) -> list:
+    """Great."""
     numbers = []
     makes = car_makes(all_cars)
     for car in makes:
@@ -125,6 +127,7 @@ def number_of_cars(all_cars: str) -> list:
 
 
 def car_list_as_string(cars: list) -> str:
+    """Great."""
     result = ""
     for i in cars:
         if len(i[1]) > 1:
@@ -137,10 +140,3 @@ def car_list_as_string(cars: list) -> str:
             result += ','
     new_result = result.rstrip(',')
     return new_result
-
-
-
-print(car_list_as_string([['Audi', ['A4', 'A9']], ['Skoda', ['Superb']], ['Mazda', ['Omega']]]))
-#  "Audi A4,Skoda Superb"
-
-
