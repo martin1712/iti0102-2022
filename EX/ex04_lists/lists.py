@@ -124,11 +124,21 @@ def number_of_cars(all_cars: str) -> list:
     return tuple_result
 
 
+def car_list_as_string(cars: list) -> str:
+    result = ""
+    for i in cars:
+        result += f"{i[0]}" + " " + f"{''.join(i[1])}"
+    return result
 
-print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6"))  # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
 
 
 
 
+
+
+
+
+print(car_list_as_string([['Audi', ['A4']], ['Skoda', ['Superb']]]))
+#  "Audi A4,Skoda Superb"
 
 
