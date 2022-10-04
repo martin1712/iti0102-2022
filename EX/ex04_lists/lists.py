@@ -97,7 +97,6 @@ def car_make_and_models(all_cars: str) -> list:
 
 def add_cars(car_list: list, all_cars: str) -> list:
     """Great."""
-    result = car_list
     cars = car_make_and_models(all_cars)
     all_makes = []
     a = all_cars.split(",")
