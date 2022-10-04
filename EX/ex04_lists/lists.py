@@ -127,20 +127,14 @@ def number_of_cars(all_cars: str) -> list:
 def car_list_as_string(cars: list) -> str:
     result = ""
     for i in cars:
-        result += f"{i[0]}" + " " + f"{''.join(i[1])}"
+        result += f"{i[0]}" + " " + f"{' '.join(i[1])}"
         result += ','
     new_result = result.rstrip(',')
     return new_result
 
 
 
-
-
-
-
-
-
-print(car_list_as_string([['Audi', ['A4']], ['Skoda', ['Superb']]]))
+print(car_list_as_string([['Audi', ['A4', 'x5']], ['Skoda', ['Superb']]]))
 #  "Audi A4,Skoda Superb"
 
 
