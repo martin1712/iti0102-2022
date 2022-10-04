@@ -128,7 +128,9 @@ def car_list_as_string(cars: list) -> str:
     result = ""
     for i in cars:
         result += f"{i[0]}" + " " + f"{''.join(i[1])}"
-    return result
+        result += ','
+    new_result = result.rstrip(',')
+    return new_result
 
 
 
