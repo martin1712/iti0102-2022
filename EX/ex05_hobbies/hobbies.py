@@ -20,12 +20,14 @@ def create_dictionary(data: str) -> dict:
                     name[1].append(tokens[1])
     for i in l:
         d[i[0]] = i[1]
-        print(d)
+
     return d
 
 
 def sort_dictionary(dic: dict) -> dict:
-    return {}
+    for x in dic:
+        dic[x].sort()
+    return dic
 
 
 
@@ -36,7 +38,10 @@ if __name__ == '__main__':
     print("shopping" in dic["Wendy"])  # -> True
     print("fitness" in dic["Sophie"])  # -> False
     print("gaming" in dic["Peter"])  # -> True
-
+    print(len(dic["Jack"]))  # ->  12
+    print(len(dic["Carmen"]))  # -> 10
+    print(len(dic["Molly"]))  # -> 5
+    print(len(dic["Sophie"]))  # -> 7
 
 
 
