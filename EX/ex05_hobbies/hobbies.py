@@ -1,5 +1,8 @@
 
 
+"""Great."""
+
+
 def create_dictionary(data: str) -> dict:
     """Great."""
     a = data.split("\n")
