@@ -6,7 +6,7 @@ import re
 
 
 def find_words(text: str) -> list:
-    words = re.findall(r"[ÕÜÖÄ, A-Z]+[a-z]+", text)
+    words = re.findall(r"[ÕÜÖÄ, A-Z][a-z]+", text)
     return words
 
 
