@@ -41,11 +41,24 @@ def find_years(text: str) -> list:
 def find_phone_numbers(text: str) -> dict:
 
     list_of_numbers = re.findall(r"(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})", text)
-    from_list_to_string = str(list_of_numbers)
+    new_list = []
+    first_three_plus = []
 
-    print(type(from_list_to_string))
+    d = {}
 
-    return {}
+    for i in list_of_numbers:
+        if len(i) == 12:
+            new_list.append(" ".join((i[0:4], i[4:])))
+        else:
+            new_list.append(i)
+    for i in new_list:
+        tokens = i.split(" ")
+        for i in tokens:
+            if len(tokens[0]) > 4:
+                d[''] = [tokens[0]]
+            else:
+                d[tokens[0]] = [tokens[1]]
+    return d
 
 
 
