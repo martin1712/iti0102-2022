@@ -26,9 +26,10 @@ def find_words_from_sentence(sentence: str) -> list:
 
 
 def find_words_from_sentences_only(text: str) -> list:
-
-    pass
-
+    a = find_sentences(text)
+    b = str(a)
+    words = re.findall(r"(\w+)", b)
+    return words
 
 def find_years(text: str) -> list:
 
@@ -49,3 +50,5 @@ if __name__ == '__main__':
     # ['See on esimene - lause.', 'See on ä teine lause!', 'Aga kas see on?']
     print(find_words_from_sentence("Super lause ää, sorry."))
     # ['Super', 'lause', 'ää', 'sorry']
+    print(find_words_from_sentences_only('See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
+    # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
