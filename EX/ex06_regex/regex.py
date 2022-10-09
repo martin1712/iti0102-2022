@@ -32,8 +32,9 @@ def find_words_from_sentences_only(text: str) -> list:
     return words
 
 def find_years(text: str) -> list:
+    words = re.findall(r"(?<!\d)\d{4}(?!\d)", text)
+    return words
 
-    pass
 
 
 def find_phone_numbers(text: str) -> dict:
@@ -52,3 +53,5 @@ if __name__ == '__main__':
     # ['Super', 'lause', 'ää', 'sorry']
     print(find_words_from_sentences_only('See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
     # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
+    print(find_years("1998sef672387fh3f87fh83777f777f7777f73wfj893w8938434343"))
+    # [1998, 7777]
