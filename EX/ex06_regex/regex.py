@@ -11,7 +11,7 @@ def find_words(text: str) -> list:
 
 
 def find_words_with_vowels(text: str) -> list:
-    words = re.findall(r"[AUEOIÕÜÖÄ]+[a-z]+", text)
+    words = re.findall(r"[AUEOIÕÜÖÄ][a-z]+", text)
     return words
 
 
@@ -42,7 +42,7 @@ def find_phone_numbers(text: str) -> dict:
 if __name__ == '__main__':
     print(find_words('KanaMunaPelmeen!!ApelsinÕunMandariinKakaoHernesAhven'))
     # ['Kana', 'Muna', 'Pelmeen', 'Apelsin', 'Õun', 'Mandariin', 'Kakao', 'Hernes', 'Ahven']
-    print(find_words_with_vowels('KanaMunaPelmeenApelsinÕunMandariinKakaoHernesAhven'))
+    print(find_words_with_vowels('KanaMunaPelmeenApelsinÕunMandariinKakaoHernesAAhven'))
     # ['Apelsin', 'Õun', 'Ahven']
     print(find_sentences('See on esimene - lause. See on ä teine lause! see ei ole lause. Aga kas see on? jah, oli.'))
     # ['See on esimene - lause.', 'See on ä teine lause!', 'Aga kas see on?']
