@@ -43,6 +43,8 @@ def find_phone_numbers(text: str) -> dict:
     list_of_numbers = re.findall(r"(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})", text)
     new_list = []
     first_three_plus = []
+    asd = []
+    qwe = []
 
     d = {}
 
@@ -53,11 +55,24 @@ def find_phone_numbers(text: str) -> dict:
             new_list.append(i)
     for i in new_list:
         tokens = i.split(" ")
-        for i in tokens:
-            if len(tokens[0]) > 4:
-                d[''] = [tokens[0]]
-            else:
-                d[tokens[0]] = [tokens[1]]
+        if len(tokens[0]) > 4:
+            if tokens[0] not in asd:
+                asd.append(tokens[0])
+                d[''] = asd
+        else:
+            qwe.append([tokens[0], tokens[1:]])
+        for i in qwe:
+            if i[0] == tokens[0]:
+                if tokens[1] in i[1]:
+                    i[1].append(tokens[1])
+                if tokens[1] not in i[1]:
+                    i[1].append(tokens[1])
+
+        for i in qwe:
+            d[i[0]] = i[1]
+
+
+
     return d
 
 
