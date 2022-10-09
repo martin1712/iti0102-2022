@@ -16,7 +16,7 @@ def find_words_with_vowels(text: str) -> list:
 
 
 def find_sentences(text: str) -> list:
-    words = re.findall(r"([ÕÜÖÄA-Z][^\.!?]*[\.!?])", text)
+    words = re.findall(r"([ÕÜÖÄA-Z][^\.!?]*[\.!?]+)", text)
     return words
 
 
