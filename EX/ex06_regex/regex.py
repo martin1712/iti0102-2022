@@ -40,9 +40,13 @@ def find_years(text: str) -> list:
 
 def find_phone_numbers(text: str) -> dict:
 
+    list_of_numbers = re.findall(r"(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})", text)
+    from_list_to_string = str(list_of_numbers)
 
+    print(type(from_list_to_string))
 
-    pass
+    return {}
+
 
 
 if __name__ == '__main__':
