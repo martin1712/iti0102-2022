@@ -21,7 +21,8 @@ def find_sentences(text: str) -> list:
 
 
 def find_words_from_sentence(sentence: str) -> list:
-    pass
+    words = re.findall(r"(\w+)", sentence)
+    return words
 
 
 def find_words_from_sentences_only(text: str) -> list:
@@ -46,3 +47,5 @@ if __name__ == '__main__':
     # ['Apelsin', 'Õun', 'Ahven']
     print(find_sentences('See on esimene - lause. See on ä teine lause! see ei ole lause. Aga kas see on? jah, oli.'))
     # ['See on esimene - lause.', 'See on ä teine lause!', 'Aga kas see on?']
+    print(find_words_from_sentence("Super lause ää, sorry."))
+    # ['Super', 'lause', 'ää', 'sorry']
