@@ -33,11 +33,14 @@ def find_words_from_sentences_only(text: str) -> list:
 
 def find_years(text: str) -> list:
     words = re.findall(r"(?<!\d)\d{4}(?!\d)", text)
-    return words
+    number = [eval(i) for i in words]
+    return number
 
 
 
 def find_phone_numbers(text: str) -> dict:
+
+
 
     pass
 
@@ -55,3 +58,5 @@ if __name__ == '__main__':
     # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
     print(find_years("1998sef672387fh3f87fh83777f777f7777f73wfj893w8938434343"))
     # [1998, 7777]
+    print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
+    # {'+372': ['56887364', '56887364'], '+333': ['59835647'], '': ['56887364', '1234567', '11111111']}
