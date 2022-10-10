@@ -37,58 +37,30 @@ def find_years(text: str) -> list:
     return number
 
 
-
 def find_phone_numbers(text: str) -> dict:
 
     list_of_numbers = re.findall(r"(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})", text)
     new_list = []
-    first_three_plus = []
     asd = []
-    qwe = []
-
     d = {}
-
     for i in list_of_numbers:
         if len(i) == 12:
             new_list.append(" ".join((i[0:4], i[4:])))
         else:
             new_list.append(i)
     for i in new_list:
-        tokens = i.split(" ")
-        if len(tokens[0]) > 4:
-            if tokens[0] not in asd:
-                asd.append(tokens[0])
-                d[''] = asd
+        if len(i) == 13:
+            d[i[0:4]] = [(i[5:])]
+            if new_list.count(i[5:]) >= 1:
+                d[i[0:4]] = [(i[5:])] * (new_list.count(i[5:]) + 1)
         else:
-            qwe.append([tokens[0], tokens[1:]])
-        for i in qwe:
-            if i[0] == tokens[0]:
-                if tokens[1] in i[1]:
-                    i[1].append(tokens[1])
-                if tokens[1] not in i[1]:
-                    i[1].append(tokens[1])
-
-        for i in qwe:
-            d[i[0]] = i[1]
-
-
-
+            if len(i) in [7, 8]:
+                asd.append(i)
+                d[''] = asd
     return d
 
 
 
 if __name__ == '__main__':
-    print(find_words('KanaMunaPelmeen!!ApelsinÕunMandariinKakaoHernesAhven'))
-    # ['Kana', 'Muna', 'Pelmeen', 'Apelsin', 'Õun', 'Mandariin', 'Kakao', 'Hernes', 'Ahven']
-    print(find_words_with_vowels('KanaMunaPelmeenApelsinÕunMandariinKakaoHernesAAhven'))
-    # ['Apelsin', 'Õun', 'Ahven']
-    print(find_sentences('See on esimene - lause. See on ä teine lause! see ei ole lause. Aga kas see on? jah, oli.'))
-    # ['See on esimene - lause.', 'See on ä teine lause!', 'Aga kas see on?']
-    print(find_words_from_sentence("Super lause ää, sorry."))
-    # ['Super', 'lause', 'ää', 'sorry']
-    print(find_words_from_sentences_only('See on esimene - ä lause. See, on teine: lause! see ei ole lause. Aga kas see on? jah, oli.'))
-    # ['See', 'on', 'esimene', 'ä', 'lause', 'See', 'on', 'teine', 'lause', 'Aga', 'kas', 'see', 'on']
-    print(find_years("1998sef672387fh3f87fh83777f777f7777f73wfj893w8938434343"))
-    # [1998, 7777]
     print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
     # {'+372': ['56887364', '56887364'], '+333': ['59835647'], '': ['56887364', '1234567', '11111111']}
