@@ -1,5 +1,4 @@
 
-
 """Regex, I think."""
 import re
 
@@ -29,7 +28,6 @@ class Entry:
         """
         return self.date_of_birth
 
-
     def __repr__(self) -> str:
         """
         Object representation.
@@ -43,7 +41,6 @@ class Entry:
                f"Date of birth: {self.format_date()}\n" \
                f"Address: {self.address}"
 
-
     def __eq__(self, other) -> bool:
         """
         Compare two Entry objects.
@@ -52,8 +49,8 @@ class Entry:
         This method is perfect. Don't touch it.
         """
         return self.first_name == other.first_name and self.last_name == other.last_name and \
-               self.id_code == other.id_code and self.phone_number == other.phone_number and \
-               self.date_of_birth == other.date_of_birth and self.address == other.address
+            self.id_code == other.id_code and self.phone_number == other.phone_number and \
+            self.date_of_birth == other.date_of_birth and self.address == other.address
 
 
 def parse(row: str) -> Entry:
@@ -64,11 +61,10 @@ def parse(row: str) -> Entry:
     :return: Entry object with filled values
 
     """
-    regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11})(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?"
+    regex = r'([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11})(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?'
     match = re.search(regex, row)
     if match.group(9) == '':
-        a = 'None'
-        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), a)
+        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), None)
     else:
         entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), match.group(9))
     return entry
