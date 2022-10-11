@@ -27,7 +27,8 @@ class Entry:
         If the object doesn't have date of birth given, return None.
         :return:
         """
-        pass
+        return self.date_of_birth
+
 
     def __repr__(self) -> str:
         """
@@ -62,11 +63,11 @@ def parse(row: str) -> Entry:
     :return: Entry object with filled values
 
     """
-    regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11}){1}(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?"
+    regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11})(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?"
     match = re.search(regex, row)
 
 
-    entry = Entry(match.groups(1)[0], match.groups(2)[1], match.groups(3)[2], match.groups(4)[3], match.groups(5)[4], match.groups(6)[5])
+    entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), match.group(9))
     return entry
 
 
