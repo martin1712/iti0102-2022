@@ -7,26 +7,27 @@ def create_dictionary(data: str) -> dict:
     """Great."""
     a = data.split("\n")
     d = {}
-    l = []
+    result = []
     names = []
 
     for name in a:
         tokens = name.split(":", 1)
         if tokens[0] not in names:
             names.append(tokens[0])
-            l.append([tokens[0], tokens[1:]])
+            result.append([tokens[0], tokens[1:]])
 
-        for name in l:
+        for name in result:
             if name[0] == tokens[0]:
                 if tokens[1] not in name[1]:
                     name[1].append(tokens[1])
 
-    for i in l:
+    for i in result:
         d[i[0]] = i[1]
     return d
 
 
 def sort_dictionary(dic: dict) -> dict:
+    """Great."""
     for x in dic:
         dic[x].sort()
     return dic
