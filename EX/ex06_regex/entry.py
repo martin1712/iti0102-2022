@@ -43,6 +43,7 @@ class Entry:
                f"Date of birth: {self.format_date()}\n" \
                f"Address: {self.address}"
 
+
     def __eq__(self, other) -> bool:
         """
         Compare two Entry objects.
@@ -65,14 +66,11 @@ def parse(row: str) -> Entry:
     """
     regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11})(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?"
     match = re.search(regex, row)
-
-    if match.group(9) == '':
-        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), None)
+    if match.group(9) is None:
+        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), '')
     else:
         entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), match.group(9))
     return entry
-
-
 
 
 if __name__ == '__main__':
