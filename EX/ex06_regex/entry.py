@@ -62,8 +62,9 @@ def parse(row: str) -> Entry:
     :return: Entry object with filled values
 
     """
-    regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11}){1}(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?(\d\d-)(\d\d-)(\d\d\d\d)?(.*)?"
+    regex = "([A-Z][a-z]+)?([A-Z][a-z]+)?(\d{11}){1}(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})?((\d\d-)(\d\d-)(\d\d\d\d))?(.*)?"
     match = re.search(regex, row)
+
 
     entry = Entry(match.groups(1)[0], match.groups(2)[1], match.groups(3)[2], match.groups(4)[3], match.groups(5)[4], match.groups(6)[5])
     return entry
