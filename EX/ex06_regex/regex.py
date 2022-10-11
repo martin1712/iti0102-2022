@@ -1,6 +1,6 @@
 
 
-"""Regex, yay."""
+"""Regex, yyay."""
 import re
 
 
