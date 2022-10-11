@@ -67,7 +67,7 @@ def parse(row: str) -> Entry:
     match = re.search(regex, row)
 
     if match.group(9) == '':
-        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), 'None')
+        entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), None)
     else:
         entry = Entry(match.group(1), match.group(2), match.group(3), match.group(4), match.group(5), match.group(9))
     return entry
