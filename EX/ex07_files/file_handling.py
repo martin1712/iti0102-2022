@@ -100,7 +100,7 @@ def write_lines_to_file(filename: str, lines: list) -> None:
         for line in lines[:-1]:
             f.write(line)
             f.write("\n")
-            f.write(lines[-1])
+        f.write(lines[-1])
 
 
 
