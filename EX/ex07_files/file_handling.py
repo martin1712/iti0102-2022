@@ -96,7 +96,10 @@ def write_lines_to_file(filename: str, lines: list) -> None:
     :param lines: List of string to write to the file.
     :return: None
     """
-    pass
+    with open(filename, 'w') as f:
+        for line in lines:
+            f.write(f"{line}\n")
+
 
 
 def write_csv_file(filename: str, data: list) -> None:
@@ -175,4 +178,5 @@ if __name__ == '__main__':
     #print(read_file_contents("text.txt"))
     #print(read_file_contents_to_list("text.txt"))
     #print(read_csv_file("text.txt"))
-    print(write_contents_to_file("text.txt", "hello"))
+    #print(write_contents_to_file("text.txt", "hello"))
+    print(write_lines_to_file("text.txt", ["hello", "bye"]))
