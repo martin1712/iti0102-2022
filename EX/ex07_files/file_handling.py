@@ -97,11 +97,10 @@ def write_lines_to_file(filename: str, lines: list) -> None:
     :return: None
     """
     with open(filename, 'w') as f:
-        for line in lines:
-            if len(lines) in [0, 1]:
-                f.write(f"{line}")
-            else:
-                f.write(f"{line}\n")
+        for line in lines[:-1]:
+            f.write(line)
+            f.write("\n")
+        f.write(lines[-1])
 
 
 
@@ -182,4 +181,4 @@ if __name__ == '__main__':
     #print(read_file_contents_to_list("text.txt"))
     #print(read_csv_file("text.txt"))
     #print(write_contents_to_file("text.txt", "hello"))
-    print(write_lines_to_file("text.txt", ["hello world"]))
+    print(write_lines_to_file("text.txt", ["helloworldstop", "Goodbye"]))
