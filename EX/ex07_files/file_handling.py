@@ -165,4 +165,4 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
 
 #print(read_file_contents("text.txt"))
-print(read_file_contents_to_list("text.txt"))
+#print(read_file_contents_to_list("text.txt"))
