@@ -78,7 +78,9 @@ def write_contents_to_file(filename: str, contents: str) -> None:
     :param contents: Content to write to.
     :return: None
     """
-    pass
+    with open(filename, "w") as f:
+        f.write(contents)
+
 
 
 def write_lines_to_file(filename: str, lines: list) -> None:
@@ -170,6 +172,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
 
 if __name__ == '__main__':
-    print(read_file_contents("text.txt"))
-    print(read_file_contents_to_list("text.txt"))
-    print(read_csv_file("text.txt"))
+    #print(read_file_contents("text.txt"))
+    #print(read_file_contents_to_list("text.txt"))
+    #print(read_csv_file("text.txt"))
+    print(write_contents_to_file("text.txt", "hello"))
