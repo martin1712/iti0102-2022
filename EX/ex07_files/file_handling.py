@@ -1,6 +1,7 @@
 
 
 """Files"""
+import csv
 
 
 def read_file_contents(filename: str) -> str:
@@ -59,7 +60,12 @@ def read_csv_file(filename: str) -> list:
     :param filename: File to read.
     :return: List of lists.
     """
-    pass
+    result = []
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            result.append(row)
+    return result
 
 
 def write_contents_to_file(filename: str, contents: str) -> None:
@@ -166,3 +172,4 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 if __name__ == '__main__':
     print(read_file_contents("text.txt"))
     print(read_file_contents_to_list("text.txt"))
+    print(read_csv_file("text.txt"))
