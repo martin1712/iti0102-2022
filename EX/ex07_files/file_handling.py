@@ -1,7 +1,6 @@
 
 
 """Files"""
-import csv
 
 
 def read_file_contents(filename: str) -> str:
