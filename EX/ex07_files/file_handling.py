@@ -29,11 +29,11 @@ def read_file_contents_to_list(filename: str) -> list:
     :param filename: File to read.
     :return: List of lines.
     """
+
     result = []
-    with open(filename) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        for row in csv_reader:
-            result.append(row)
+    with open(filename) as f:
+        for row in f:
+            result.append(row.rstrip())
     return result
 
 
