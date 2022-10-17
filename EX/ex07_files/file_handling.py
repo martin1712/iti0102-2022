@@ -97,11 +97,14 @@ def write_lines_to_file(filename: str, lines: list) -> None:
     :return: None
     """
     with open(filename, 'w') as f:
+        started = False
         for line in lines:
-            if len(lines) in [0, 1]:
-                f.write(f"{line}")
-            else:
-                f.write(f"{line}\n")
+            if started:
+                f.write('\n')
+            started = True
+            f.write(line)
+
+
 
 
 
