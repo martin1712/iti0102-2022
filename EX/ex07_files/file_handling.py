@@ -11,7 +11,7 @@ def read_file_contents(filename: str) -> str:
     :param filename: File to read.
     :return: File contents as string.
     """
-    with open("str") as r:
+    with open("filename", "r") as r:
         data = r.read()
     return data
 
