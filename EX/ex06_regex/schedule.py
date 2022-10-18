@@ -3,7 +3,7 @@
 """Create schedule from the given file."""
 import re
 import datetime
-from collections import defaultdict
+
 
 def create_schedule_file(input_filename: str, output_filename: str) -> None:
     """Create schedule file from the given input file."""
@@ -14,7 +14,6 @@ def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
     result_of_all_matches = []
-
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
@@ -23,12 +22,7 @@ def create_schedule_string(input_string: str) -> str:
         # Convert to pm am time.
         d = datetime.datetime.strptime(result_with_comas, "%H:%M")
         together[d.strftime("%I:%M %p")] = match.group(6)
-
-
         table = ""
-        for i in together:
-            table += (f"| {i}  | {together[i]} |")
-
         return table
 
 
