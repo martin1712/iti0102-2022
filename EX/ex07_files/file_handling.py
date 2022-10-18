@@ -105,10 +105,6 @@ def write_lines_to_file(filename: str, lines: list) -> None:
             f.write(line)
 
 
-
-
-
-
 def write_csv_file(filename: str, data: list) -> None:
     """
     Write data into CSV file.
@@ -130,7 +126,10 @@ def write_csv_file(filename: str, data: list) -> None:
     :param data: List of lists to write to the file.
     :return: None
     """
-    pass
+    with open(filename, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(data)
+
 
 
 def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv_output_filename: str) -> None:
@@ -186,4 +185,5 @@ if __name__ == '__main__':
     #print(read_file_contents_to_list("text.txt"))
     #print(read_csv_file("text.txt"))
     #print(write_contents_to_file("text.txt", "hello"))
-    print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
+    #print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
+    print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
