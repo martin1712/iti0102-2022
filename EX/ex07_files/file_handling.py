@@ -183,6 +183,243 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
                 csv_w.writerow([item, new_dict[item]["city"], new_dict[item]["date"]])
 
 
+def read_csv_file_into_list_of_dicts(filename: str) -> list:
+    """
+    Read csv file into list of dictionaries.
+
+    Header line will be used for dict keys.
+
+    Each line after header line will result in a dict inside the result list.
+    Every line contains the same number of fields.
+
+    Example:
+    name,age,sex
+    John,12,M
+    Mary,13,F
+
+    Header line will be used as keys for each content line.
+    The result:
+    [
+      {"name": "John", "age": "12", "sex": "M"},
+      {"name": "Mary", "age": "13", "sex": "F"},
+    ]
+
+    If there are only header or no rows in the CSV-file,
+    the result is an empty list.
+
+    The order of the elements in the list should be the same
+    as the lines in the file (the first line becomes the first element etc.)
+
+    :param filename: CSV-file to read.
+    :return: List of dictionaries where keys are taken from the header.
+    """
+    pass
+
+
+def write_list_of_dicts_to_csv_file(filename: str, data: list) -> None:
+    """
+    Write list of dicts into csv file.
+
+    Data contains a list of dictionaries.
+    Dictionary key represents the field.
+
+    Example data:
+    [
+      {"name": "john", "age": "23"}
+      {"name": "mary", "age": "44"}
+    ]
+    Will become:
+    name,age
+    john,23
+    mary,44
+
+    The order of fields/headers is not important.
+    The order of lines is important (the same as in the list).
+
+    Example:
+    [
+      {"name": "john", "age": "12"},
+      {"name": "mary", "town": "London"}
+    ]
+    Will become:
+    name,age,town
+    john,12,
+    mary,,London
+
+    Fields which are not present in one line will be empty.
+
+    The order of the lines in the file should be the same
+    as the order of elements in the list.
+
+    :param filename: File to write to.
+    :param data: List of dictionaries to write to the file.
+    :return: None
+    """
+
+
+def read_csv_file_into_list_of_dicts_using_datatypes(filename: str) -> list:
+    """
+    Read data from file and cast values into different datatypes.
+
+    If a field contains only numbers, turn this into int.
+    If a field contains only dates (in format dd.mm.yyyy), turn this into date.
+    Otherwise the datatype is string (default by csv reader).
+
+    Example:
+    name,age
+    john,11
+    mary,14
+
+    Becomes ('age' is int):
+    [
+      {'name': 'john', 'age': 11},
+      {'name': 'mary', 'age': 14}
+    ]
+
+    But if all the fields cannot be cast to int, the field is left to string.
+    Example:
+    name,age
+    john,11
+    mary,14
+    ago,unknown
+
+    Becomes ('age' cannot be cast to int because of "ago"):
+    [
+      {'name': 'john', 'age': '11'},
+      {'name': 'mary', 'age': '14'},
+      {'name': 'ago', 'age': 'unknown'}
+    ]
+
+    Example:
+    name,date
+    john,01.01.2020
+    mary,07.09.2021
+
+    Becomes:
+    [
+      {'name': 'john', 'date': datetime.date(2020, 1, 1)},
+      {'name': 'mary', 'date': datetime.date(2021, 9, 7)},
+    ]
+
+    Example:
+    name,date
+    john,01.01.2020
+    mary,late 2021
+
+    Becomes:
+    [
+      {'name': 'john', 'date': "01.01.2020"},
+      {'name': 'mary', 'date': "late 2021"},
+    ]
+
+    Value "-" indicates missing value and should be None in the result
+    Example:
+    name,date
+    john,-
+    mary,07.09.2021
+
+    Becomes:
+    [
+      {'name': 'john', 'date': None},
+      {'name': 'mary', 'date': datetime.date(2021, 9, 7)},
+    ]
+
+    None value also doesn't affect the data type
+    (the column will have the type based on the existing values).
+
+    The order of the elements in the list should be the same
+    as the lines in the file.
+
+    For date, strptime can be used:
+    https://docs.python.org/3/library/datetime.html#examples-of-usage-date
+    """
+
+
+def read_people_data(directory: str) -> dict:
+    """
+    Read people data from files.
+    Files are inside directory. Read all *.csv files.
+
+    Each file has an int field "id" which should be used to merge information.
+
+    The result should be one dict where the key is id (int) and value is
+    a dict of all the different values across the the files.
+    Missing keys should be in every dictionary.
+    Missing value is represented as None.
+
+    File: a.csv
+    id,name
+    1,john
+    2,mary
+    3,john
+
+    File: births.csv
+    id,birth
+    1,01.01.2001
+    2,05.06.1990
+
+    File: deaths.csv
+    id,death
+    2,01.02.2020
+    1,-
+
+    Becomes:
+    {
+        1: {"id": 1, "name": "john", "birth": datetime.date(2001, 1, 1), "death": None},
+        2: {"id": 2, "name": "mary", "birth": datetime.date(1990, 6, 5),
+            "death": datetime.date(2020, 2, 1)},
+        3: {"id": 3, "name": "john", "birth": None, "death": None},
+    }
+
+
+    :param directory: Directory where the csv files are.
+    :return: Dictionary with id as keys and data dictionaries as values.
+    """
+    pass
+
+
+def generate_people_report(person_data_directory: str, report_filename: str) -> None:
+    """
+    Generate report about people data.
+
+    Data should be read using read_people_data().
+
+    The input files contain fields "birth" and "death" which are dates. Those can be in different files. There are no duplicate headers in the files (except for the "id").
+
+    The report is a CSV file where all the fields are written to
+    (along with the headers).
+    In addition, there should be two fields:
+    - "status" this is either "dead" or "alive" depending on whether
+    there is a death date
+    - "age" - current age or the age when dying.
+    The age is calculated as full years.
+    Birth 01.01.1940, death 01.01.2020 - age: 80
+    Birth 02.01.1940, death 01.01.2020 - age: 79
+
+    If there is no birth date, then the age is -1.
+
+    When calculating age, dates can be compared.
+
+    The lines in the file should be ordered:
+    - first by the age ascending (younger before older);
+      if the age cannot be calculated, then those lines will come last
+    - if the age is the same, then those lines should be ordered
+      by birthdate descending (newer birth before older birth)
+    - if both the age and birth date are the same,
+      then by name ascending (a before b). If name is not available, use "" (people with missing name should be before people with  name)
+    - if the names are the same or name field is missing,
+      order by id ascending.
+
+    Dates in the report should in the format: dd.mm.yyyy
+    (2-digit day, 2-digit month, 4-digit year).
+
+    :param person_data_directory: Directory of input data.
+    :param report_filename: Output file.
+    :return: None
+    """
+    pass
+
+
 if __name__ == '__main__':
     # print(read_file_contents("text.txt"))
     # print(read_file_contents_to_list("text.txt"))
