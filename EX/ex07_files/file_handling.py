@@ -1,35 +1,17 @@
 
 
-"""Files"""
+"""Files."""
 import csv
 
 
 def read_file_contents(filename: str) -> str:
-    """
-    Read file contents into string.
-    In this exercise, we can assume the file exists.
-
-    :param filename: File to read.
-    :return: File contents as string.
-    """
+    """Great."""
     with open(filename) as f:
         return f.read()
 
 
 def read_file_contents_to_list(filename: str) -> list:
-    """
-    Read file contents into list of lines.
-
-    In this exercise, we can assume the file exists.
-    Each line from the file should be a separate element.
-    The order of the list should be the same as in the file.
-
-    List elements should not contain new line (\n).
-
-    :param filename: File to read.
-    :return: List of lines.
-    """
-
+    """Great."""
     result = []
     with open(filename) as f:
         for row in f:
@@ -177,15 +159,15 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     """
     with open(dates_filename) as dt_csv:
         new_dict = {}
-        dt_dictR = csv.DictReader(dt_csv, fieldnames=["name", "date"], delimiter=':')
-        for row in dt_dictR:
+        dt_dict_r = csv.DictReader(dt_csv, fieldnames=["name", "date"], delimiter=':')
+        for row in dt_dict_r:
             if not row["date"]:
                 row["date"] = '-'
             new_dict.update({row["name"]: {"date": row["date"]}})
         with open(towns_filename) as city_csv:
-            dt_dictC = csv.DictReader(city_csv, fieldnames=["name", "city"], delimiter=':')
+            dt_dict_c = csv.DictReader(city_csv, fieldnames=["name", "city"], delimiter=':')
             print(new_dict)
-            for row in dt_dictC:
+            for row in dt_dict_c:
                 if not row["city"]:
                     row["city"] = '-'
                 if new_dict.get(row["name"]):
@@ -202,10 +184,10 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
 
 if __name__ == '__main__':
-    #print(read_file_contents("text.txt"))
-    #print(read_file_contents_to_list("text.txt"))
-    #print(read_csv_file("text.txt"))
-    #print(write_contents_to_file("text.txt", "hello"))
-    #print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
-    #print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
+    # print(read_file_contents("text.txt"))
+    # print(read_file_contents_to_list("text.txt"))
+    # print(read_csv_file("text.txt"))
+    # print(write_contents_to_file("text.txt", "hello"))
+    # print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
+    # print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
     print(merge_dates_and_towns_into_csv("dates_filename", "towns_filename", "csv_output_filename"))
