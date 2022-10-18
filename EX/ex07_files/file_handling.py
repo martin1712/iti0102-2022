@@ -336,6 +336,7 @@ def read_csv_file_into_list_of_dicts_using_datatypes(filename: str) -> list:
 
 def read_people_data(directory: str) -> dict:
     """
+
     Read people data from files.
     Files are inside directory. Read all *.csv files.
 
