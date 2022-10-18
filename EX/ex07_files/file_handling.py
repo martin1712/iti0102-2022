@@ -82,7 +82,6 @@ def write_contents_to_file(filename: str, contents: str) -> None:
         f.write(contents)
 
 
-
 def write_lines_to_file(filename: str, lines: list) -> None:
     """
     Write lines to file.
@@ -129,7 +128,6 @@ def write_csv_file(filename: str, data: list) -> None:
     with open(filename, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data)
-
 
 
 def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv_output_filename: str) -> None:
@@ -203,8 +201,6 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
                 csv_w.writerow([item, new_dict[item]["city"], new_dict[item]["date"]])
 
 
-
-
 if __name__ == '__main__':
     #print(read_file_contents("text.txt"))
     #print(read_file_contents_to_list("text.txt"))
@@ -213,4 +209,3 @@ if __name__ == '__main__':
     #print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
     #print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
     print(merge_dates_and_towns_into_csv("dates_filename", "towns_filename", "csv_output_filename"))
-
