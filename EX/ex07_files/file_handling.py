@@ -177,13 +177,30 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     :param csv_output_filename: Output CSV-file with names, towns and dates.
     :return: None
     """
-    nameOfFiles = ["dates_filename", "towns_filename"]
-    with open(csv_output_filename, "w") as new_created_file:
-        for name in nameOfFiles:
-            with open(name) as file:
-                for line in file:
-                    new_created_file.write(line)
-                new_created_file.write("\n")
+    with open(dates_filename) as dt_csv:
+        new_dict = {}
+        dt_dictR = csv.DictReader(dt_csv, fieldnames=["name", "date"], delimiter=':')
+        for row in dt_dictR:
+            if not row["date"]:
+                row["date"] = '-'
+            new_dict.update({row["name"]: {"date": row["date"]}})
+        with open(towns_filename) as city_csv:
+            dt_dictC = csv.DictReader(city_csv, fieldnames=["name", "city"], delimiter=':')
+            print(new_dict)
+            for row in dt_dictC:
+                if not row["city"]:
+                    row["city"] = '-'
+                if new_dict.get(row["name"]):
+                    new_dict[row["name"]].update({"city": row["city"]})
+                else:
+                    new_dict.update({row["name"]: {"date": '-', "city": row["city"]}})
+        with open(csv_output_filename, "w", newline='') as out_file:
+            csv_w = csv.writer(out_file)
+            csv_w.writerow(["name", "town", "date"])
+            for item in new_dict:
+                if not new_dict[item].get("city"):
+                    new_dict[item]["city"] = '-'
+                csv_w.writerow([item, new_dict[item]["city"], new_dict[item]["date"]])
 
 
 
@@ -191,8 +208,9 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 if __name__ == '__main__':
     #print(read_file_contents("text.txt"))
     #print(read_file_contents_to_list("text.txt"))
-    print(read_csv_file("text.txt"))
+    #print(read_csv_file("text.txt"))
     #print(write_contents_to_file("text.txt", "hello"))
     #print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
-    print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
+    #print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
+    print(merge_dates_and_towns_into_csv("dates_filename", "towns_filename", "csv_output_filename"))
 
