@@ -13,7 +13,6 @@ def create_schedule_file(input_filename: str, output_filename: str) -> None:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    result_of_all_matches = []
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
