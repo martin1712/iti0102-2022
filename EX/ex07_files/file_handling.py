@@ -177,13 +177,23 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     :param csv_output_filename: Output CSV-file with names, towns and dates.
     :return: None
     """
-    pass
+    nameOfFiles = ["dates_filename", "towns_filename"]
+    with open(csv_output_filename, "w") as new_created_file:
+        for name in nameOfFiles:
+            with open(name) as file:
+                for line in file:
+                    new_created_file.write(line)
+
+                new_created_file.write("\n")
+
+
 
 
 if __name__ == '__main__':
     #print(read_file_contents("text.txt"))
     #print(read_file_contents_to_list("text.txt"))
-    #print(read_csv_file("text.txt"))
+    print(read_csv_file("text.txt"))
     #print(write_contents_to_file("text.txt", "hello"))
     #print(write_lines_to_file("text.txt", ["Hello world", "Its me"]))
     print(write_csv_file("text.txt", [["name", "age"], ["john", "11"], ["mary", "15"]]))
+
