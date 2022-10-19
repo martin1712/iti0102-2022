@@ -26,9 +26,10 @@ def create_schedule_string(input_string: str) -> str:
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
         # Adding 0.
-        result[0] = result[0].zfill(2)
-        result[1] = result[1].zfill(2)
-        print(result[1])
+        if int(result[0]) <= 23 and int(result[1]) <= 59:
+            result[0] = result[0].zfill(2)
+            result[1] = result[1].zfill(2)
+
         # Join by :.
         result_with_comas = ":".join(result)
         # Transform time to minutes.
@@ -53,18 +54,18 @@ def create_schedule_string(input_string: str) -> str:
     for i in d_sorted:
         x = len(max(list_of_action, key=len))
         y = len(max(list_of_times, key=len))
-    table_width = x + y + 7
-    z = ("-" * table_width)
-    table = ""
-    table += f"{z}\n"
-    table += (f"| {'time':>{y}} | {'entries':<{x}} |\n")
-    table += f"{z}\n"
-    for i in d_sorted:
-        table += (f"| {convert_to_pm_am(i):>{y}} | {d_sorted[i]:<{x}} |\n")
-    table += z
-    return table
+        table_width = x + y + 7
+        z = ("-" * table_width)
+        table = ""
+        table += f"{z}\n"
+        table += (f"| {'time':>{y}} | {'entries':<{x}} |\n")
+        table += f"{z}\n"
+        for i in d_sorted:
+            table += (f"| {convert_to_pm_am(i):>{y}} | {d_sorted[i]:<{x}} |\n")
+        table += f"{z}\n"
+        return table
 
 
 if __name__ == '__main__':
-    print(create_schedule_string(" 11:00 wat 11:0 sus teine tekst 1:0 jah ei 10:00 pikktekst 7$53 mimmi 15@4 wow, 298.99 nice, 28.7 zoo, 0.0 sleep, 00.9 eat, 09:55 work,  11.0 rererere, 11.05 zzz, 10.0 jump, 17:3 sing"))
+    print(create_schedule_string("23:10 z, 22;44 sea, 22:55 gorilla"))
     # print(convert_to_pm_am(444))
