@@ -25,12 +25,10 @@ def create_schedule_string(input_string: str) -> str:
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D", match.group(1))
-        print(match.group(1))
         # Adding 0.
         if int(result[0]) <= 23 and int(result[1]) <= 59:
             result[0] = result[0].zfill(2)
             result[1] = result[1].zfill(2)
-
         # Join by :.
         result_with_comas = ":".join(result)
         # Transform time to minutes.
@@ -68,5 +66,5 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("23:10 z, 22;44 sea, 22:55 gorilla"))
+    print(create_schedule_string("23:10 zherthertheyrthetyh, 22;::::::44 sea, 22:55 gorilla"))
     # print(convert_to_pm_am(444))
