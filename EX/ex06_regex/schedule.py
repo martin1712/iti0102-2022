@@ -24,7 +24,8 @@ def create_schedule_string(input_string: str) -> str:
     together = {}
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
-        result = re.split(r"\D+", match.group(1))
+        result = re.split(r"\D", match.group(1))
+        print(match.group(1))
         # Adding 0.
         if int(result[0]) <= 23 and int(result[1]) <= 59:
             result[0] = result[0].zfill(2)
