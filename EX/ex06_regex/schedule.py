@@ -5,12 +5,6 @@ import re
 from datetime import datetime
 
 
-
-def create_schedule_file(input_filename: str, output_filename: str) -> None:
-    """Create schedule file from the given input file."""
-    pass
-
-
 def number_convert_time(number: int) -> str:
     result = '{:02d}:{:02d}'.format(*divmod(number, 60))
     return result
@@ -25,18 +19,16 @@ def convert_to_pm_am(number: int) -> str:
         return d.strftime("%I:%M %p")
 
 
-
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    list_of_action = []
-
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
         # Adding 0.
         result[0] = result[0].zfill(2)
         result[1] = result[1].zfill(2)
+        print(result[1])
         # Join by :.
         result_with_comas = ":".join(result)
         # Transform time to minutes.
@@ -51,11 +43,8 @@ def create_schedule_string(input_string: str) -> str:
         together[key] = ", ".join(value)
     # Sort dict by key.
     d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
-    the_end = []
-
     list_of_times = []
     list_of_action = []
-
     for i in d_sorted:
         if d_sorted[i] not in list_of_action:
             list_of_action.append(d_sorted[i])
