@@ -22,9 +22,10 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
+    for match in re.finditer(r"((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
         # Split by non number symbol.
-        result = re.split(r"\D", match.group(1))
+        result = re.split(r"\D+", match.group(1))
+        print(match.group(6))
         # Adding 0.
         if int(result[0]) <= 23 and int(result[1]) <= 59:
             result[0] = result[0].zfill(2)
@@ -66,5 +67,5 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("23:10 zherthertheyrthetyh, 22;::::::44 sea, 22:55 gorilla"))
+    print(create_schedule_string("23:10 zherthertheyrthetyh, 22;::::::44 sea, 22:55 gorilla, 23232323:23 omg, 12:00000000000000000000001 Nullam, 22,0 CommaIsAlsoOk"))
     # print(convert_to_pm_am(444))
