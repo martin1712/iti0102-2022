@@ -2,7 +2,8 @@
 
 """Create schedule from the given file."""
 import re
-import datetime
+from datetime import datetime
+
 
 
 def create_schedule_file(input_filename: str, output_filename: str) -> None:
@@ -10,57 +11,64 @@ def create_schedule_file(input_filename: str, output_filename: str) -> None:
     pass
 
 
+def number_convert_time(number: int) -> str:
+    result = '{:02d}:{:02d}'.format(*divmod(number, 60))
+    return result
+
+
+def convert_to_pm_am(number: int) -> str:
+    a = number_convert_time(number)
+    d = datetime.strptime(a, "%H:%M")
+    if d.strftime("%I:%M %p")[0] == "0":
+        return d.strftime("%I:%M %p")[1:]
+    else:
+        return d.strftime("%I:%M %p")
+
+
+
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
+    list_of_action = []
 
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
+
+        # Adding 0.
+        result[0] = result[0].zfill(2)
+        result[1] = result[1].zfill(2)
+
+
         # Join by :.
         result_with_comas = ":".join(result)
-        # Convert to pm am time.
-        d = datetime.datetime.strptime(result_with_comas, "%H:%M")
-        if d.strftime("%I:%M %p") not in together:
-            together[d.strftime("%I:%M %p")] = list()
-        together[d.strftime("%I:%M %p")].append(match.group(6))
+        # Transform time to minutes.
+
+        if int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
+            result_in_minutes = int(result_with_comas[:2]) * 60 + int(result_with_comas[4:5])
+            if result_in_minutes not in together and int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
+                together[result_in_minutes] = list()
+            together[result_in_minutes].append(match.group(6))
     for key, value in together.items():
         together[key] = list(dict.fromkeys(value))
     for key, value in together.items():
         together[key] = ", ".join(value)
-
-
+    # Sort dict by key.
+    d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
     table = ""
-    for i in together:
-        if i[0] == "0":
-            table += (f"| {i[1:]:<8}  | {together[i]:<20} |\n")
-            if i[1:] in table:
-                if together[i] not in table:
-                    table += together[i]
-        else:
-            table += (f"| {i:<8}  | {together[i]:<20} |\n")
+
+    list_of_action = []
+    for i in d_sorted:
+        if d_sorted[i] not in list_of_action:
+            list_of_action.append(d_sorted[i])
+            x = len(max(list_of_action, key=len))
+            table += (f"| {convert_to_pm_am(i):>8} | {d_sorted[i]:<18} |\n")
+
 
 
     return table
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    return "a"
-
-
 if __name__ == '__main__':
-    print(create_schedule_string(" 11:00 wat 11:00 wat teine tekst 11:0 jah ei 10:00 pikktekst 7$53 nice 15@4 wow, 23.09 nice, 07.7 zoo, 0.0 sleep, 00.25 eat, 09:55 work,  11.0 rererere, 11.05 zzz, 10.0 jump"))
+    print(create_schedule_string(" 11:00 wat 11:0 sus teine tekst 1:0 jah ei 10:00 pikktekst 7$53 mimmi 15@4 wow, 298.99 nice, 28.7 zoo, 0.0 sleep, 00.9 eat, 09:55 work,  11.0 rererere, 11.05 zzz, 10.0 jump, 5@49 sing"))
+    #print(convert_to_pm_am(444))
