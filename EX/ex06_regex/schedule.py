@@ -13,6 +13,7 @@ def create_schedule_file(input_filename: str, output_filename: str) -> None:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
+
     for match in re.finditer(r"((\d\d.\d\d)|(\d\d.\d)|(\d.\d\d)|(\d.\d))\s+([a-z]+|[A-Z][a-z]+)", input_string):
         # Split by non number symbol.
         result = re.split(r"\D+", match.group(1))
@@ -20,9 +21,45 @@ def create_schedule_string(input_string: str) -> str:
         result_with_comas = ":".join(result)
         # Convert to pm am time.
         d = datetime.datetime.strptime(result_with_comas, "%H:%M")
-        together[d.strftime("%I:%M %p")] = match.group(6)
-        table = ""
-        return table
+        if d.strftime("%I:%M %p") not in together:
+            together[d.strftime("%I:%M %p")] = list()
+        together[d.strftime("%I:%M %p")].append(match.group(6))
+    for key, value in together.items():
+        together[key] = list(dict.fromkeys(value))
+    for key, value in together.items():
+        together[key] = ", ".join(value)
+
+
+    table = ""
+    for i in together:
+        if i[0] == "0":
+            table += (f"| {i[1:]:<8}  | {together[i]:<20} |\n")
+            if i[1:] in table:
+                if together[i] not in table:
+                    table += together[i]
+        else:
+            table += (f"| {i:<8}  | {together[i]:<20} |\n")
+
+
+    return table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return "a"
 
 
 if __name__ == '__main__':
