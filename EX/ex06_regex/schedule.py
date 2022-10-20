@@ -70,6 +70,7 @@ def create_table(d: dict) -> str:
 
 
 def create_table_none() -> str:
+    """Sus."""
     table = ""
     z = ("-" * 20)
     table += f"{z}\n"
@@ -115,5 +116,3 @@ def create_schedule_string(input_string: str) -> str:
 
 if __name__ == '__main__':
     print(create_schedule_string("7"))
-    # print(find_the_longest_value({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
-    # print(create_table({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
