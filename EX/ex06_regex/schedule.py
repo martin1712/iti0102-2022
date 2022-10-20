@@ -22,8 +22,8 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(\b\w+\b)", input_string) is not None:
-        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(\b\w+\b)", input_string):
+    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+([a-zA-Z]+)", input_string) is not None:
+        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+([a-zA-Z]+)", input_string):
             # Lower words.
             lower_words = match.group(7).lower()
             # Split by non number symbol.
@@ -77,6 +77,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("s 15:03 correcT aa  15:03 Correct 15:03 CORRECT, 56:88 sos"))
+    print(create_schedule_string("s 15:03 correcT aa  15:03 Correct 15:03 CORRECT, 56:88 sos, s 11:34 12:45 .  15:03 correct 11:12"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
