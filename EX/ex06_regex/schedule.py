@@ -67,15 +67,17 @@ def create_table(d: dict) -> str:
             z = ("-" * (y + 14))
         table += f"{z}\n"
         return table
-    else:
-        table = ""
-        z = ("-" * 20)
-        table += f"{z}\n"
-        table += f"| {'time':>{5}} | {'entries':<{8}} |\n"
-        table += f"{z}\n"
-        table += f"| {'No entries found'} |\n"
-        table += f"{z}\n"
-        return table
+
+
+def create_table_none() -> str:
+    table = ""
+    z = ("-" * 20)
+    table += f"{z}\n"
+    table += f"| {'time':>{5}} | {'entries':<{8}} |\n"
+    table += f"{z}\n"
+    table += f"| {'No entries found'} |\n"
+    table += f"{z}\n"
+    return table
 
 
 def create_schedule_string(input_string: str) -> str:
@@ -102,12 +104,12 @@ def create_schedule_string(input_string: str) -> str:
             together[key] = list(dict.fromkeys(value))
         for key, value in together.items():
             together[key] = ", ".join(value)
-        print(together)
         # Sort dict by key.
         d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
-        print(d_sorted)
         tabel = create_table(d_sorted)
         return tabel
+    else:
+        create_table_none()
 
 
 if __name__ == '__main__':
