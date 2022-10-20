@@ -24,19 +24,20 @@ def create_schedule_string(input_string: str) -> str:
     together = {}
     if re.search(r"((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
         for match in re.finditer(r"((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
-            print('do this because nothing was found')
             # Split by non number symbol.
             result = re.split(r"\D+", match.group(1))
-            print(match.group(6))
             # Adding 0.
             if int(result[0]) <= 23 and int(result[1]) <= 59:
                 result[0] = result[0].zfill(2)
                 result[1] = result[1].zfill(2)
+
             # Join by :.
             result_with_comas = ":".join(result)
             # Transform time to minutes.
+
             if int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
-                result_in_minutes = int(result_with_comas[:2]) * 60 + int(result_with_comas[4:5])
+                result_in_minutes = int(result_with_comas[:2]) * 60 + int(result_with_comas[3:])
+                print(result_in_minutes)
                 if result_in_minutes not in together and int(result_with_comas[:2]) <= 23 and int(
                         result_with_comas[3:]) <= 59:
                     together[result_in_minutes] = list()
@@ -79,5 +80,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("121425"))
+    print(create_schedule_string("18.19 music,02:25 music, 1:2 dance, 15:0 eat, 18.19 work, 2/25 work"))
     # print(convert_to_pm_am(444))
+    print(number_convert_time(1089))
