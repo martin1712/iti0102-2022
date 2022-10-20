@@ -22,14 +22,14 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"\b[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
-        for match in re.finditer(r"\b[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
+    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
+        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
             # Split by non number symbol.
-            result = re.split(r"\D+", match.group(1))
+            print(match.group(7))
+            result = re.split(r"[^0-9]", match.group(3))
             # Adding 0.
-            if int(result[0]) <= 23 and int(result[1]) <= 59:
-                result[0] = result[0].zfill(2)
-                result[1] = result[1].zfill(2)
+            result[0] = result[0].zfill(2)
+            result[1] = result[1].zfill(2)
 
             # Join by :.
             result_with_comas = ":".join(result)
@@ -37,10 +37,9 @@ def create_schedule_string(input_string: str) -> str:
 
             if int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
                 result_in_minutes = int(result_with_comas[:2]) * 60 + int(result_with_comas[3:])
-                if result_in_minutes not in together and int(result_with_comas[:2]) <= 23 and int(
-                        result_with_comas[3:]) <= 59:
+                if result_in_minutes not in together and int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
                     together[result_in_minutes] = list()
-                together[result_in_minutes].append(match.group(6))
+                together[result_in_minutes].append(match.group(7))
         for key, value in together.items():
             together[key] = list(dict.fromkeys(value))
         for key, value in together.items():
@@ -81,6 +80,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("go 15:03 correct done"))
+    print(create_schedule_string("s 11:34 12:45 .  15:03 correct 11:12"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
