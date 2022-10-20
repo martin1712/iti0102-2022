@@ -55,15 +55,7 @@ def create_schedule_string(input_string: str) -> str:
         for i in d_sorted:
             x = len(max(list_of_action, key=len))
             y = len(max(list_of_times, key=len))
-            print(x)
-            print(y)
-
-
-
-
-
             table = ""
-
             if x >= 7:
                 z = ("-" * (x + y + 7))
                 table += f"{z}\n"
@@ -83,16 +75,6 @@ def create_schedule_string(input_string: str) -> str:
                     table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{7}} |\n"
                     z = ("-" * (y + 14))
                 table += f"{z}\n"
-
-
-
-
-            #if x >= 7:
-                #z = ("-" * (x + y + 7))
-                #table += f"{z}\n"
-            #if x < 7:
-                #z = ("-" * (y + 14))
-                #table += f"{z}\n"
             return table
     else:
         table = ""
