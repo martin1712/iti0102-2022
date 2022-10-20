@@ -22,12 +22,12 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"(\b|\s[^0-9])(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string) is not None:
-        for match in re.finditer(r"(\b|\s[^0-9])(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string):
+    if re.search(r"(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string) is not None:
+        for match in re.finditer(r"(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string):
             # Lower words.
-            lower_words = match.group(3).lower()
+            lower_words = match.group(2).lower()
             # Split by non number symbol.
-            result = re.split(r"\D+", str(match.group(2)))
+            result = re.split(r"\D+", str(match.group(1)))
             # Adding 0.
             result[0] = result[0].zfill(2)
             result[1] = result[1].zfill(2)
@@ -87,4 +87,4 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("wat 11:00 teine tekst 11:0 jah ei 10:00 pikktekst "))
+    print(create_schedule_string("start gcyxiykxxe 9.43  jTPuRmLxl hfyzob usbujs vqpbktwcs 5!23    mUgrJ ixgnvpnen ojxntmni myxdhehua nmzqf ynhrc vhseuev 16?45  XuAvFtH zoyovl ydqsiaski zbyhfj nnhkjse bmvzmz qfwiqnpk txosqqjd rjjnpxtifk aovwceqdou 25B53 CWiKWOmfnU yljxmlvncs ffnlrxv -1a01 GdoYfZ 5=42   JtPURMlxl sblidhbvk cceadeqkj qbffnz hbizwq mwgwven iutye fyfgnfqcr jzrwbck 05?40  jtpurMlxL vctot rtiofiub xhchumswce qnhzbmb feujymfhhs zgmhkgypeq 5=60 MuGRj 25=23  URskxLk tttjlz ftlhexg olzgxwgmhi khxkvptqn tujabet xzrxr 17=58 mgldBET cejrj jehfbxmbel yzxqsfmte qsqfj upzfufzxxa nfseaatk wtawar ogkqqyvrmx 02.13  ifzGqA hrwqkatqtp nwzaoveu iicdf yybeoyydr mrnbg cejmgj 6b51    urskxLk ilutk jwvvwn xjqovo gcvomwidf bwyyn wseiqqkb jkiraqu zvprtndokj 10b49 xoVtxOVpee uqutinc ruyavklym bhcww coyunhblpv uzmvuhvvpo fymyrwupa fnzbtsl zpwgpdho 22?02   MugrJ lvwrbqtnd owdgjg 17A25 JFQYwj xwfkxnx owyybkp afhlwmy gppugpc axksvozkzm"))
