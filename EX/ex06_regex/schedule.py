@@ -22,8 +22,8 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
-        for match in re.finditer(r"[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
+    if re.search(r"\s[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
+        for match in re.finditer(r"\s[^0-9]((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
             # Split by non number symbol.
             result = re.split(r"\D+", match.group(1))
             # Adding 0.
@@ -81,6 +81,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("18.19 music,02:25 music, 1:2 dance, 15:0 eat, 18.19 work, 2/25 work, 10:00 workout, 17:30 SpeepAndDrink, 110:19 Play"))
+    print(create_schedule_string("11:34wrong wrong12:45 wrong  15:03 correct wrong11:12wrong"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
