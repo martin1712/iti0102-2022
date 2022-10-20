@@ -95,6 +95,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("here 01:12 abc"))
+    print(create_schedule_string("here 01:12 abc, 12:33 no, 17,22 yes, 17,22 ofcourse, 19;55 notyet"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
