@@ -55,14 +55,32 @@ def create_schedule_string(input_string: str) -> str:
         for i in d_sorted:
             x = len(max(list_of_action, key=len))
             y = len(max(list_of_times, key=len))
-            table_width = x + y + 7
-            z = ("-" * table_width)
+            print(x)
+            print(y)
+
+
+
+
+
             table = ""
-            table += f"{z}\n"
-            table += f"| {'time':>{y}} | {'entries':<{x}} |\n"
-            table += f"{z}\n"
+
+            if x >= 7:
+                z = ("-" * (x + y + 7))
+                table += f"{z}\n"
+                table += f"| {'time':>{y}} | {'entries':<{x}} |\n"
+                z = ("-" * (x + y + 7))
+                table += f"{z}\n"
+            if x < 7:
+                z = ("-" * (y + 14))
+                table += f"{z}\n"
+                table += f"| {'time':>{y}} | {'entries':<{7}} |\n"
+                z = ("-" * (y + 14))
+                table += f"{z}\n"
             for row in d_sorted:
-                table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
+                if x >= 7:
+                    table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
+                if x < 7:
+                    table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{7}} |\n"
             table += f"{z}\n"
             return table
     else:
@@ -77,6 +95,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("s 15:03 correcT aa  15:03 Correct 15:03 CORRECT, 56:88 sos, s 11:34 12:45 .  15:03 correct 11:12"))
+    print(create_schedule_string("here 01:12 abc"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
