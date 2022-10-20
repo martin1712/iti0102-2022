@@ -102,10 +102,11 @@ def create_schedule_string(input_string: str) -> str:
             together[key] = ", ".join(value)
         # Sort dict by key.
         d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
-        return create_table(d_sorted)
+        tabel = create_table(d_sorted)
+        return tabel
 
 
 if __name__ == '__main__':
     print(create_schedule_string("start gcyxiykxxe 9.43  jTPuRmLxl hfyzob usbujs vqpbktwcs 5!23    mUgrJ ixgnvpnen ojxntmni myxdhehua nmzqf ynhrc vhseuev 16?45  XuAvFtH zoyovl ydqsiaski zbyhfj nnhkjse bmvzmz qfwiqnpk txosqqjd rjjnpxtifk aovwceqdou 25B53 CWiKWOmfnU yljxmlvncs ffnlrxv -1a01 GdoYfZ 5=42   JtPURMlxl sblidhbvk cceadeqkj qbffnz hbizwq mwgwven iutye fyfgnfqcr jzrwbck 05?40  jtpurMlxL vctot rtiofiub xhchumswce qnhzbmb feujymfhhs zgmhkgypeq 5=60 MuGRj 25=23  URskxLk tttjlz ftlhexg olzgxwgmhi khxkvptqn tujabet xzrxr 17=58 mgldBET cejrj jehfbxmbel yzxqsfmte qsqfj upzfufzxxa nfseaatk wtawar ogkqqyvrmx 02.13  ifzGqA hrwqkatqtp nwzaoveu iicdf yybeoyydr mrnbg cejmgj 6b51    urskxLk ilutk jwvvwn xjqovo gcvomwidf bwyyn wseiqqkb jkiraqu zvprtndokj 10b49 xoVtxOVpee uqutinc ruyavklym bhcww coyunhblpv uzmvuhvvpo fymyrwupa fnzbtsl zpwgpdho 22?02   MugrJ lvwrbqtnd owdgjg 17A25 JFQYwj xwfkxnx owyybkp afhlwmy gppugpc axksvozkzm"))
-    #print(find_the_longest_value({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
-    #print(create_table({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
+    # print(find_the_longest_value({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
+    # print(create_table({133: 'ifzgqa', 323: 'mugrj', 340: 'jtpurmlxl', 342: 'jtpurmlxl', 411: 'urskxlk', 583: 'jtpurmlxl', 649: 'xovtxovpee', 1005: 'xuavfth', 1045: 'jfqywj', 1078: 'mgldbet', 1322: 'mugrj'}))
