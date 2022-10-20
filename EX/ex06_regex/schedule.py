@@ -22,12 +22,12 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+([a-zA-Z]+)", input_string) is not None:
-        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+([a-zA-Z]+)", input_string):
+    if re.search(r"(\b|\s[^0-9])(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string) is not None:
+        for match in re.finditer(r"(\b|\s[^0-9])(\d\d[^0-9]\d\d|\d\d[^0-9]\d|\d[^0-9]\d\d|\d[^0-9]\d)\s+([a-zA-Z]+)", input_string):
             # Lower words.
-            lower_words = match.group(7).lower()
+            lower_words = match.group(3).lower()
             # Split by non number symbol.
-            result = re.split(r"[^0-9]", match.group(3))
+            result = re.split(r"\D+", str(match.group(2)))
             # Adding 0.
             result[0] = result[0].zfill(2)
             result[1] = result[1].zfill(2)
@@ -87,4 +87,4 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("here 01:12 a some more, 12:44 a"))
+    print(create_schedule_string("wat 11:00 teine tekst 11:0 jah ei 10:00 pikktekst "))
