@@ -81,7 +81,14 @@ def create_schedule_string(input_string: str) -> str:
                     table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
                 if x < 7:
                     table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{7}} |\n"
-            table += f"{z}\n"
+                    z = ("-" * (y + 14))
+                    table += f"{z}\n"
+            if x >= 7:
+                z = ("-" * (x + y + 7))
+                table += f"{z}\n"
+            if x < 7:
+                z = ("-" * (y + 14))
+                table += f"{z}\n"
             return table
     else:
         table = ""
