@@ -6,11 +6,13 @@ from datetime import datetime
 
 
 def number_convert_time(number: int) -> str:
+    """Nice."""
     result = '{:02d}:{:02d}'.format(*divmod(number, 60))
     return result
 
 
 def convert_to_pm_am(number: int) -> str:
+    """Nice."""
     a = number_convert_time(number)
     d = datetime.strptime(a, "%H:%M")
     if d.strftime("%I:%M %p")[0] == "0":
