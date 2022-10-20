@@ -22,40 +22,37 @@ def convert_to_pm_am(number: int) -> str:
 def create_schedule_string(input_string: str) -> str:
     """Create schedule string from the given input string."""
     together = {}
-    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string) is not None:
-        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(([A-Z][a-z]+)+|[a-z]+)", input_string):
+    if re.search(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(\b\w+\b)", input_string) is not None:
+        for match in re.finditer(r"(\b|\s[^0-9])((\d\d[^0-9]\d\d)|(\d\d[^0-9]\d)|(\d[^0-9]\d\d)|(\d[^0-9]\d))\s+(\b\w+\b)", input_string):
+            # Lower words.
+            lower_words = match.group(7).lower()
             # Split by non number symbol.
-            print(match.group(7))
             result = re.split(r"[^0-9]", match.group(3))
             # Adding 0.
             result[0] = result[0].zfill(2)
             result[1] = result[1].zfill(2)
-
             # Join by :.
             result_with_comas = ":".join(result)
             # Transform time to minutes.
-
             if int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
                 result_in_minutes = int(result_with_comas[:2]) * 60 + int(result_with_comas[3:])
-                if result_in_minutes not in together and int(result_with_comas[:2]) <= 23 and int(result_with_comas[3:]) <= 59:
+                if result_in_minutes not in together:
                     together[result_in_minutes] = list()
-                together[result_in_minutes].append(match.group(7))
+                together[result_in_minutes].append(lower_words)
         for key, value in together.items():
             together[key] = list(dict.fromkeys(value))
         for key, value in together.items():
             together[key] = ", ".join(value)
-            # Sort dict by key.
+        # Sort dict by key.
         d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
-        # All lover letters for keys value.
-        lower_dict = dict((k, v.lower()) for k, v in d_sorted.items())
         list_of_times = []
         list_of_action = []
-        for i in lower_dict:
-            if lower_dict[i] not in list_of_action:
-                list_of_action.append(lower_dict[i])
+        for i in d_sorted:
+            if d_sorted[i] not in list_of_action:
+                list_of_action.append(d_sorted[i])
             if convert_to_pm_am(i) not in list_of_times:
                 list_of_times.append(convert_to_pm_am(i))
-        for i in lower_dict:
+        for i in d_sorted:
             x = len(max(list_of_action, key=len))
             y = len(max(list_of_times, key=len))
             table_width = x + y + 7
@@ -64,8 +61,8 @@ def create_schedule_string(input_string: str) -> str:
             table += f"{z}\n"
             table += f"| {'time':>{y}} | {'entries':<{x}} |\n"
             table += f"{z}\n"
-            for row in lower_dict:
-                table += f"| {convert_to_pm_am(row):>{y}} | {lower_dict[row]:<{x}} |\n"
+            for row in d_sorted:
+                table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
             table += f"{z}\n"
             return table
     else:
@@ -80,6 +77,6 @@ def create_schedule_string(input_string: str) -> str:
 
 
 if __name__ == '__main__':
-    print(create_schedule_string("s 11:34 12:45 .  15:03 correct 11:12"))
+    print(create_schedule_string("s 15:03 correcT aa  15:03 Correct 15:03 CORRECT, 56:88 sos"))
     # print(convert_to_pm_am(444))
     # print(number_convert_time(1089))
