@@ -52,30 +52,29 @@ def create_schedule_string(input_string: str) -> str:
                 list_of_action.append(d_sorted[i])
             if convert_to_pm_am(i) not in list_of_times:
                 list_of_times.append(convert_to_pm_am(i))
-        for i in d_sorted:
-            x = len(max(list_of_action, key=len))
-            y = len(max(list_of_times, key=len))
-            table = ""
-            if x >= 7:
-                z = ("-" * (x + y + 7))
-                table += f"{z}\n"
-                table += f"| {'time':>{y}} | {'entries':<{x}} |\n"
-                z = ("-" * (x + y + 7))
-                table += f"{z}\n"
-                for row in d_sorted:
-                    table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
-                table += f"{z}\n"
-            if x < 7:
+        x = len(max(list_of_action, key=len))
+        y = len(max(list_of_times, key=len))
+        table = ""
+        if x >= 7:
+            z = ("-" * (x + y + 7))
+            table += f"{z}\n"
+            table += f"| {'time':>{y}} | {'entries':<{x}} |\n"
+            z = ("-" * (x + y + 7))
+            table += f"{z}\n"
+            for row in d_sorted:
+                table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{x}} |\n"
+            table += f"{z}\n"
+        if x < 7:
+            z = ("-" * (y + 14))
+            table += f"{z}\n"
+            table += f"| {'time':>{y}} | {'entries':<{7}} |\n"
+            z = ("-" * (y + 14))
+            table += f"{z}\n"
+            for row in d_sorted:
+                table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{7}} |\n"
                 z = ("-" * (y + 14))
-                table += f"{z}\n"
-                table += f"| {'time':>{y}} | {'entries':<{7}} |\n"
-                z = ("-" * (y + 14))
-                table += f"{z}\n"
-                for row in d_sorted:
-                    table += f"| {convert_to_pm_am(row):>{y}} | {d_sorted[row]:<{7}} |\n"
-                    z = ("-" * (y + 14))
-                table += f"{z}\n"
-            return table
+            table += f"{z}\n"
+        return table
     else:
         table = ""
         z = ("-" * 20)
@@ -89,5 +88,3 @@ def create_schedule_string(input_string: str) -> str:
 
 if __name__ == '__main__':
     print(create_schedule_string("here 01:12 a some more, 12:44 a"))
-    # print(convert_to_pm_am(444))
-    # print(number_convert_time(1089))
