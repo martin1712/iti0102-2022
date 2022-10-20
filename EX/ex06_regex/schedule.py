@@ -55,6 +55,7 @@ def create_table(d: dict) -> str:
         for row in d:
             table += f"| {convert_to_pm_am(row):>{y}} | {d[row]:<{x}} |\n"
         table += f"{z}\n"
+        return table
     if x < 7:
         z = ("-" * (y + 14))
         table += f"{z}\n"
@@ -65,7 +66,8 @@ def create_table(d: dict) -> str:
             table += f"| {convert_to_pm_am(row):>{y}} | {d[row]:<{7}} |\n"
             z = ("-" * (y + 14))
         table += f"{z}\n"
-    if x == 0:
+        return table
+    else:
         table = ""
         z = ("-" * 20)
         table += f"{z}\n"
@@ -73,7 +75,7 @@ def create_table(d: dict) -> str:
         table += f"{z}\n"
         table += f"| {'No entries found'} |\n"
         table += f"{z}\n"
-    return table
+        return table
 
 
 def create_schedule_string(input_string: str) -> str:
@@ -100,8 +102,10 @@ def create_schedule_string(input_string: str) -> str:
             together[key] = list(dict.fromkeys(value))
         for key, value in together.items():
             together[key] = ", ".join(value)
+        print(together)
         # Sort dict by key.
         d_sorted = {key: value for key, value in sorted(together.items(), key=lambda item: int(item[0]))}
+        print(d_sorted)
         tabel = create_table(d_sorted)
         return tabel
 
