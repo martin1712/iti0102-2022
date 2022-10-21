@@ -12,17 +12,13 @@ def create_dictionary(data: str) -> dict:
 
     for name in a:
         tokens = name.split(":", 1)
-
         if tokens[0] not in names:
             names.append(tokens[0])
             result.append([tokens[0], tokens[1:]])
-
         for name in result:
             if name[0] == tokens[0]:
                 if tokens[1] not in name[1]:
-
                     name[1].append(tokens[1])
-
     for i in result:
         d[i[0]] = i[1]
     return d
@@ -44,18 +40,15 @@ def create_dictionary_with_hobbies(data: str) -> dict:
 
     for name in a:
         tokens = name.split(":", 1)
-        print(tokens)
-
         if tokens[1] not in hobbies:
             hobbies.append(tokens[1])
-            result.append([tokens[1], tokens[0]])
-
+            result.append([tokens[1], tokens[:-1]])
         for hobbie in result:
-            if hobbie[1] == tokens[1]:
-                if tokens[0] not in hobbie[0]:
-                    [hobbie[0]].append(tokens[0])
+            if hobbie[0] == tokens[1]:
+                if tokens[0] not in hobbie[1]:
+                    hobbie[1].append(tokens[0])
     for i in result:
-        d[i[0]] = [i[1]]
+        d[i[0]] = i[1]
     return sort_dictionary(d)
 
 
