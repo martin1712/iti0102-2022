@@ -12,6 +12,7 @@ def create_dictionary(data: str) -> dict:
 
     for name in a:
         tokens = name.split(":", 1)
+        print(tokens)
         if tokens[0] not in names:
             names.append(tokens[0])
             result.append([tokens[0], tokens[1:]])
@@ -23,6 +24,8 @@ def create_dictionary(data: str) -> dict:
 
     for i in result:
         d[i[0]] = i[1]
+    print(d)
+
     return d
 
 
@@ -34,13 +37,10 @@ def sort_dictionary(dic: dict) -> dict:
 
 
 def create_dictionary_with_hobbies(data: str) -> dict:
-    """
-    Create dictionary about hobbies and their hobbyists ie. {hobby1: [name1, name2, ...], hobby2: [...]}.
+    """Great."""
 
-    :param data: given string from database
-    :return: dictionary, where keys are hobbies and values are lists of people. Values are sorted alphabetically
-    """
-    return {}
+
+    return sort_dictionary(create_dictionary(data))
 
 
 def find_people_with_most_hobbies(data: str) -> list:
