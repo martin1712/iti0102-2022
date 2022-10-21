@@ -12,7 +12,7 @@ def create_dictionary(data: str) -> dict:
 
     for name in a:
         tokens = name.split(":", 1)
-        print(tokens)
+
         if tokens[0] not in names:
             names.append(tokens[0])
             result.append([tokens[0], tokens[1:]])
@@ -20,12 +20,11 @@ def create_dictionary(data: str) -> dict:
         for name in result:
             if name[0] == tokens[0]:
                 if tokens[1] not in name[1]:
+
                     name[1].append(tokens[1])
 
     for i in result:
         d[i[0]] = i[1]
-    print(d)
-
     return d
 
 
@@ -38,9 +37,25 @@ def sort_dictionary(dic: dict) -> dict:
 
 def create_dictionary_with_hobbies(data: str) -> dict:
     """Great."""
+    a = data.split("\n")
+    d = {}
+    result = []
+    hobbies = []
 
+    for name in a:
+        tokens = name.split(":", 1)
 
-    return sort_dictionary(create_dictionary(data))
+        if tokens[1] not in hobbies:
+            hobbies.append(tokens[1])
+            result.append([tokens[1], tokens[0]])
+
+        for hobbie in result:
+            if hobbie[0] == tokens[0]:
+                if tokens[1] not in hobbie[1]:
+                    [hobbie[1]].append(tokens[1])
+    for i in result:
+        d[i[0]] = [i[1]]
+    return sort_dictionary(d)
 
 
 def find_people_with_most_hobbies(data: str) -> list:
@@ -177,3 +192,4 @@ if __name__ == '__main__':
     print(len(dic["Carmen"]))  # -> 10
     print(len(dic["Molly"]))  # -> 5
     print(len(dic["Sophie"]))  # -> 7
+    print(create_dictionary_with_hobbies(sample_data))
