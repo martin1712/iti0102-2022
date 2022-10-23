@@ -10,10 +10,8 @@ def students_study(time: int, coffee_needed: bool) -> bool:
     (19, False) -> True
     (1, True) -> False.
     """
-
     coffe_hours = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
     no_coffe = [18, 19, 20, 21, 22, 23, 24]
-    sleep_hours = [1, 2, 3, 4]
     if time in coffe_hours and coffee_needed is True:
         return True
     if time in no_coffe and coffee_needed is False:
@@ -26,12 +24,6 @@ def students_study(time: int, coffee_needed: bool) -> bool:
         return False
 
 
-
-
-
-
-
-
 def lottery(a: int, b: int, c: int) -> int:
     """
     Return Lottery victory result 10, 5, 1, or 0 according to input values.
@@ -40,7 +32,16 @@ def lottery(a: int, b: int, c: int) -> int:
     (2, 2, 1) -> 0
     (2, 3, 1) -> 1
     """
-    pass
+    if a and b and c == 5:
+        return 10
+    if a == b == c:
+        if a and b and c != 5:
+            return 5
+    if a != b and a != c:
+        return 1
+    if a == b != c or a == c != b:
+        return 0
+
 
 
 def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> int:
@@ -55,3 +56,4 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
 
 if __name__ == '__main__':
     print(students_study(18, True))
+    print(lottery(1, 1, 1))
