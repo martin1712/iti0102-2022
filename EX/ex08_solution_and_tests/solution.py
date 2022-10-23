@@ -16,8 +16,6 @@ def students_study(time: int, coffee_needed: bool) -> bool:
         return True
     if time in no_coffe and coffee_needed is False:
         return True
-    if time in no_coffe and coffee_needed is False:
-        return True
     if time in no_coffe and coffee_needed is True:
         return True
     else:
