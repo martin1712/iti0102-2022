@@ -63,7 +63,8 @@ def test_fruit_order_big_basket():
     assert fruit_order(0, 3, 15) == 0
     assert fruit_order(0, 2, 15) == -1
     assert fruit_order(0, 3, 10) == 0
-    assert fruit_order(0, 2, 9) == 0
+    assert fruit_order(0, 3, 10) == -1
+
 
 
 def test_fruit_order_small_basket():
