@@ -51,9 +51,17 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
     (4, 1, 9) -> 4
     (3, 1, 10) -> -1
     """
+    x = big_baskets * 5
+    if x + small_baskets == ordered_amount:
+        return small_baskets
+    if x + small_baskets != ordered_amount:
+        return -1
+
     pass
 
 
 if __name__ == '__main__':
     print(students_study(18, True))
     print(lottery(0, 0, 0))
+    print(fruit_order(3, 1, 10))
+
