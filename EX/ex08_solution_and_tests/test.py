@@ -51,6 +51,7 @@ def test_lottery_all_different_number():
 
 
 def test_fruit_order_zero_amount_of_something():
+    """No matter how many baskets if required amount is 0 result will be also 0."""
     assert fruit_order(0, 0, 0) == 0
     assert fruit_order(0, 1, 0) == 0
     assert fruit_order(1, 0, 0) == 0
@@ -58,6 +59,7 @@ def test_fruit_order_zero_amount_of_something():
 
 
 def test_fruit_order_big_basket():
+    """Some tests when there is only big baskets."""
     assert fruit_order(0, 3, 15) == 0
     assert fruit_order(0, 2, 15) == -1
     assert fruit_order(0, 3, 10) == 0
@@ -65,8 +67,13 @@ def test_fruit_order_big_basket():
 
 
 def test_fruit_order_small_basket():
+    """Some tests when there is only small baskets."""
     assert fruit_order(6, 0, 6) == 6
     assert fruit_order(6, 0, 7) == -1
     assert fruit_order(6, 0, 6) == 6
     assert fruit_order(1, 0, 3) == -1
     assert fruit_order(6, 0, 3) == 3
+
+
+def test_fruit_order_small_and_big_baskets():
+    assert fruit_order(6, 1, 7) == 6
