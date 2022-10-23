@@ -18,8 +18,15 @@ def students_study(time: int, coffee_needed: bool) -> bool:
         return True
     if time in no_coffe and coffee_needed is False:
         return True
+    if time in no_coffe and coffee_needed is False:
+        return True
+    if time in no_coffe and coffee_needed is True:
+        return True
     else:
         return False
+
+
+
 
 
 
@@ -47,4 +54,4 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
 
 
 if __name__ == '__main__':
-    print(students_study(1, True))
+    print(students_study(18, True))
