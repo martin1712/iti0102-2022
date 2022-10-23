@@ -34,3 +34,13 @@ def test_lottery_same_numbers():
     assert lottery(0, 0, 0) is 5
     assert lottery(-1, -1, -1) is 5
     assert lottery(10, 10, 10) is 5
+
+
+def test_lottery_two_same_numbers():
+    assert lottery(2, 2, 5) is 0
+    assert lottery(7, 4, 7) is 0
+    assert lottery(2, 7, 7) is 1
+
+
+def test_lottery_all_different_number():
+    assert lottery(1, 3, 5) is 1
