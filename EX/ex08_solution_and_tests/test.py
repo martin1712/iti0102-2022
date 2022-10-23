@@ -3,6 +3,7 @@
 import pytest
 from solution import students_study
 from solution import lottery
+from solution import fruit_order
 
 
 def test_students_study_evening():
@@ -30,17 +31,29 @@ def test_students_study_day_coffe_needed():
 
 
 def test_lottery_same_numbers():
-    assert lottery(5, 5, 5) is 10
-    assert lottery(0, 0, 0) is 5
-    assert lottery(-1, -1, -1) is 5
-    assert lottery(10, 10, 10) is 5
+    """If all 5, result is 10, with other numbers it is 5."""
+    assert lottery(5, 5, 5) == 10
+    assert lottery(0, 0, 0) == 5
+    assert lottery(-1, -1, -1) == 5
+    assert lottery(10, 10, 10) == 5
 
 
 def test_lottery_two_same_numbers():
-    assert lottery(2, 2, 5) is 0
-    assert lottery(7, 4, 7) is 0
-    assert lottery(2, 7, 7) is 1
+    """First number equal to second or third is 0, if second and third are equal it is 1."""
+    assert lottery(2, 2, 5) == 0
+    assert lottery(7, 4, 7) == 0
+    assert lottery(2, 7, 7) == 1
 
 
 def test_lottery_all_different_number():
-    assert lottery(1, 3, 5) is 1
+    """With all different numbers answer is 1."""
+    assert lottery(1, 3, 5) == 1
+
+
+def test_fruit_order_zero_amount_of_something():
+    assert fruit_order(0, 0, 0) == 0
+    assert fruit_order(0, 1, 0) == 0
+    assert fruit_order(1, 0, 0) == 0
+    assert fruit_order(1, 1, 0) == 0
+
+
