@@ -43,7 +43,6 @@ def lottery(a: int, b: int, c: int) -> int:
         return 0
 
 
-
 def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> int:
     """
     Return number of small fruit baskets if it's possible to finish the order, otherwise return -1.
@@ -57,13 +56,13 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
     if x + small_baskets <= ordered_amount:
         return -1
     if x + small_baskets >= ordered_amount:
-        return ordered_amount
-
-    pass
+        if x == ordered_amount:
+            return 0
+        else:
+            return small_baskets + x - ordered_amount
 
 
 if __name__ == '__main__':
     print(students_study(18, True))
     print(lottery(0, 0, 0))
-    print(fruit_order(3, 1, 10))
-
+    print(fruit_order(3, 3, 15))
