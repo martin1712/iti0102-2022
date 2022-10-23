@@ -23,4 +23,4 @@ def test_students_study_day_coffe_needed():
 
 def test_students_study_evening_edge():
     assert students_study(1, True) is False
-    assert students_study(17, False) is True
+    assert students_study(17, False) is False
