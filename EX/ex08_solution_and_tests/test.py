@@ -50,7 +50,7 @@ def test_lottery_all_different_number():
     assert lottery(1, 3, 5) == 1
 
 
-def test_fruit_order_zero_amount_of_something():
+def test_fruit_order_zero_amount_of_ordered():
     """No matter how many baskets if required amount is 0 result will be also 0."""
     assert fruit_order(0, 0, 0) == 0
     assert fruit_order(0, 1, 0) == 0
@@ -87,3 +87,4 @@ def test_fruit_order_small_and_big_baskets():
 
 def test_fruit_order_small_and_big_baskets_large_numbers():
     assert fruit_order(500, 300, 2000) == 500
+    assert fruit_order(4000, 3500, 20000) == -1
