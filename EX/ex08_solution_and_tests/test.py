@@ -74,5 +74,5 @@ def test_fruit_order_small_basket():
     assert fruit_order(6, 0, 3) == 3
 
 
-#def test_fruit_order_small_and_big_baskets():
-    #assert fruit_order(6, 1, 11) == 6
+def test_fruit_order_small_and_big_baskets():
+    assert fruit_order(6, 1, 11) == 6
