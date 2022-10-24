@@ -81,4 +81,4 @@ def test_fruit_order_small_and_big_baskets():
 
 def test_fruit_order_small_and_big_baskets_large_numbers():
     assert fruit_order(500, 300, 2000) == 500
-    assert fruit_order(1800, 400, 2000) == 0
+    assert fruit_order(1800, 4000, 2000) == 1800
