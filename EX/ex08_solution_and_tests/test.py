@@ -55,7 +55,7 @@ def test_fruit_order_zero_amount_of_something():
     assert fruit_order(0, 0, 0) == 0
     assert fruit_order(0, 1, 0) == 0
     assert fruit_order(1, 0, 0) == 0
-    assert fruit_order(1, 1, 0) == 0
+    assert fruit_order(1, 1, 0) == 1
 
 
 def test_fruit_order_big_basket():
@@ -63,6 +63,7 @@ def test_fruit_order_big_basket():
     assert fruit_order(0, 3, 15) == 0
     assert fruit_order(0, 2, 15) == -1
     assert fruit_order(0, 3, 10) == 0
+    assert fruit_order(0, -1, 10) == -1
 
 
 
