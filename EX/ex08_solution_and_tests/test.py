@@ -55,6 +55,7 @@ def test_fruit_order_zero_amount_of_something():
     assert fruit_order(0, 0, 0) == 0
     assert fruit_order(0, 1, 0) == 0
     assert fruit_order(1, 0, 0) == 0
+    assert fruit_order(3, 5, 0) == 3
 
 
 
