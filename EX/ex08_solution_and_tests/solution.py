@@ -58,8 +58,8 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
     if x + small_baskets >= ordered_amount:
         if x == ordered_amount:
             return 0
-        if x > ordered_amount:
-            return small_baskets
+        if x > ordered_amount and small_baskets < ordered_amount:
+            return -1
         if x < ordered_amount:
             if small_baskets >= ordered_amount:
                 return ordered_amount
@@ -70,4 +70,4 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
 if __name__ == '__main__':
     print(students_study(18, True))
     print(lottery(1, 2, 8))
-    print(fruit_order(15, 2, 0))
+    print(fruit_order(0, 7, 7))
