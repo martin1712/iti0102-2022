@@ -80,6 +80,7 @@ def test_fruit_order_small_and_big_baskets():
     assert fruit_order(17, 2, 17) == 7
     assert fruit_order(7, 7, 17) == 2
     assert fruit_order(2, 8, 17) == 2
+    assert fruit_order(1, 8, 17) == -1
 
 
     assert fruit_order(7, 3, 25) == -1
