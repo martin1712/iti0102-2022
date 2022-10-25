@@ -1,6 +1,5 @@
 
 
-import pytest
 from solution import students_study
 from solution import lottery
 from solution import fruit_order
@@ -58,8 +57,6 @@ def test_fruit_order_zero_amount_of_ordered():
     assert fruit_order(1, 4, 0) == 0
 
 
-
-
 def test_fruit_order_big_basket():
     """Some tests when there is only big baskets."""
     assert fruit_order(0, 3, 15) == 0
@@ -76,6 +73,7 @@ def test_fruit_order_small_basket():
 
 
 def test_fruit_order_small_and_big_baskets():
+    """Tests for small and big baskets at hte same time."""
     assert fruit_order(6, 1, 11) == 6
     assert fruit_order(17, 2, 17) == 7
     assert fruit_order(7, 7, 17) == 2
@@ -84,9 +82,7 @@ def test_fruit_order_small_and_big_baskets():
     assert fruit_order(7, 3, 25) == -1
 
 
-
-
 def test_fruit_order_small_and_big_baskets_large_numbers():
+    """Tests for big numbers."""
     assert fruit_order(500, 300, 2000) == 500
     assert fruit_order(3, 500, 2004) == -1
-
