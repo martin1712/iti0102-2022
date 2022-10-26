@@ -9,7 +9,7 @@ def add_char_into_pos(char: str, pos: int, string: str) -> str:
 
     add_char_into_pos("a", 2, "kheksa") -> "kaheksa"
     add_char_into_pos("t", 8, "kaheksa") -> "kaheksat"
-    add_char_into_pos("a", 1, "mps") -> "amps"
+    add_char_into_po("a", 1, "mps") -> "amps"
     add_char_into_pos("a", 1, "") -> "a"
     add_char_into_pos("k", 10, "kalla") -> "kalla"
 
