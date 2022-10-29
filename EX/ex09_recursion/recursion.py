@@ -199,9 +199,20 @@ def quic_mafs(a: int, b: int) -> list:
     :param b: int
     :return: result
     """
-    pass
+    if a == 0 or b == 0:
+        return [a, b]
+    if a >= 2 * b:
+        a = a - 2 * b
+        return quic_mafs(a, b)
+    elif b >= 2 * a:
+        b = b - 2 * a
+        return quic_mafs(a, b)
+    else:
+        return [a, b]
 
 
 if __name__ == "__main__":
-    print(stonks(1000, 10, 10))  # -> 2593
-    print(stonks(100000, 12, 3))  # -> 140492
+    print(quic_mafs(6, 19))  # -> [6, 7]
+    print(quic_mafs(2, 1))  # -> [0, 1]
+    print(quic_mafs(22, 5))  # -> [0, 1]
+    print(quic_mafs(8796203, 7556))  # -> [1019,1442]
