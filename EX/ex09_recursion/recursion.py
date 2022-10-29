@@ -92,7 +92,6 @@ def countdown(n: int):
 
 
 def add_commas(n: int):
-
     """
     Add commas into a number.
 
@@ -108,7 +107,8 @@ def add_commas(n: int):
     :param n: int
     :return: string of the formatted int
     """
-    if not isinstance(n, str): n = str(n)
+    if not isinstance(n, str):
+        n = str(n)
     if len(n) < 4:
         return n
     else:
