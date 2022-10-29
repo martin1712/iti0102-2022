@@ -15,7 +15,7 @@ def loop_reverse(s: str) -> str:
     """
     reversed_string = ""
     index = len(s)
-    if s == "":
+    if index == 0:
         return s
     while index > 0:
         reversed_string += s[index - 1]
@@ -35,6 +35,7 @@ def recursive_reverse(s: str) -> str:
     :param s: input string
     :return: reversed input string
     """
+
     pass
 
 
