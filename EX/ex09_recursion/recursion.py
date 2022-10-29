@@ -92,6 +92,7 @@ def countdown(n: int):
 
 
 def add_commas(n: int):
+
     """
     Add commas into a number.
 
@@ -107,7 +108,11 @@ def add_commas(n: int):
     :param n: int
     :return: string of the formatted int
     """
-    pass
+    if not isinstance(n, str): n = str(n)
+    if len(n) < 4:
+        return n
+    else:
+        return add_commas(n[:-3]) + ',' + n[-3:]
 
 
 def sum_digits_recursive(number: int) -> int:
@@ -188,14 +193,6 @@ def quic_mafs(a: int, b: int) -> list:
 
 
 if __name__ == "__main__":
-    print(recursive_sum(0))  # -> 0
-    print(recursive_sum(3))  # -> 6
-    print(recursive_sum(10))  # -> 55
-
-    print(countdown(5))  # -> [5, 4, 3, 2, 1, 0]
-    print(countdown(8))  # -> [8, 7, 6, 5, 4, 3, 2, 1, 0]
-    print(countdown(-1))  # -> []
-
     print(add_commas(1245))  # -> '1,245'
     print(add_commas(123456789))  # -> '123,456,789'
     print(add_commas(1011))  # -> '1,011'
