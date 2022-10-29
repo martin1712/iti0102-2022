@@ -112,7 +112,7 @@ def add_commas(n: int):
     if len(n) < 4:
         return n
     else:
-        return add_commas(n[:-3]) + ',' + n[-3:]
+        return add_commas(int(n[:-3])) + ',' + n[-3:]
 
 
 def sum_digits_recursive(number: int) -> int:
@@ -131,7 +131,10 @@ def sum_digits_recursive(number: int) -> int:
     :param number: non-negative number
     :return: sum of digits in the number
     """
-    pass
+    if number == 0:
+        return 0
+    else:
+        return (number % 10) + sum_digits_recursive(number // 10)
 
 
 def pair_star_recursive(s: str) -> str:
