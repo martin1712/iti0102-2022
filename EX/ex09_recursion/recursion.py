@@ -70,7 +70,9 @@ def recursive_sum(n: int) -> int:
     :param n: the last number to add to the sum
     :return: sum
     """
-    pass
+    if n == 0:
+        return 0
+    return recursive_sum(n - 1) + n
 
 
 def countdown(n: int):
@@ -184,10 +186,6 @@ def quic_mafs(a: int, b: int) -> list:
 
 
 if __name__ == "__main__":
-    print(loop_sum(0))  # -> 0
-    print(loop_sum(3))  # -> 6
-    print(loop_sum(10))  # -> 55
-
     print(recursive_sum(0))  # -> 0
     print(recursive_sum(3))  # -> 6
     print(recursive_sum(10))  # -> 55
