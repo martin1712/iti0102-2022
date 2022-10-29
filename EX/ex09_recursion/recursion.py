@@ -176,7 +176,10 @@ def stonks(coins: float, rate: float, years: int) -> int:
     :param years: number of years (0-50)
     :return: coins after years
     """
-    pass
+    if years != 0:
+        return stonks((coins * (1 + rate / 100)), rate, years - 1)
+    else:
+        return int(coins)
 
 
 def quic_mafs(a: int, b: int) -> list:
@@ -200,5 +203,5 @@ def quic_mafs(a: int, b: int) -> list:
 
 
 if __name__ == "__main__":
-    print(pair_star_recursive("abc"))  # -> "abc"
-    print(pair_star_recursive("aaa"))  # -> a*a*a
+    print(stonks(1000, 10, 10))  # -> 2593
+    print(stonks(100000, 12, 3))  # -> 140492
