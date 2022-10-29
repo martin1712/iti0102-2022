@@ -52,7 +52,11 @@ def loop_sum(n: int) -> int:
     :param n: the last number to add to the sum
     :return: sum
     """
-    pass
+    result = n
+    while n > 0:
+        result += n - 1
+        n = n - 1
+    return result
 
 
 def recursive_sum(n: int) -> int:
@@ -180,14 +184,6 @@ def quic_mafs(a: int, b: int) -> list:
 
 
 if __name__ == "__main__":
-    print(loop_reverse("hello"))  # -> "olleh"
-    print(loop_reverse(""))  # -> ""
-    print(loop_reverse("123"))  # -> "321"
-
-    print(recursive_reverse("hello"))  # -> "olleh"
-    print(recursive_reverse(""))  # -> ""
-    print(recursive_reverse("123"))  # -> "321"
-
     print(loop_sum(0))  # -> 0
     print(loop_sum(3))  # -> 6
     print(loop_sum(10))  # -> 55
