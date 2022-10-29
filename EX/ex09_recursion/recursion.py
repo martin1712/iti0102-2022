@@ -86,7 +86,9 @@ def countdown(n: int):
     :param n: start
     :return: countdown sequence
     """
-    pass
+    if n < 0:
+        return []
+    return [n] + countdown(n - 1)
 
 
 def add_commas(n: int):
