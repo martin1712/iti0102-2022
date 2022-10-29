@@ -133,8 +133,7 @@ def sum_digits_recursive(number: int) -> int:
     """
     if number == 0:
         return 0
-    else:
-        return (number % 10) + sum_digits_recursive(number // 10)
+    return (number % 10) + sum_digits_recursive(number // 10)
 
 
 def pair_star_recursive(s: str) -> str:
@@ -153,7 +152,12 @@ def pair_star_recursive(s: str) -> str:
     :param s: input string
     :return: string with stars between identical chars.
     """
-    pass
+    if len(s) <= 1:
+        return s
+    if s[0] == s[1]:
+        return s[0] + "*" + pair_star_recursive(s[1:])
+    if s[0] != s[1]:
+        return s[0] + pair_star_recursive(s[1:])
 
 
 def stonks(coins: float, rate: float, years: int) -> int:
@@ -196,22 +200,5 @@ def quic_mafs(a: int, b: int) -> list:
 
 
 if __name__ == "__main__":
-    print(add_commas(1245))  # -> '1,245'
-    print(add_commas(123456789))  # -> '123,456,789'
-    print(add_commas(1011))  # -> '1,011'
-
-    print(sum_digits_recursive(123))  # -> 6
-    print(sum_digits_recursive(0))  # -> 0
-    print(sum_digits_recursive(1000000000000000))  # -> 1
-
     print(pair_star_recursive("abc"))  # -> "abc"
     print(pair_star_recursive("aaa"))  # -> a*a*a
-    print(pair_star_recursive(""))  # -> ""
-
-    print(stonks(1000, 10, 10))  # -> 2593
-    print(stonks(100000, 12, 3))  # -> 140492
-
-    print(quic_mafs(6, 19))  # -> [6, 7]
-    print(quic_mafs(2, 1))  # -> [0, 1]
-    print(quic_mafs(22, 5))  # -> [0, 1]
-    print(quic_mafs(8796203, 7556))  # -> [1019,1442]
