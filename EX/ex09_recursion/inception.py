@@ -34,12 +34,12 @@ def x_sum_loop(nums: list, x: int) -> int:
         return 0
     if len(nums) > 0 and x > 1:
         if len(nums) >= x:
-            for i in range(x-1, len(nums), x):
+            for i in range(x - 1, len(nums), x):
                 summary += nums[i]
             return summary
     if len(nums) > 0 and x < -1:
         if len(nums) >= x / -1:
-            for i in range(len(nums)+x, -1, x):
+            for i in range(len(nums) + x, -1, x):
                 summary += nums[i]
             return summary
     else:
