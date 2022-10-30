@@ -24,26 +24,21 @@ def x_sum_loop(nums: list, x: int) -> int:
     :return: sum of every x'th number in the list
     """
     summary = 0
+    if x < 0:
+        return x_sum_loop(nums[::-1], abs(x))
     if len(nums) == 0:
         return 0
     if x == 0:
         return 0
-    if x == 1 or x == -1:
-        return sum(nums)
-    if len(nums) < x / -1:
+    if x > len(nums):
         return 0
-    if len(nums) > 0 and x > 1:
+    if x == 1:
+        return sum(nums)
+    if x > 1:
         if len(nums) >= x:
             for i in range(x - 1, len(nums), x):
                 summary += nums[i]
             return summary
-    if len(nums) > 0 and x < -1:
-        if len(nums) >= x / -1:
-            for i in range(len(nums) + x, -1, x):
-                summary += nums[i]
-            return summary
-    else:
-        return 0
 
 
 def x_sum_recursion(nums: list, x: int) -> int:
@@ -132,8 +127,10 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
 
 
 if __name__ == '__main__':
-    print(count_strings([[], ["J", "*", "W", "f"], ["j", "g", "*"], ["j", "8", "5", "6", "*"], ["*", "*", "A", "8"]]))
-    # {'J': 1, '*': 5, 'W': 1, 'f': 1, 'j': 2, 'g': 1, '8': 2, '5': 1, '6': 1, 'A': 1}
-    print(count_strings([[], [], [], [], ["h", "h", "m"], [], ["m", "m", "M", "m"]]))  # {'h': 2, 'm': 4, 'M': 1}
-    print(count_strings([]))  # {}
-    print(count_strings([['a'], 'b', ['a', ['b']]]))  # {'a': 2, 'b': 2}
+    print(x_sum_loop([], 3))  # 0
+    print(x_sum_loop([2, 5, 6, 0, 15, 5], 3))  # 11
+    print(x_sum_loop([0, 5, 6, -5, -9, 3], 1))  # 0
+    print(x_sum_loop([43, 90, 115, 500], -2))  # 158
+    print(x_sum_loop([1, 2], -9))  # 0
+    print(x_sum_loop([2, 3, 6], 5))  # 0
+    print(x_sum_loop([6, 5, 3, 2, 9, 8, 6, 5, 4], 3))  # 15
