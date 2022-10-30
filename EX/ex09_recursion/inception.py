@@ -71,6 +71,8 @@ def x_sum_recursion(nums: list, x: int) -> int:
     # if x is negative, call the function with positive x and reversed list
     if x < 0:
         return x_sum_recursion(nums[::-1], abs(x))
+    if x == 0:
+        return 0
     # base case for when x is greater than the length of the list
     if x > len(nums):
         return 0
@@ -120,7 +122,7 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
 
 
 if __name__ == '__main__':
-    print(x_sum_recursion([], 3))  # 0
+    print(x_sum_recursion([0, 0, 3], 0))  # 0
     print(x_sum_recursion([2, 5, 6, 0, 15, 5], 3))  # 11
     print(x_sum_recursion([7, 5, 6, -5, -9, 3], 1))  # 0
     print(x_sum_recursion([43, 90, 115, 500], -2))  # 158
