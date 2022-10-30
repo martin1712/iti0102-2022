@@ -68,17 +68,14 @@ def x_sum_recursion(nums: list, x: int) -> int:
     :param x: number indicating every which num to add to sum
     :return: sum of every x'th number in the list
     """
-    # if x is negative, call the function with positive x and reversed list
     if x < 0:
         return x_sum_recursion(nums[::-1], abs(x))
     if x == 0:
         return 0
-    # base case for when x is greater than the length of the list
     if x > len(nums):
         return 0
-    # otherwise remove the first x-1 items
     nums = nums[x - 1:]
-    # sum the first element and remove it from the next call
+    # print(nums)
     return nums[0] + x_sum_recursion(nums[1:], x)
 
 
@@ -96,7 +93,11 @@ def sum_squares(nested_list):
     :param nested_list: list of lists of lists of lists of lists ... and ints
     :return: sum of squares
     """
-    pass
+    if len(nested_list) == 0:
+        return 0
+    if type(nested_list[0]) is not list:
+        return nested_list[0]**2 + sum_squares(nested_list[1:])
+    return sum_squares(nested_list[0]) + sum_squares(nested_list[1:])
 
 
 def count_strings(data: list, pos=None, result: dict = None) -> dict:
@@ -122,10 +123,6 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
 
 
 if __name__ == '__main__':
-    print(x_sum_recursion([0, 0, 3], 0))  # 0
-    print(x_sum_recursion([2, 5, 6, 0, 15, 5], 3))  # 11
-    print(x_sum_recursion([7, 5, 6, -5, -9, 3], 1))  # 0
-    print(x_sum_recursion([43, 90, 115, 500], -2))  # 158
-    print(x_sum_recursion([1, 2], -9))  # 0
-    print(x_sum_recursion([2, 3, 6], 5))  # 0
-    print(x_sum_recursion([6, 5, 3, 2, 9, 8, 6, 5, 4], 3))  # 15
+    print(sum_squares([1, 2, 3]))  # 14
+    print(sum_squares([[1, 2], 3]))  # 14
+    print(sum_squares([[[[[[[[[2]]]]]]]]]))  # 14
