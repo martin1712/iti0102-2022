@@ -5,17 +5,8 @@ from sys import setrecursionlimit
 setrecursionlimit(10000)
 
 
-"""def tree(length):
-    
-    Write a recursive turtle program to draw a binary tree.
-
-    Start with a trunk 200px tall.
-    Each new branch should be 3/5 as big as its trunk.
-    Minimum branch size is 5px.
-    Move turtle with: t.forward(), t.left(), t.right(), tree()
-
-    :param length: height of the trunk or leaf
-    
+def tree(length):
+    """Ok."""
     if length < 5:
         return
     else:
@@ -25,10 +16,10 @@ setrecursionlimit(10000)
         t.right(120)
         tree(3 * length / 5)
         t.left(60)
-        t.backward(length)"""
+        t.backward(length)
 
 
-def apply_dragon_rules(string):
+def apply_dragon_rules(string: str):
     """
     Write a recursive function that replaces characters in string.
 
@@ -42,14 +33,13 @@ def apply_dragon_rules(string):
     :param string: sentence with "a" and "b" characters that need to be replaced
     :return: new sentence with "a" and "b" characters replaced
     """
-
-    if string == "a":
-        return "aRbFR"
-    if string == "b":
-        return "LFaLb"
-
-
-
+    if string == "":
+        return ""
+    if string[0] == "a":
+        return "aRbFR" + str(apply_dragon_rules(string[1:]))
+    if string[0] == "b":
+        return "LFaLb" + str(apply_dragon_rules(string[1:]))
+    return string[0] + apply_dragon_rules(string[1:])
 
 
 def curve(string, depth):
@@ -105,7 +95,13 @@ def save(t: Turtle):
 
 
 if __name__ == '__main__':
-
+    t = Turtle()
+    t.getscreen().bgcolor("#1c262b")
+    t.color("#96004f")
+    t.speed(0)
+    t.pensize(2)
+    t.left(90)
+    tree(200)
 
     '''
     s = curve("Fa", 8)
@@ -113,5 +109,6 @@ if __name__ == '__main__':
     l = get_line_length(100, 8)
     draw_dragon(s, l)
     '''
-
-    print(apply_dragon_rules("a"))
+    save(t)
+    t.getscreen().exitonclick()
+    print(apply_dragon_rules("FRaFRb"))
