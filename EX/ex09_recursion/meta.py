@@ -5,6 +5,20 @@ from sys import setrecursionlimit
 setrecursionlimit(10000)
 
 
+def tree(length):
+    """Ok."""
+    if length < 5:
+        return
+    else:
+        t.forward(length)
+        t.left(60)
+        tree(3 * length / 5)
+        t.right(120)
+        tree(3 * length / 5)
+        t.left(60)
+        t.backward(length)
+
+
 def apply_dragon_rules(string: str):
     """
     Write a recursive function that replaces characters in string.
@@ -66,7 +80,7 @@ def format_curve(string):
     return string[0] + format_curve(string[1:])
 
 
-def draw_dragon(string, length):
+def draw_dragon(s, l):
     """Draws the dragon by reading the string recursively.
 
     Use t.right(), t.left(), t.forward() and draw_dragon() to move turtle.
@@ -77,7 +91,19 @@ def draw_dragon(string, length):
     :param string: instructions left to process
     :param length: how many pixels to move forward, left or right
     """
-    pass
+    if len(s) == 0:
+        return ""
+    if s[0] == "L":
+        t.left(90)
+        t.forward(l)
+        return draw_dragon(s[1:], l)
+    elif s[0] == "R":
+        t.right(90)
+        t.forward(l)
+        return draw_dragon(s[1:], l)
+    elif s[0] == "F":
+        t.forward(l)
+        return draw_dragon(s[1:], l)
 
 
 def get_line_length(dragon_width, depth):
@@ -92,12 +118,18 @@ def save(t: Turtle):
 
 
 if __name__ == '__main__':
-
-
-    '''
+    t = Turtle()
+    t.getscreen().bgcolor("#1c262b")
+    t.color("#96004f")
+    t.speed(0)
+    t.pensize(2)
+    t.left(90)
     s = curve("Fa", 8)
     s = format_curve(s)
     l = get_line_length(100, 8)
     draw_dragon(s, l)
-    '''
+
+    save(t)
+    t.getscreen().exitonclick()
+
     print(format_curve("FaRbFR"))
