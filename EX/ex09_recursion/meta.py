@@ -34,8 +34,6 @@ def curve(string, depth):
 
     Calls apply_dragon_rules() function `depth` times.
     curve("Fa", 2) -> "FaRbFRRLFaLbFR"
-    FaRbFRRLFaLbFR
-    FaRbFRRLFaLbFR
 
     :param string: current instruction string
     :param depth: how many times the rules are applied
@@ -59,7 +57,13 @@ def format_curve(string):
     :param string: instruction string
     :return: clean instructions with only "F", "R", and "L" characters
     """
-    pass
+    if len(string) == 0:
+        return ""
+    if string[0] == "a":
+        return "" + str(format_curve(string[1:]))
+    if string[0] == "b":
+        return "" + str(format_curve(string[1:]))
+    return string[0] + format_curve(string[1:])
 
 
 def draw_dragon(string, length):
@@ -96,4 +100,4 @@ if __name__ == '__main__':
     l = get_line_length(100, 8)
     draw_dragon(s, l)
     '''
-    print(curve("Fa", 2))
+    print(format_curve("FaRbFR"))
