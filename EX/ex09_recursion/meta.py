@@ -1,5 +1,4 @@
 """Meta-trees and meta-dragons."""
-import turtle
 from turtle import Turtle
 from sys import setrecursionlimit
 setrecursionlimit(10000)
@@ -80,7 +79,7 @@ def format_curve(string):
     return string[0] + format_curve(string[1:])
 
 
-def draw_dragon(s, l):
+def draw_dragon(s, length):
     """Draws the dragon by reading the string recursively.
 
     Use t.right(), t.left(), t.forward() and draw_dragon() to move turtle.
@@ -95,15 +94,15 @@ def draw_dragon(s, l):
         return ""
     if s[0] == "L":
         t.left(90)
-        t.forward(l)
-        return draw_dragon(s[1:], l)
+        t.forward(length)
+        return draw_dragon(s[1:], length)
     elif s[0] == "R":
         t.right(90)
-        t.forward(l)
-        return draw_dragon(s[1:], l)
+        t.forward(length)
+        return draw_dragon(s[1:], length)
     elif s[0] == "F":
-        t.forward(l)
-        return draw_dragon(s[1:], l)
+        t.forward(length)
+        return draw_dragon(s[1:], length)
 
 
 def get_line_length(dragon_width, depth):
@@ -126,8 +125,8 @@ if __name__ == '__main__':
     t.left(90)
     s = curve("Fa", 8)
     s = format_curve(s)
-    l = get_line_length(100, 8)
-    draw_dragon(s, l)
+    length = get_line_length(100, 8)
+    draw_dragon(s, length)
 
     save(t)
     t.getscreen().exitonclick()
