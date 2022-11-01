@@ -5,20 +5,6 @@ from sys import setrecursionlimit
 setrecursionlimit(10000)
 
 
-def tree(length):
-    """Ok."""
-    if length < 5:
-        return
-    else:
-        t.forward(length)
-        t.left(60)
-        tree(3 * length / 5)
-        t.right(120)
-        tree(3 * length / 5)
-        t.left(60)
-        t.backward(length)
-
-
 def apply_dragon_rules(string: str):
     """
     Write a recursive function that replaces characters in string.
@@ -48,12 +34,19 @@ def curve(string, depth):
 
     Calls apply_dragon_rules() function `depth` times.
     curve("Fa", 2) -> "FaRbFRRLFaLbFR"
+    FaRbFRRLFaLbFR
+    FaRbFRRLFaLbFR
 
     :param string: current instruction string
     :param depth: how many times the rules are applied
     :return: instructionset for drawing the dragon at iteration 'depth'
     """
-    pass
+    if depth == 0:
+        return ""
+    elif depth == 1:
+        return apply_dragon_rules(string)
+    else:
+        return curve(apply_dragon_rules(string), depth - 1)
 
 
 def format_curve(string):
@@ -95,13 +88,7 @@ def save(t: Turtle):
 
 
 if __name__ == '__main__':
-    t = Turtle()
-    t.getscreen().bgcolor("#1c262b")
-    t.color("#96004f")
-    t.speed(0)
-    t.pensize(2)
-    t.left(90)
-    tree(200)
+
 
     '''
     s = curve("Fa", 8)
@@ -109,6 +96,4 @@ if __name__ == '__main__':
     l = get_line_length(100, 8)
     draw_dragon(s, l)
     '''
-    save(t)
-    t.getscreen().exitonclick()
-    print(apply_dragon_rules("FRaFRb"))
+    print(curve("Fa", 2))
