@@ -1,55 +1,79 @@
 
 
-"""Great."""
+"""Regex, yyayaj."""
+import re
 
 
-def create_dictionary(data: str) -> dict:
+def find_words(text: str) -> list:
     """Great."""
-    a = data.split("\n")
-    d = {}
-    result = []
-    names = []
+    words = re.findall(r"[ÕÜÖÄ, A-Z][a-z]+", text)
+    return words
 
-    for name in a:
-        tokens = name.split(":", 1)
-        if tokens[0] not in names:
-            names.append(tokens[0])
-            result.append([tokens[0], tokens[1:]])
-        for name in result:
-            if name[0] == tokens[0]:
-                if tokens[1] not in name[1]:
-                    name[1].append(tokens[1])
-    for i in result:
-        d[i[0]] = i[1]
+
+def find_words_with_vowels(text: str) -> list:
+    """Great."""
+    words = re.findall(r"[AUEOIÕÜÖÄ][a-z]+", text)
+    return words
+
+
+def find_sentences(text: str) -> list:
+    """Great."""
+    words = re.findall(r"([ÕÜÖÄA-Z][^\.!?]*[\.!?]+)", text)
+    return words
+
+
+def find_words_from_sentence(sentence: str) -> list:
+    """Great."""
+    words = re.findall(r"(\w+)", sentence)
+    return words
+
+
+def find_words_from_sentences_only(text: str) -> list:
+    """Great."""
+    a = find_sentences(text)
+    b = str(a)
+    words = re.findall(r"(\w+)", b)
+    return words
+
+
+def find_years(text: str) -> list:
+    """Great."""
+    words = re.findall(r"(?<!\d)\d{4}(?!\d)", text)
+    number = [eval(i) for i in words]
+    return number
+
+
+def find_phone_numbers(text: str) -> dict:
+    """Great."""
+    list_of_numbers = re.findall(r"(\+(?<!\d)\d{3}\s\d{8}|\+(?<!\d)\d{3}\d{8}|\d{7,8})", text)
+    new_list = []
+    seven_or_eight = []
+    d = {}
+    for i in list_of_numbers:
+        if len(i) == 12:
+            new_list.append(" ".join((i[0:4], i[4:])))
+        else:
+            new_list.append(i)
+    for i in new_list:
+        if len(i) == 13:
+            d[i[0:4]] = [(i[5:])]
+            if new_list.count(i[5:]) >= 1:
+                d[i[0:4]] = [(i[5:])] * (new_list.count(i[5:]) + 1)
+        else:
+            if len(i) in [7, 8]:
+                seven_or_eight.append(i)
+                d[''] = seven_or_eight
     return d
 
 
-def sort_dictionary(dic: dict) -> dict:
-    """Great."""
-    for x in dic:
-        dic[x].sort()
-    return dic
-
-
 def create_dictionary_with_hobbies(data: str) -> dict:
-    """Great."""
-    a = data.split("\n")
-    d = {}
-    result = []
-    hobbies = []
+    """
+    Create dictionary about hobbies and their hobbyists ie. {hobby1: [name1, name2, ...], hobby2: [...]}.
 
-    for name in a:
-        tokens = name.split(":", 1)
-        if tokens[1] not in hobbies:
-            hobbies.append(tokens[1])
-            result.append([tokens[1], tokens[:-1]])
-        for hobbie in result:
-            if hobbie[0] == tokens[1]:
-                if tokens[0] not in hobbie[1]:
-                    hobbie[1].append(tokens[0])
-    for i in result:
-        d[i[0]] = i[1]
-    return sort_dictionary(d)
+    :param data: given string from database
+    :return: dictionary, where keys are hobbies and values are lists of people. Values are sorted alphabetically
+    """
+    return {}
 
 
 def find_people_with_most_hobbies(data: str) -> list:
@@ -177,13 +201,5 @@ def find_two_people_with_most_common_hobbies(data: str) -> tuple:
 
 
 if __name__ == '__main__':
-    sample_data = """Jack:crafting\nPeter:hiking\nWendy:gaming\nMonica:tennis\nChris:origami\nSophie:sport\nMonica:design\nCarmen:sport\nChris:sport\nMonica:skateboarding\nCarmen:cooking\nWendy:photography\nMonica:tennis\nCooper:yoga\nWendy:sport\nCooper:movies\nMonica:theatre\nCooper:yoga\nChris:gaming\nMolly:fishing\nJack:skateboarding\nWendy:fishing\nJack:drawing\nMonica:baking\nSophie:baking\nAlfred:driving\nAlfred:shopping\nAlfred:crafting\nJack:drawing\nCarmen:shopping\nCarmen:driving\nPeter:drawing\nCarmen:shopping\nWendy:fitness\nAlfred:travel\nJack:origami\nSophie:design\nJack:pets\nCarmen:dance\nAlfred:baking\nSophie:sport\nPeter:gaming\nJack:skateboarding\nCooper:football\nAlfred:sport\nCooper:fitness\nChris:yoga\nWendy:football\nMolly:design\nJack:hiking\nMonica:pets\nCarmen:photography\nJack:baking\nPeter:driving\nChris:driving\nCarmen:driving\nPeter:theatre\nMolly:hiking\nWendy:puzzles\nJack:crafting\nPeter:photography\nCarmen:theatre\nSophie:crafting\nCarmen:cooking\nAlfred:gaming\nPeter:theatre\nCooper:hiking\nChris:football\nChris:pets\nJack:football\nMonica:skateboarding\nChris:driving\nCarmen:pets\nCooper:gaming\nChris:hiking\nJack:cooking\nPeter:fishing\nJack:gaming\nPeter:origami\nCarmen:movies\nSophie:driving\nJack:sport\nCarmen:theatre\nWendy:shopping\nCarmen:pets\nWendy:gaming\nSophie:football\nWendy:theatre\nCarmen:football\nMolly:theatre\nPeter:theatre\nMonica:flowers\nMolly:skateboarding\nPeter:driving\nSophie:travel\nMonica:photography\nCooper:cooking\nJack:fitness\nPeter:cooking\nChris:gaming"""
-    dic = create_dictionary(sample_data)
-    print("shopping" in dic["Wendy"])  # -> True
-    print("fitness" in dic["Sophie"])  # -> False
-    print("gaming" in dic["Peter"])  # -> True
-    print(len(dic["Jack"]))  # ->  12
-    print(len(dic["Carmen"]))  # -> 10
-    print(len(dic["Molly"]))  # -> 5
-    print(len(dic["Sophie"]))  # -> 7
-    print(create_dictionary_with_hobbies(sample_data))
+    print(find_phone_numbers("+372 56887364  +37256887364  +33359835647  56887364 +11 1234567 +327 1 11111111"))
+    # {'+372': ['56887364', '56887364'], '+333': ['59835647'], '': ['56887364', '1234567', '11111111']}
