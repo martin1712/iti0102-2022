@@ -7,7 +7,7 @@ def x_sum_loop(nums: list, x: int) -> int:
 
     In this task "indexing" starts from 1, so if x = 2 and nums = [2, 3, 4, -9], the output should be -6 (3 + -9).
 
-    X can also be negative, in that case indexing starts from the end of the list, see examples below.
+    X can also be negative, in tat case indexing starts from the end of the list, see examples below.
 
     If x is 0, the sum should be 0 as well.
 
