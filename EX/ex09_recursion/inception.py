@@ -130,7 +130,7 @@ if __name__ == '__main__':
     print(x_sum_loop([], 3))  # 0
     print(x_sum_loop([2, 5, 6, 0, 15, 5], 3))  # 11
     print(x_sum_loop([0, 5, 6, -5, -9, 3], 1))  # 0
-    print(x_sum_loop([43, 90, 115, 500], -2))  # 158
+    print(x_sum_loop([43, 90, 115, 500], -2))  # 15
     print(x_sum_loop([1, 2], -9))  # 0
     print(x_sum_loop([2, 3, 6], 5))  # 0
     print(x_sum_loop([6, 5, 3, 2, 9, 8, 6, 5, 4], 3))  # 15
