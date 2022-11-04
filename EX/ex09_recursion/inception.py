@@ -7,7 +7,7 @@ def x_sum_loop(nums: list, x: int) -> int:
 
     In this task "indexing" starts from 1, so if x = 2 and nums = [2, 3, 4, -9], the output should be -6 (3 + -9).
 
-    X can also be negative, in that case indexing starts from the end of the list, see examples below.
+    X can also be negative, in tat case indexing starts from the end of the list, see examples below.
 
     If x is 0, the sum should be 0 as well.
 
@@ -117,12 +117,12 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
     if result is None and pos is None:
         result = {}
         pos = 0
-    if pos < len(data):  # pos should not be equal to len when accessing data[pos]:
+    if pos < len(data):
         if isinstance(data[pos], str):
-            result[data[pos]] = result.get(data[pos], 0) + 1  # increment count
+            result[data[pos]] = result.get(data[pos], 0) + 1
         elif isinstance(data[pos], list):
-            count_strings(data[pos], 0, result)  # process nested list
-        count_strings(data, pos + 1, result)  # process the remaining entries
+            count_strings(data[pos], 0, result)
+        count_strings(data, pos + 1, result)
     return result
 
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     print(x_sum_loop([], 3))  # 0
     print(x_sum_loop([2, 5, 6, 0, 15, 5], 3))  # 11
     print(x_sum_loop([0, 5, 6, -5, -9, 3], 1))  # 0
-    print(x_sum_loop([43, 90, 115, 500], -2))  # 158
+    print(x_sum_loop([43, 90, 115, 500], -2))  # 15
     print(x_sum_loop([1, 2], -9))  # 0
     print(x_sum_loop([2, 3, 6], 5))  # 0
     print(x_sum_loop([6, 5, 3, 2, 9, 8, 6, 5, 4], 3))  # 15
