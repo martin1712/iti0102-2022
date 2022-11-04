@@ -46,7 +46,7 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     elif take_count == 0:
         return ""
     else:
-        return text[leave_count:take_count+leave_count] + take_partial(text[take_count+leave_count:], leave_count, take_count)
+        return text[leave_count:take_count+leave_count] + take_partial(text[take_count + leave_count:], leave_count, take_count)
 
 
 def min_diff(nums: list) -> int:
