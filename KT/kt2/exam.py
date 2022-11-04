@@ -64,7 +64,12 @@ def min_diff(nums: list) -> int:
     :param nums: list of ints, at least 2 elements.
     :return: min diff between 2 numbers.
     """
-    pass
+    nums.sort()
+    min_diff = 10 ** 10
+    for i in range(len(nums) - 1):
+        if nums[i + 1] - nums[i] < min_diff:
+            min_diff = nums[i + 1] - nums[i]
+    return min_diff
 
 
 def get_symbols_by_occurrences(text: str) -> dict:
@@ -80,11 +85,6 @@ def get_symbols_by_occurrences(text: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(take_partial("abcdef", 2, 3))  # => "cde"
-    print(take_partial("abcdef", 0, 1))  # => "abcdef"
-    print(take_partial("abcdef", 1, 0))  # => ""
-    print(take_partial("Hello world", 3, 3))  # => "lo ld"
-
     print(min_diff([1, 2, 3]))  # => 1
     print(min_diff([1, 9, 17]))  # => 8
     print(min_diff([100, 90]))  # => 10
