@@ -2,7 +2,7 @@
 
 def switch_lasts_and_firsts(s: str) -> str:
     """
-    Move last two characters to the beginning of string and first two characters to the end of string.
+    Mov last two characters to the beginning of string and first two characters to the end of string.
 
     When string length is smaller than 4, return reversed string.
 
@@ -38,6 +38,7 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 1, 0) => ""
     take_partial("Hello world", 3, 3) => "lo ld"
     """
+
     pass
 
 
