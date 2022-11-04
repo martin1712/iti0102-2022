@@ -38,8 +38,16 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 1, 0) => ""
     take_partial("Hello world", 3, 3) => "lo ld"
     """
+    if text == "":
+        return ""
+    if leave_count == 0:
+        return text
+    elif take_count == 0:
+        return ""
+    else:
+        return text[leave_count:take_count+leave_count] + take_partial(text[take_count+leave_count:], leave_count, take_count)
 
-    pass
+
 
 
 def min_diff(nums: list) -> int:
@@ -72,10 +80,6 @@ def get_symbols_by_occurrences(text: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(switch_lasts_and_firsts("ambulance"))  # => "cebulanam"
-    print(switch_lasts_and_firsts("firetruck"))  # => "ckretrufi"
-    print(switch_lasts_and_firsts("car"))  # => "rac"
-
     print(take_partial("abcdef", 2, 3))  # => "cde"
     print(take_partial("abcdef", 0, 1))  # => "abcdef"
     print(take_partial("abcdef", 1, 0))  # => ""
