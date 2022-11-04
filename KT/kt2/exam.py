@@ -16,9 +16,9 @@ def switch_lasts_and_firsts(s: str) -> str:
     if len(s) < 4:
         return s[::-1]
     else:
-        start = s[:1]
-        end = s[-1:-2]
-        return end + s[2:-3] + start
+        start = s[:2]
+        end = s[-2:]
+        return end + s[2:-2] + start
 
 
 def take_partial(text: str, leave_count: int, take_count: int) -> str:
