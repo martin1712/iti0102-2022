@@ -1,5 +1,6 @@
 """KT2."""
 
+
 def switch_lasts_and_firsts(s: str) -> str:
     """
     Mov last two characters to the beginning of string and first two characters to the end of string.
@@ -48,8 +49,6 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
         return text[leave_count:take_count+leave_count] + take_partial(text[take_count+leave_count:], leave_count, take_count)
 
 
-
-
 def min_diff(nums: list) -> int:
     """
     Find the smallest diff between two integer numbers in the list.
@@ -65,11 +64,11 @@ def min_diff(nums: list) -> int:
     :return: min diff between 2 numbers.
     """
     nums.sort()
-    min_diff = 10 ** 10
+    dif = 10 ** 10
     for i in range(len(nums) - 1):
-        if nums[i + 1] - nums[i] < min_diff:
-            min_diff = nums[i + 1] - nums[i]
-    return min_diff
+        if nums[i + 1] - nums[i] < dif:
+            dif = nums[i + 1] - nums[i]
+    return dif
 
 
 def get_symbols_by_occurrences(text: str) -> dict:
@@ -81,14 +80,16 @@ def get_symbols_by_occurrences(text: str) -> dict:
     get_symbols_by_occurrences("hello") => {1: ['e', 'o', 'h'], 2: ['l']}
     get_symbols_by_occurrences("abcaba") => {2: ['b'], 1: ['c'], 3: ['a']}
     """
-    pass
+    result = {}
+    for i in text:
+        if i in result:
+            result[text.count(i)] += [i]
+        else:
+            result[text.count(i)] = [i]
+    return result
 
 
 if __name__ == '__main__':
-    print(min_diff([1, 2, 3]))  # => 1
-    print(min_diff([1, 9, 17]))  # => 8
-    print(min_diff([100, 90]))  # => 10
-    print(min_diff([1, 100, 1000, 1]))  # => 0
 
     print(get_symbols_by_occurrences("hello"))  # => {1: ['e', 'o', 'h'], 2: ['l']}
     print(get_symbols_by_occurrences("abcaba"))  # => {2: ['b'], 1: ['c'], 3: ['a']}
