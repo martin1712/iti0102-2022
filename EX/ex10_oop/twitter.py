@@ -50,11 +50,22 @@ def sort_by_popularity(tweets: list) -> list:
     >Tweet1 has 10 retweets.
     >Tweet2 has 30 retweets.
     >30 is bigger than 10 -> tweet2 is the more popular one.
-
     :param tweets: Input list of tweets.
     :return: List of tweets by popularity
     """
-    pass
+    result_list = []
+    result_indexes = []
+    result = []
+    for i in tweets:
+        if i.retweets not in result:
+            result.append(i.retweets)
+    for x in result:
+        result_indexes.insert(0, result.index(x))
+    for number in result_indexes:
+        asd = tweets[number]
+        if asd not in result_list:
+            result_list.append(asd)
+    return result_list
 
 
 def filter_by_hashtag(tweets: list, hashtag: str) -> list:
