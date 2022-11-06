@@ -40,7 +40,7 @@ def find_fastest_growing(tweets: list) -> Tweet:
     return tweets[max_number]
 
 
-def sort_by_popularity(tweets: list) -> list:
+def sort_by_popularity(tweets: list,) -> list:
     """
     Sort tweets by popularity.
 
@@ -57,16 +57,15 @@ def sort_by_popularity(tweets: list) -> list:
     result_indexes = []
     result = []
     for i in tweets:
-        if i.retweets not in result:
-            result.append(i.retweets)
+            result.insert(0, i.retweets)
     for x in result:
         result_indexes.insert(0, result.index(x))
+
     for number in result_indexes:
         asd = tweets[number]
         if asd not in result_list:
             result_list.append(asd)
     return result_list
-
 
 def filter_by_hashtag(tweets: list, hashtag: str) -> list:
     """
@@ -102,14 +101,15 @@ if __name__ == '__main__':
     tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 1249, 54303)
     tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 366.4, 166500)
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 2192, 284200)
+
     tweets = [tweet1, tweet2, tweet3]
 
-    print(find_fastest_growing(tweets).user)  # -> "@elonmusk"
 
     filtered_by_popularity = sort_by_popularity(tweets)
     print(filtered_by_popularity[0].user)  # -> "@CIA"
     print(filtered_by_popularity[1].user)  # -> "@elonmusk"
     print(filtered_by_popularity[2].user)  # -> "@realDonaldTrump"
+
 
     filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
     print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
