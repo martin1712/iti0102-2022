@@ -55,9 +55,9 @@ def sort_by_popularity(tweets: list,) -> list:
     """
     result = []
     for i in tweets:
-            result.insert(0, i)
-    result = sorted(result, key=lambda t: t.retweets, reverse=True)
-    return result
+        result.insert(0, i)
+    sorted_list = sorted(result, key=lambda x: (x.retweets))
+    return sorted_list[::-1]
 
 
 def filter_by_hashtag(tweets: list, hashtag: str) -> list:
