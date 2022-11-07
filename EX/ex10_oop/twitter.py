@@ -70,7 +70,11 @@ def filter_by_hashtag(tweets: list, hashtag: str) -> list:
     :param hashtag: Hashtag to filter by.
     :return: Filtered list of tweets.
     """
-    pass
+    result = []
+    for i in tweets:
+        if hashtag in i.content:
+            result.insert(0, i)
+    return result
 
 
 def sort_hashtags_by_popularity(tweets: list) -> list:
@@ -99,17 +103,10 @@ if __name__ == '__main__':
     tweet6 = Tweet("@elonmusk", "Car is red, sun is moon #heart", 3, 100)
     tweets = [tweet1, tweet2, tweet3, tweet4, tweet5, tweet6]
 
-    filtered_by_popularity = sort_by_popularity(tweets)
-    print(filtered_by_popularity[0].user)  # -> "@elonmusk"
-    print(filtered_by_popularity[1].user)  # -> "@Patrick"
-    print(filtered_by_popularity[2].user)  # -> "@CIA"
-    print(filtered_by_popularity[3].user)  # -> "@realDonaldTrump"
-    print(filtered_by_popularity[4].user)  # -> "@Google"
-    print(filtered_by_popularity[5].user)  # -> "@Google"
 
-    #filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
-    #print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
-    #print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
+    filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
+    print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
+    print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
 
     #sorted_hashtags = sort_hashtags_by_popularity(tweets)
     #print(sorted_hashtags[0])  # -> "#heart"
