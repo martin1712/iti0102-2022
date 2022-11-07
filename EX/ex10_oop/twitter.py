@@ -100,7 +100,7 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
     my_dict = {}
     for s, t in zip(result, retweet_list):
         my_dict[s] = my_dict.get(s, 0) + t
-    print(my_dict)
+
     my_dict = {val[0] : val[1] for val in sorted(my_dict.items(), key=lambda x: (-x[1], x[0]))}
     print(my_dict)
     return list(my_dict.keys())
@@ -108,14 +108,16 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
 
 if __name__ == '__main__':
     tweet1 = Tweet("@realDonaldTrump", "Despite the negative press covfefe #bigsmart", 6, 8)
-    tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 5, 8)
+    tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 5, 99)
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 5, 15)
     tweet4 = Tweet("@Google", "Its a prank. #heart", 1, 100)
     tweet5 = Tweet("@Patrick", "NOOOOOOOOOOOOOOOOOOO #Stone", 2, 16)
     tweet6 = Tweet("@elonmusk", "Car is red, sun is moon #heart", 3, 100)
-    tweets = [tweet1, tweet2, tweet3, tweet4, tweet5, tweet6]
+    tweet7 = Tweet("@elonmusk", "Car is red, sun is moon #Beast", 3, 16)
+    tweets = [tweet1, tweet2, tweet3, tweet4, tweet5, tweet6, tweet7]
 
     sorted_hashtags = sort_hashtags_by_popularity(tweets)
     print(sorted_hashtags[0])  # -> "#heart"
     print(sorted_hashtags[1])
     print(sorted_hashtags[2])
+    print(sorted_hashtags[3])
