@@ -1,4 +1,5 @@
 """Twitter."""
+import re
 
 
 class Tweet:
@@ -91,7 +92,18 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
     :param tweets: Input list of tweets.
     :return: List of hashtags by popularity.
     """
-    pass
+    result = []
+    retweet_list = []
+    for x in tweets:
+        result.extend(re.findall(r'#\w+', x.content))
+        retweet_list.append(x.retweets)
+    my_dict = {}
+    for s, t in zip(result, retweet_list):
+        my_dict[s] = my_dict.get(s, 0) + t
+    print(my_dict)
+    my_dict = {val[0] : val[1] for val in sorted(my_dict.items(), key=lambda x: (-x[1], x[0]))}
+    print(my_dict)
+    return list(my_dict.keys())
 
 
 if __name__ == '__main__':
@@ -99,14 +111,11 @@ if __name__ == '__main__':
     tweet2 = Tweet("@elonmusk", "Technically, alcohol is a solution #bigsmart", 5, 8)
     tweet3 = Tweet("@CIA", "We can neither confirm nor deny that this is our first tweet. #heart", 5, 15)
     tweet4 = Tweet("@Google", "Its a prank. #heart", 1, 100)
-    tweet5 = Tweet("@Patrick", "NOOOOOOOOOOOOOOOOOOO #heart", 2, 15)
+    tweet5 = Tweet("@Patrick", "NOOOOOOOOOOOOOOOOOOO #Stone", 2, 16)
     tweet6 = Tweet("@elonmusk", "Car is red, sun is moon #heart", 3, 100)
     tweets = [tweet1, tweet2, tweet3, tweet4, tweet5, tweet6]
 
-
-    filtered_by_hashtag = filter_by_hashtag(tweets, "#bigsmart")
-    print(filtered_by_hashtag[0].user)  # -> "@realDonaldTrump"
-    print(filtered_by_hashtag[1].user)  # -> "@elonMusk"
-
-    #sorted_hashtags = sort_hashtags_by_popularity(tweets)
-    #print(sorted_hashtags[0])  # -> "#heart"
+    sorted_hashtags = sort_hashtags_by_popularity(tweets)
+    print(sorted_hashtags[0])  # -> "#heart"
+    print(sorted_hashtags[1])
+    print(sorted_hashtags[2])
