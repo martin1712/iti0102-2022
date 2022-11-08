@@ -47,8 +47,8 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     """
     for i in people:
         if hobby not in i.hobbies:
-            people_list.pop(0)
-    return people_list
+            people.pop(0)
+    return people
 
 
 def sort_by_most_hobbies(people_list: list) -> list:
@@ -95,6 +95,7 @@ if __name__ == '__main__':
     people = [person1, person2, person3]
 
     print(filter_by_hobby(people, "space"))  # -> [JeffBezos, ElonMusk]
+
 
     # print(sort_by_most_hobbies(people))  # -> [JeffBezos, ElonMusk, MariKukk]
 
