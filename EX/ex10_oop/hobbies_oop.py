@@ -37,7 +37,7 @@ class Person:
         return self.full_name
 
 
-def filter_by_hobby(hobby: str) -> list:
+def filter_by_hobby(people_list: list, hobby: str) -> list:
     """
     Return list of people that have the given hobby in their list of hobbies.
 
