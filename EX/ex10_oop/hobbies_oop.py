@@ -45,11 +45,6 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     :param hobby: hobby to filter by.
     :return: filtered list of people.
     """
-    print(people_list)
-    for i in people:
-        if hobby not in i.hobbies:
-            people.pop(0)
-    return people
 
 
 def sort_by_most_hobbies(people_list: list) -> list:
@@ -95,8 +90,7 @@ if __name__ == '__main__':
     person3 = Person("Elon", "Musk", ["late_capitalism", "space", "cars"])
     people = [person1, person2, person3]
 
-    print(filter_by_hobby(people, "space"))  # -> [JeffBezos, ElonMusk]
-
+    print(filter_by_hobby(people, "programming"))  # -> [JeffBezos, ElonMusk]
 
     # print(sort_by_most_hobbies(people))  # -> [JeffBezos, ElonMusk, MariKukk]
 
