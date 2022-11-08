@@ -7,7 +7,7 @@ class Tweet:
 
     def __init__(self, user: str, content: str, time: float, retweets: int):
         """
-        Tweet constructor.
+        Tweet constuctor.
 
         :param user: Author of the tweet.
         :param content: Content of the tweet.
