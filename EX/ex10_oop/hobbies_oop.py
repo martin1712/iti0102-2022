@@ -45,6 +45,7 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     :param hobby: hobby to filter by.
     :return: filtered list of people.
     """
+    print(people_list)
     for i in people:
         if hobby not in i.hobbies:
             people.pop(0)
