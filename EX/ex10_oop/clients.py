@@ -1,5 +1,6 @@
 """Client."""
 from typing import Optional
+import csv
 
 
 class Client:
@@ -55,10 +56,10 @@ def read_from_file_into_list(filename: str) -> list:
     :return: list of clients.
     """
     result = []
-    with open(filename) as f:
-        for row in f:
-            a = row.split(",")
-            result.append(a[0])
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            result.append(Client(row[0], row[1], int(row[2]), int(row[3]), int(row[4])))
     return result
 
 
