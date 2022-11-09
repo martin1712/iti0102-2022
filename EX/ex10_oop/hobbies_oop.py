@@ -94,7 +94,11 @@ def sort_people_and_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    pass
+    result = []
+    for i in people_list:
+        result.insert(0, i)
+    sorted_list = sorted(result, key=lambda x: (x.full_name, x.hobbies))
+    return sorted_list
 
 
 if __name__ == '__main__':
@@ -104,7 +108,5 @@ if __name__ == '__main__':
     person4 = Person("Arti", "Sunny", ["eat", "biking"])
     people = [person1, person2, person3, person4]
 
-    print(sort_by_least_hobbies(people))   # -> [ElonMusk, MariKukk, JeffBezos]
-
-    # print(sort_people_and_hobbies(people))  # -> [ElonMusk, JeffBezos, MariKukk]
-    # print(person1.hobbies)  # -> ['biking', 'dancing', 'programming']
+    print(sort_people_and_hobbies(people))  # -> [ElonMusk, JeffBezos, MariKukk]
+    print(person1.hobbies)  # -> ['biking', 'dancing', 'programming']
