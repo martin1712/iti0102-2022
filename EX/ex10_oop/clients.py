@@ -71,7 +71,14 @@ def filter_by_bank(filename: str, bank: str) -> list:
     :param bank: to filter by.
     :return: filtered list of people.
     """
-    pass
+    result = []
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            if bank in row[1]:
+                result.append(Client(row[0], row[1], int(row[2]), int(row[3]), int(row[4])))
+    return result
+
 
 
 def largest_earnings_per_day(filename: str) -> Optional[Client]:
@@ -99,9 +106,8 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
 
 
 if __name__ == '__main__':
-    print(read_from_file_into_list("clients_info.txt"))  # -> [Ann, Mark, Josh, Jonah, Franz]
-
-    # print(filter_by_bank("clients_info.txt", "Sprint"))  # -> [Ann, Mark]
+    print(read_from_file_into_list("clients_info.txt"))
+    print(filter_by_bank("clients_info.txt", "Sprint"))  # -> [Ann, Mark]
 
     # print(largest_earnings_per_day("clients_info.txt"))  # -> Josh
 
