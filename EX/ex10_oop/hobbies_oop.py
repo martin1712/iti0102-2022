@@ -95,7 +95,7 @@ def sort_people_and_hobbies(people_list: list) -> list:
     :return: sorted list of people.
     """
     sorted_list = sorted(people_list, key=lambda x: x.full_name)
-    for i in people:
+    for i in people_list:
         i.hobbies.sort()
     return sorted_list
 
@@ -108,4 +108,4 @@ if __name__ == '__main__':
     people = [person1, person2, person3, person4]
 
     print(sort_people_and_hobbies(people))  # -> [ElonMusk, JeffBezos, MariKukk]
-    print(person1.hobbies)  # -> ['biking', 'dancing', 'programming']
+    print(person4.hobbies)  # -> ['biking', 'dancing', 'programming']
