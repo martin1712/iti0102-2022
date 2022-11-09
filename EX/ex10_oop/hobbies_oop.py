@@ -87,8 +87,8 @@ def sort_by_least_hobbies(people_list: list) -> list:
 
 
 def sort_people_and_hobbies(people_list: list) -> list:
-    """
 
+    """
     Return a list of people but sorted alphabetically by their full name.
     Also sort their list of hobbies alphabetically.
 
