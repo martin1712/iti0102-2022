@@ -54,7 +54,12 @@ def read_from_file_into_list(filename: str) -> list:
     :param filename: name of file to get info from.
     :return: list of clients.
     """
-    pass
+    result = []
+    with open(filename) as f:
+        for row in f:
+            a = row.split(",")
+            result.append(a[0])
+    return result
 
 
 def filter_by_bank(filename: str, bank: str) -> list:
