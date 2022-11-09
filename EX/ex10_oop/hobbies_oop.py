@@ -65,7 +65,7 @@ def sort_by_most_hobbies(people_list: list) -> list:
     result = []
     for i in people_list:
         result.insert(0, i)
-    sorted_list = sorted(result, key=lambda x: len(x.hobbies), reverse=True)
+    sorted_list = sorted(result, key=lambda x: len(x.hobbies))
     return sorted_list
 
 
@@ -84,7 +84,6 @@ def sort_by_least_hobbies(people_list: list) -> list:
         result.insert(0, i)
     sorted_list = sorted(result, key=lambda x: len(x.hobbies))
     return sorted_list
-
 
 
 def sort_people_and_hobbies(people_list: list) -> list:
