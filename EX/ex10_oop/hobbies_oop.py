@@ -90,7 +90,8 @@ def sort_people_and_hobbies(people_list: list) -> list:
     """
     Return a list of people but sorted alphabetically by their full name.
     Also sort their list of hobbies alphabetically.
-    :param people_list: list of people to sort.
+
+    : param people_list: list of people to sort.
     :return: sorted list of people.
     """
     sorted_list = sorted(people_list, key=lambda x: x.full_name)
