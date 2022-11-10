@@ -67,7 +67,6 @@ def succeeding_students(student_list: list) -> list:
     return result
 
 
-
 def failing_students(student_list: list) -> list:
     """
     Return a list of students that are failing school.
@@ -93,7 +92,12 @@ def sort_by_best_grade(student_list: list) -> list:
     :param student_list: a list of students
     :return: sorted list of succeeding students by average grade in descending order
     """
-    pass
+    result = []
+    for i in students:
+        if i.grade >= 1:
+            result.insert(0, i)
+    sorted_list = sorted(result, key=lambda x: x.grade, reverse=True)
+    return sorted_list
 
 
 def sort_by_worst_grade(student_list: list) -> list:
@@ -117,8 +121,6 @@ if __name__ == '__main__':
     student4 = Student("Marcus", ["Web application", "Computers", "Artificial Intelligence"], 4.2)
     students = [student1, student2, student3, student4]
 
-
-
-    # print(sort_by_best_grade(students))  # -> [Marcus, Ann, Josh]
+    print(sort_by_best_grade(students))  # -> [Marcus, Ann, Josh]
 
     # print(sort_by_worst_grade(students))  # -> [Josh, Ann, Marcus]
