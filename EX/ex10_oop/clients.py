@@ -30,7 +30,7 @@ class Client:
         self.account_age = account_age
         self.starting_amount = starting_amount
         self.current_amount = current_amount
-        self.earnings_per_day = (self.starting_amount - self.current_amount) / self.account_age
+        self.earnings_per_day = (self.current_amount - self.starting_amount) / self.account_age
 
     def __repr__(self):
         """
@@ -95,7 +95,7 @@ def largest_earnings_per_day(filename: str) -> Optional[Client]:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
             result.append(Client(row[0], row[1], int(row[2]), int(row[3]), int(row[4])))
-    sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day)
+    sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day, reverse=True)
     return sorted_result[0]
 
 
