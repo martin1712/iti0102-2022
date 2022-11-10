@@ -17,7 +17,6 @@ class Student:
         self.courses = courses
         self.grade = grade
 
-
     def __repr__(self):
         """Student representation."""
         return self.name
@@ -26,6 +25,7 @@ class Student:
 def filter_by_course(student_list: list, course: str) -> list:
     """
     Return a filtered list of students that are taking a certain course.
+
     The name of the course is in the list of courses for the student.
 
     :param student_list: a list of Students
@@ -42,6 +42,7 @@ def filter_by_course(student_list: list, course: str) -> list:
 def is_failing(student: Student) -> bool:
     """
     Return true if the student is failing school.
+
     They are failing if their average grade is below 1.0.
 
     :param student: a Student object
