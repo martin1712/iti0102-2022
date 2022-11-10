@@ -93,7 +93,7 @@ def sort_by_best_grade(student_list: list) -> list:
     :return: sorted list of succeeding students by average grade in descending order
     """
     result = []
-    for i in students:
+    for i in student_list:
         if i.grade >= 1:
             result.insert(0, i)
     sorted_list = sorted(result, key=lambda x: x.grade, reverse=True)
