@@ -112,10 +112,19 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
     :param filename: name of file to get info from.
     :return: client with largest loss.
     """
-    pass
+    result = []
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            if (int(row[4]) - int(row[3])) / int(row[2]) < 0:
+                result.append(Client(row[0], row[1], int(row[2]), int(row[3]), int(row[4])))
+    if len(result) == 0:
+        return None
+    else:
+        sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day, reverse=True)
+        return sorted_result[0]
+
 
 
 if __name__ == '__main__':
-    print(largest_earnings_per_day("clients_info.txt"))  # -> Josh
-
-    # print(largest_loss_per_day("clients_info.txt"))  # -> Franz
+    print(largest_loss_per_day("clients_info.txt"))  # -> Franz
