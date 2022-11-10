@@ -121,7 +121,7 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
     if len(result) == 0:
         return None
     else:
-        sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day, reverse=True)
+        sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day)
         return sorted_result[0]
 
 
