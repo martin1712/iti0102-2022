@@ -47,7 +47,10 @@ def is_failing(student: Student) -> bool:
     :param student: a Student object
     :return: if student is failing
     """
-    pass
+    if student.grade < 1:
+        return True
+    else:
+        return False
 
 
 def succeeding_students(student_list: list) -> list:
@@ -105,10 +108,10 @@ if __name__ == '__main__':
     student4 = Student("Marcus", ["Web application", "Computers", "Artificial Intelligence"], 4.2)
     students = [student1, student2, student3, student4]
 
-    print(filter_by_course(students, "Maths"))  # -> [Ann, Josh]
 
-    # print(is_failing(student3))  # -> True
-    # print(is_failing(student1))  # -> False
+
+    print(is_failing(student3))  # -> True
+    print(is_failing(student1))  # -> False
 
     # print(succeeding_students(students))  # -> [Ann, Josh, Marcus]
 
