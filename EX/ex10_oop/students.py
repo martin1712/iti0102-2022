@@ -75,7 +75,11 @@ def failing_students(student_list: list) -> list:
     :param student_list: a list of students
     :return: filtered list of students that are failing
     """
-    pass
+    result = []
+    for i in student_list:
+        if i.grade < 1:
+            result.append(i)
+    return result
 
 
 def sort_by_best_grade(student_list: list) -> list:
@@ -113,9 +117,7 @@ if __name__ == '__main__':
     student4 = Student("Marcus", ["Web application", "Computers", "Artificial Intelligence"], 4.2)
     students = [student1, student2, student3, student4]
 
-    print(succeeding_students(students))  # -> [Ann, Josh, Marcus]
 
-    # print(failing_students(students))  # -> [Bush]
 
     # print(sort_by_best_grade(students))  # -> [Marcus, Ann, Josh]
 
