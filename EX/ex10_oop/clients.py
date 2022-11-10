@@ -96,8 +96,11 @@ def largest_earnings_per_day(filename: str) -> Optional[Client]:
         for row in csv_reader:
             if (int(row[4]) - int(row[3])) / int(row[2]) > 0:
                 result.append(Client(row[0], row[1], int(row[2]), int(row[3]), int(row[4])))
-    sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day, reverse=True)
-    return sorted_result[0]
+    if len(result) == 0:
+        return None
+    else:
+        sorted_result = sorted(sorted(result, key=lambda x: x.account_age), key=lambda x: x.earnings_per_day, reverse=True)
+        return sorted_result[0]
 
 
 def largest_loss_per_day(filename: str) -> Optional[Client]:
