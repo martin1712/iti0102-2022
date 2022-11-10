@@ -111,7 +111,12 @@ def sort_by_worst_grade(student_list: list) -> list:
     :param student_list: a list of students
     :return: sorted list of succeeding students by average grade in ascending order
     """
-    pass
+    result = []
+    for i in student_list:
+        if i.grade >= 1:
+            result.insert(0, i)
+    sorted_list = sorted(result, key=lambda x: x.grade)
+    return sorted_list
 
 
 if __name__ == '__main__':
@@ -121,6 +126,4 @@ if __name__ == '__main__':
     student4 = Student("Marcus", ["Web application", "Computers", "Artificial Intelligence"], 4.2)
     students = [student1, student2, student3, student4]
 
-    print(sort_by_best_grade(students))  # -> [Marcus, Ann, Josh]
-
-    # print(sort_by_worst_grade(students))  # -> [Josh, Ann, Marcus]
+    print(sort_by_worst_grade(students))  # -> [Josh, Ann, Marcus]
