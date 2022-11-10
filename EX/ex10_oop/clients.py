@@ -125,6 +125,5 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
         return sorted_result[0]
 
 
-
 if __name__ == '__main__':
     print(largest_loss_per_day("clients_info.txt"))  # -> Franz
