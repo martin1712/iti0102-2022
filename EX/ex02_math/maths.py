@@ -1,6 +1,6 @@
 
 
-"""Maths exercise."""
+"""Maths exercisee."""
 
 
 def average(a: int, b: int, c: int, d: int) -> float:
