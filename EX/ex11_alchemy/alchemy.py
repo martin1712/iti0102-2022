@@ -76,7 +76,12 @@ class AlchemicalStorage:
 
         :return: A list of all of the elements that were previously in the storage.
         """
-        return []
+        # copy the storage_list into out_list and then clear it
+        # only works once!
+        out_list = self.elements.copy()
+        self.elements.clear()
+        return out_list
+
 
     def get_content(self) -> str:
         """
