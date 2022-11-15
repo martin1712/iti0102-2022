@@ -1,6 +1,5 @@
 """Alchemy."""
 import collections
-from collections import Counter
 
 
 class AlchemicalElement:
@@ -11,9 +10,11 @@ class AlchemicalElement:
     """
 
     def __init__(self, name: str):
+        """Name for element."""
         self.name = name
 
     def __repr__(self):
+        """How to represent an element."""
         return f"<AE: {self.name}>"
 
 
@@ -28,7 +29,6 @@ class AlchemicalStorage:
         """
         self.elements = []
 
-
     def add(self, element: AlchemicalElement):
         """
         Add element to storage.
@@ -41,7 +41,6 @@ class AlchemicalStorage:
             self.elements.append(element)
         else:
             raise TypeError
-
 
     def pop(self, element_name: str) -> AlchemicalElement or None:
         """
@@ -58,7 +57,6 @@ class AlchemicalStorage:
                 self.elements.remove(element)
                 return element
         return None
-
 
     def extract(self) -> list[AlchemicalElement]:
         """
@@ -81,7 +79,6 @@ class AlchemicalStorage:
         out_list = self.elements.copy()
         self.elements.clear()
         return out_list
-
 
     def get_content(self) -> str:
         """
