@@ -113,7 +113,7 @@ class AlchemicalStorage:
                 elements_dict[element.name] += 1
         sorted_dict = collections.OrderedDict(sorted(elements_dict.items()))
         for key, value in sorted_dict.items():
-            result.append(f"* {key} x {value}")
+            result.append(f" * {key} x {value}")
         return "Contents:\n" + "\n".join(result)
 
 
