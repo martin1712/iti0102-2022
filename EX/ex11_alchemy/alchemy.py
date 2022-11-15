@@ -113,7 +113,7 @@ class AlchemicalStorage:
                 elements_dict[element.name] += 1
         sorted_dict = collections.OrderedDict(sorted(elements_dict.items()))
         for key, value in sorted_dict.items():
-            result.append(f" * {key} x {value}")
+            result.append(f"* {key} x {value}")
         return "Contents:\n" + "\n".join(result)
 
 
@@ -128,13 +128,7 @@ if __name__ == '__main__':
     storage.add(element_two)
     storage.add(element_three)
     storage.add(element_four)
-    print(storage)
-    print(storage.get_content())
-    # Content:
-    #  * Fire x 1
-    #  * Water x 1
 
-    print(storage.extract())  # [<AE: Fire>, <AE: Water>]
     print(storage.get_content())
 
 
