@@ -78,8 +78,6 @@ class AlchemicalStorage:
 
         :return: A list of all of the elements that were previously in the storage.
         """
-        # copy the storage_list into out_list and then clear it
-        # only works once!
         out_list = self.elements.copy()
         self.elements.clear()
         return out_list
@@ -114,7 +112,7 @@ class AlchemicalStorage:
         sorted_dict = collections.OrderedDict(sorted(elements_dict.items()))
         for key, value in sorted_dict.items():
             result.append(f" * {key} x {value}")
-        return "Contents:\n" + "\n".join(result)
+        return "Content:\n" + "\n".join(result)
 
 
 if __name__ == '__main__':
@@ -130,9 +128,6 @@ if __name__ == '__main__':
     storage.add(element_four)
 
     print(storage.get_content())
-
-
-
 
     print(storage.pop('Water') == element_three)  # True
     print(storage.pop('Water') == element_two)  # True
