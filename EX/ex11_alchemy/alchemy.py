@@ -1,4 +1,5 @@
 """Alchemy."""
+import collections
 
 
 class AlchemicalElement:
@@ -102,34 +103,41 @@ class AlchemicalStorage:
 
         :return: Content as a string.
         """
-        return ''
+        result = []
+        elements_dict = {}
+        for element in self.elements:
+            if element.name not in elements_dict:
+                elements_dict[element.name] = 1
+            else:
+                elements_dict[element.name] += 1
+        sorted_dict = collections.OrderedDict(sorted(elements_dict.items()))
+        for key, value in sorted_dict:
+            result.append(f"* {key.name} x {value}")
+        return "Contents:\n" + "\n".join(result)
 
 
 if __name__ == '__main__':
     element_one = AlchemicalElement('Fire')
     element_two = AlchemicalElement('Water')
     element_three = AlchemicalElement('Water')
+    element_four = AlchemicalElement('Air')
     storage = AlchemicalStorage()
-
-    print(element_one)  # <AE: Fire>
-    print(element_two)  # <AE: Water>
 
     storage.add(element_one)
     storage.add(element_two)
+    storage.add(element_three)
+    storage.add(element_four)
     print(storage)
     print(storage.get_content())
     # Content:
     #  * Fire x 1
     #  * Water x 1
 
-    # print(storage.extract())  # [<AE: Fire>, <AE: Water>]
-    # print(storage.get_content())
-    # Content:
-    #  Empty
+    print(storage.extract())  # [<AE: Fire>, <AE: Water>]
+    print(storage.get_content())
 
-    # storage.add(element_one)
-    # storage.add(element_two)
-    # storage.add(element_three)
 
-    # print(storage.pop('Water') == element_three)  # True
-    # print(storage.pop('Water') == element_two)  # True
+
+
+    print(storage.pop('Water') == element_three)  # True
+    print(storage.pop('Water') == element_two)  # True
