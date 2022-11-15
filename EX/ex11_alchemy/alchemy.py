@@ -41,8 +41,6 @@ class AlchemicalStorage:
             raise TypeError
 
 
-
-
     def pop(self, element_name: str) -> AlchemicalElement or None:
         """
         Remove and return previously added element from storage by its name.
@@ -53,7 +51,12 @@ class AlchemicalStorage:
         :param element_name: Name of the element to remove.
         :return: The removed AlchemicalElement object or None.
         """
+        for element in reversed(self.elements):
+            if element.name == element_name:
+                self.elements.remove(element)
+                return element
         return None
+
 
     def extract(self) -> list[AlchemicalElement]:
         """
@@ -108,8 +111,8 @@ if __name__ == '__main__':
 
     storage.add(element_one)
     storage.add(element_two)
-
-    # print(storage.get_content())
+    print(storage)
+    print(storage.get_content())
     # Content:
     #  * Fire x 1
     #  * Water x 1
