@@ -112,7 +112,10 @@ class AlchemicalStorage:
         sorted_dict = collections.OrderedDict(sorted(elements_dict.items()))
         for key, value in sorted_dict.items():
             result.append(f" * {key} x {value}")
-        return "Content:\n" + "\n".join(result)
+        if len(result) >= 1:
+            return "Content:\n" + "\n".join(result)
+        else:
+            return "Content:\n Empty."
 
 
 if __name__ == '__main__':
