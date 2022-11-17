@@ -146,6 +146,8 @@ class AlchemicalRecipes:
         result.append(product_name)
         if result not in self.recipes:
             self.recipes.append(result)
+        if result in self.recipes:
+            raise RecipeOverlapException()
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
