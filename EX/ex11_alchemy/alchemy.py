@@ -144,9 +144,10 @@ class AlchemicalRecipes:
         result.append(first_component_name)
         result.append(second_component_name)
         result.append(product_name)
+        print(result)
         if result not in self.recipes:
             self.recipes.append(result)
-        if result in self.recipes:
+        else:
             raise RecipeOverlapException()
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
@@ -214,6 +215,9 @@ if __name__ == '__main__':
     recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
+    recipes.add_recipe('Water', 'Iron', 'Rust')
+    recipes.add_recipe('Water', 'Air', 'Iron')
+
 
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
