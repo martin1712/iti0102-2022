@@ -149,11 +149,13 @@ class AlchemicalRecipes:
         result.insert(0, sorted_names)
         if len(self.recipes) == 0:
             self.recipes.append(result)
-        for i in self.recipes:
-            if result[0] in i[0]:
-                raise RecipeOverlapException()
-            self.recipes.append(result)
-
+        if len(self.recipes) >= 1:
+            for i in self.recipes:
+                if result[0] == i[0]:
+                    raise RecipeOverlapException()
+                else:
+                    self.recipes.append(result)
+        print(self.recipes)
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
@@ -220,7 +222,6 @@ if __name__ == '__main__':
     recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
-    recipes.add_recipe('Iron', 'Water', 'Rust')
 
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
