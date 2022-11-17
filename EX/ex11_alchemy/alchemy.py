@@ -138,17 +138,22 @@ class AlchemicalRecipes:
         :param second_component_name: The name of the second component element.
         :param product_name: The name of the product element.
         """
+        names = []
         result = []
         if first_component_name == second_component_name or second_component_name == product_name or first_component_name == product_name:
             raise DuplicateRecipeNamesException()
-        result.append(first_component_name)
-        result.append(second_component_name)
+        names.append(first_component_name)
+        names.append(second_component_name)
         result.append(product_name)
-        print(result)
-        if result not in self.recipes:
+        sorted_names = sorted(names)
+        result.insert(0, sorted_names)
+        if len(self.recipes) == 0:
             self.recipes.append(result)
-        else:
-            raise RecipeOverlapException()
+        for i in self.recipes:
+            if result[0] in i[0]:
+                raise RecipeOverlapException()
+            self.recipes.append(result)
+
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
@@ -215,9 +220,7 @@ if __name__ == '__main__':
     recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
-    recipes.add_recipe('Water', 'Iron', 'Rust')
-    recipes.add_recipe('Water', 'Air', 'Iron')
-
+    recipes.add_recipe('Iron', 'Water', 'Rust')
 
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
