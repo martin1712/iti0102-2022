@@ -152,8 +152,6 @@ class AlchemicalRecipes:
                 raise RecipeOverlapException
         if names not in self.recipes:
             self.recipes.append(names)
-        else:
-            raise RecipeOverlapException
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
@@ -217,8 +215,6 @@ class Cauldron(AlchemicalStorage):
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
-    recipes.add_recipe('Fire', 'Water', 'Steam')
-    recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
