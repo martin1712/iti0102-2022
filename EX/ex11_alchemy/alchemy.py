@@ -148,10 +148,10 @@ class AlchemicalRecipes:
         if len(self.recipes) == 0:
             self.recipes.append(names)
         for i in self.recipes:
-            if names[:2] == i[:2]:
-                if names[2] != i[2]:
-                    raise RecipeOverlapException()
-        self.recipes.append(names)
+            if names[:2] == i[:2] and names[2] != i[2]:
+                raise RecipeOverlapException()
+        else:
+            self.recipes.append(names)
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
