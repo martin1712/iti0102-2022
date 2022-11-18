@@ -215,6 +215,8 @@ class Cauldron(AlchemicalStorage):
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
+    recipes.add_recipe('Fire', 'Water', 'Steam')
+    recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
