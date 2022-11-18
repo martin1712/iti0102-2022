@@ -150,8 +150,11 @@ class AlchemicalRecipes:
         for i in self.recipes:
             if names[:2] == i[:2] and names[2] != i[2] or names[:2] != i[:2] and names[2] == i[2]:
                 raise RecipeOverlapException()
-        if names not in self.recipes:
-            self.recipes.append(names)
+        print(names)
+        if names in self.recipes:
+            raise DuplicateRecipeNamesException()
+        self.recipes.append(names)
+
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
