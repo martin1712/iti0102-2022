@@ -148,7 +148,7 @@ class AlchemicalRecipes:
         if len(self.recipes) == 0:
             self.recipes.append(names)
         for i in self.recipes:
-            if names[:2] == i[:2] and names[2] != i[2]:
+            if names[:2] == i[:2] and names[2] != i[2] or names[:2] != i[:2] and names[2] == i[2]:
                 raise RecipeOverlapException()
         self.recipes.append(names)
 
@@ -215,8 +215,11 @@ class Cauldron(AlchemicalStorage):
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
     recipes.add_recipe('Fire', 'Water', 'Steam')
-    recipes.add_recipe('Fire', 'Earth', 'Iron')
-    recipes.add_recipe('Water', 'Iron', 'Rust')
+    recipes.add_recipe('Water', 'Fire', 'Steam')
+    recipes.add_recipe('Earth', 'Iron', 'Steam')
+    recipes.add_recipe('Water', 'Fire', 'Iron')
+    recipes.add_recipe('Earth', 'Earth', 'Air')
+    recipes.add_recipe('Gold', 'Silver', 'Gold')
 
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
