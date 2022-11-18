@@ -140,7 +140,7 @@ class AlchemicalRecipes:
         """
         names = []
         if first_component_name == second_component_name or second_component_name == product_name or first_component_name == product_name:
-            raise DuplicateRecipeNamesException()
+            raise DuplicateRecipeNamesException
         names.append(first_component_name)
         names.append(second_component_name)
         names = sorted(names)
