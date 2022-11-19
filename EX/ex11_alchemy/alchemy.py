@@ -218,6 +218,7 @@ if __name__ == '__main__':
     recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
     recipes.add_recipe('Water', 'Iron', 'Rust')
+    recipes.add_recipe('Water', 'Iron', 'Air')
     print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
 
     try:
