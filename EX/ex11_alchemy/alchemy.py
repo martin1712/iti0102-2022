@@ -148,7 +148,7 @@ class AlchemicalRecipes:
         for i in self.recipes:
             if names in i:
                 raise RecipeOverlapException
-            if names[:2] == i[:2] and names[2] != i[2]:
+            if names[:2] == i[:2] and names[2] != i[2] or names[:2] != i[:2] and names[2] == i[2]:
                 raise RecipeOverlapException
         self.recipes.append(names)
         print(self.recipes)
