@@ -146,13 +146,11 @@ class AlchemicalRecipes:
         names = sorted(names)
         names.append(product_name)
         for i in self.recipes:
-            if names[:2] == i[:2] and names[2] != i[2]:
-                raise RecipeOverlapException
-        for i in self.recipes:
             if names == i:
                 raise RecipeOverlapException
+            if names[:2] == i[:2] and names[2] != i[2]:
+                raise RecipeOverlapException
         self.recipes.append(names)
-        print(self.recipes)
 
     def get_product_name(self, first_component_name: str, second_component_name: str) -> str | None:
         """
@@ -176,6 +174,13 @@ class AlchemicalRecipes:
         :param second_component_name: The name of the second component element.
         :return: The name of the product element or None.
         """
+        print(self.recipes)
+        for i in self.recipes:
+            if first_component_name == i[0] and second_component_name == i[1]:
+                return i[2]
+            if first_component_name == i[1] and second_component_name == i[0]:
+                return i[2]
+
 
 
 class DuplicateRecipeNamesException(Exception):
@@ -216,25 +221,11 @@ class Cauldron(AlchemicalStorage):
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
-    recipes.add_recipe('Water', 'Mud', 'Air')
-    recipes.add_recipe('Fire', 'water', 'Steam')
+    recipes.add_recipe('Fire', 'Water', 'Steam')
     recipes.add_recipe('Fire', 'Earth', 'Iron')
-    recipes.add_recipe('Fire', 'water', 'Steam')
-    print(recipes.get_product_name('Water', 'Fire'))  # -> 'Steam'
+    recipes.add_recipe('Water', 'Iron', 'Rust')
 
-    try:
-        recipes.add_recipe('Fire', 'Something else', 'Fire')
-        print('Did not raise, not working as intended.')
-
-    except DuplicateRecipeNamesException:
-        print('Raised DuplicateRecipeNamesException, working as intended!')
-
-    try:
-        recipes.add_recipe('Fire', 'Earth', 'Gold')
-        print('Did not raise, not working as intended.')
-
-    except RecipeOverlapException:
-        print('Raised RecipeOverlapException, working as intended!')
+    print(recipes.get_product_name('Fire', 'Water'))  # -> 'Steam'
 
     cauldron = Cauldron(recipes)
     cauldron.add(AlchemicalElement('Earth'))
