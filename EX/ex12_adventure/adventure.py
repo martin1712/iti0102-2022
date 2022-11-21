@@ -23,13 +23,13 @@ class Adventurer:
         """Power."""
         self.power = self.power + power
 
-
     def add_experience(self, exp: int):
         """Exp."""
+        self.experience = self.experience + exp
         if self.experience > 99:
             self.power = self.power + self.experience // 10
             self.experience = 0
-        self.experience = self.experience + exp
+
 
 class World:
     pass
@@ -55,5 +55,6 @@ if __name__ == "__main__":
 
     print("Peep, sa tundud kuidagi nõrk, ma lisasin sulle natukene tugevust.")
     friend.add_power(20)
+    friend.add_experience(200)
     print(friend)  # -> "Peep, the Druid, Power: 45, Experience: 0."
     print()
