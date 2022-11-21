@@ -31,7 +31,7 @@ class Adventurer:
         else:
             self.experience = self.experience + exp
             if self.experience > 99:
-                self.power = self.power + math.ceil(self.experience / 10)
+                self.power = self.power + math.ceil(self.experience // 10)
                 self.experience = 0
 
 
