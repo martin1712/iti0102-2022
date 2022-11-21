@@ -17,7 +17,7 @@ class Adventurer:
 
     def __repr__(self):
         """How to represent data."""
-        return f'"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."'
+        return f'{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}.'
 
     def add_power(self, power: int):
         """Power."""
