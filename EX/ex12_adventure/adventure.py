@@ -13,6 +13,7 @@ class Adventurer:
         if power > 99:
             power = 10
         self.power = power
+
         self.experience = max(0, experience)
 
     def __repr__(self):
@@ -21,20 +22,14 @@ class Adventurer:
 
     def add_power(self, power: int):
         """Power."""
-        if power < 0:
-            pass
-        else:
-            self.power += power
+        self.power += power
 
     def add_experience(self, exp: int):
         """Exp."""
-        if exp < 0:
-            pass
-        else:
-            self.experience += exp
-            if self.experience > 99:
-                self.power += (self.experience // 10)
-                self.experience = 0
+        self.experience += exp
+        if self.experience > 99:
+            self.power += self.experience // 10
+            self.experience = 0
 
 
 class World:
@@ -47,7 +42,7 @@ class Monster:
 
 if __name__ == "__main__":
     hero = Adventurer("Sander", "Paladin", 50000000, -40)
-    friend = Adventurer("Peep", "Druid", 25, 5)
+    friend = Adventurer("Peep", "Druid", 25, 30)
     another_friend = Adventurer("Toots", "Wizard", 40)
     annoying_friend = Adventurer("XxX_Eepiline_Sõdalane_XxX", "Tulevikurändaja ja ninja", 999999)
 
@@ -61,8 +56,6 @@ if __name__ == "__main__":
 
     print("Peep, sa tundud kuidagi nõrk, ma lisasin sulle natukene tugevust.")
     # riend.add_experience(500)
-    friend.add_power(50)
-    friend.add_experience(200)
-    friend.add_power(50)
+    friend.add_experience(-20)
     print(friend)  # -> "Peep, the Druid, Power: 45, Experience: 0."
     print()
