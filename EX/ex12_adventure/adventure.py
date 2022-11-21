@@ -30,7 +30,7 @@ class Adventurer:
     def add_experience(self, exp: int):
         """Exp."""
         if exp < 0:
-            self.experience = 0
+            pass
         else:
             self.experience = self.experience + exp
             if self.experience > 99:
@@ -47,7 +47,7 @@ class Monster:
 
 
 if __name__ == "__main__":
-    hero = Adventurer("Sander", "Paladin", 50000000)
+    hero = Adventurer("Sander", "Paladin", 50000000, -40)
     friend = Adventurer("Peep", "Druid", 25)
     another_friend = Adventurer("Toots", "Wizard", 40)
     annoying_friend = Adventurer("XxX_Eepiline_Sõdalane_XxX", "Tulevikurändaja ja ninja", 999999)
@@ -61,7 +61,11 @@ if __name__ == "__main__":
     print()
 
     print("Peep, sa tundud kuidagi nõrk, ma lisasin sulle natukene tugevust.")
-    friend.add_power(-10)
-    friend.add_experience(50)
+    friend.add_power(10)
+    friend.add_experience(-155)
+    friend.add_power(10)
+    friend.add_power(10)
+    friend.add_experience(5)
+    friend.add_experience(-155)
     print(friend)  # -> "Peep, the Druid, Power: 45, Experience: 0."
     print()
