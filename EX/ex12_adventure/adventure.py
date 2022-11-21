@@ -41,6 +41,5 @@ class Monster:
 
 
 if __name__ == "__main__":
-    hero = Adventurer("Sander", "Paladin", 50)
-    print(hero) # "Sander, the Paladin, Power: 50, Experience: 0."
-                # "Sander, the Paladin, Power: 50, Experience: 0."
+    hero = Adventurer("Toots", "the Fighter", 10)
+    print(hero)
