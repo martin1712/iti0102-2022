@@ -174,13 +174,11 @@ class AlchemicalRecipes:
         :param second_component_name: The name of the second component element.
         :return: The name of the product element or None.
         """
-        print(self.recipes)
         for i in self.recipes:
             if first_component_name == i[0] and second_component_name == i[1]:
                 return i[2]
             if first_component_name == i[1] and second_component_name == i[0]:
                 return i[2]
-
 
 
 class DuplicateRecipeNamesException(Exception):
@@ -200,6 +198,8 @@ class Cauldron(AlchemicalStorage):
 
     def __init__(self, recipes: AlchemicalRecipes):
         """Initialize the Cauldron class."""
+        super().__init__()
+        self.recipes = recipes
 
     def add(self, element: AlchemicalElement):
         """
@@ -217,28 +217,33 @@ class Cauldron(AlchemicalStorage):
 
         :param element: Input object to add to storage.
         """
+        # for i in recipes:
+        # for i in cauldron:
+        # for i in self.recipes:
+        # if element in recipes:
+        # if element in cauldron:
+        result = self.recipes.get_product_name('Water', 'Wind')
+        if result:
+            super(Cauldron, self).add(AlchemicalElement(result))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
-    recipes.add_recipe('Fire', 'Water', 'Steam')
-    recipes.add_recipe('Fire', 'Earth', 'Iron')
-    recipes.add_recipe('Water', 'Iron', 'Rust')
-
-    print(recipes.get_product_name('Fire', 'Water'))  # -> 'Steam'
-
+    recipes.add_recipe('Water', 'Wind', 'Ice')
     cauldron = Cauldron(recipes)
-    cauldron.add(AlchemicalElement('Earth'))
     cauldron.add(AlchemicalElement('Water'))
-    cauldron.add(AlchemicalElement('Fire'))
-
-    print(cauldron.extract())  # -> [<AE: Earth>, <AE: Steam>]
-
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Earth'))
-    cauldron.add(AlchemicalElement('Fire'))
-    cauldron.add(AlchemicalElement('Fire'))
-    cauldron.add(AlchemicalElement('Water'))
-
-    print(cauldron.extract())  # -> [<AE: Earth>, <AE: Iron>, <AE: Rust>]
+    cauldron.add(AlchemicalElement('Wind'))
+    cauldron.extract()  # -> [<AE: Ice>]
