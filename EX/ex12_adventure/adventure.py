@@ -24,16 +24,16 @@ class Adventurer:
         if power < 0:
             pass
         else:
-            self.power = self.power + power
+            self.power += power
 
     def add_experience(self, exp: int):
         """Exp."""
         if exp < 0:
             pass
         else:
-            self.experience = self.experience + exp
+            self.experience += exp
             if self.experience > 99:
-                self.power = self.power + (self.experience // 10)
+                self.power += (self.experience // 10)
                 self.experience = 0
 
 
