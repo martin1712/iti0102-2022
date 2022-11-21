@@ -17,7 +17,7 @@ class Adventurer:
 
     def __repr__(self):
         """How to represent data."""
-        return f"[{self.name}], the [{self.class_type}], Power: [{self.power}], Experience: [{self.experience}]."
+        return f'"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."'
 
     def add_power(self, power: int):
         """Power."""
@@ -30,3 +30,17 @@ class Adventurer:
             self.power = self.power + result // 10
             self.experience = 0
         return result
+
+
+class World:
+    pass
+
+
+class Monster:
+    pass
+
+
+if __name__ == "__main__":
+    hero = Adventurer("Sander", "Paladin", 50)
+    print(hero) # "Sander, the Paladin, Power: 50, Experience: 0."
+                # "Sander, the Paladin, Power: 50, Experience: 0."
