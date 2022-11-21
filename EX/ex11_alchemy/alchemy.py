@@ -222,9 +222,17 @@ class Cauldron(AlchemicalStorage):
         # for i in self.recipes:
         # if element in recipes:
         # if element in cauldron:
-        result = self.recipes.get_product_name('Water', 'Wind')
-        if result:
-            super(Cauldron, self).add(AlchemicalElement(result))
+
+        for i in cauldron.elements:
+            result = self.recipes.get_product_name(element.name, i)
+            print(result)
+            if result:
+                super(Cauldron, self).add(AlchemicalElement(result))
+
+
+
+
+        # print(cauldron.elements)
 
 
 
@@ -243,7 +251,13 @@ class Cauldron(AlchemicalStorage):
 if __name__ == '__main__':
     recipes = AlchemicalRecipes()
     recipes.add_recipe('Water', 'Wind', 'Ice')
+    recipes.add_recipe('Earth', 'Fire', 'Lava')
+    recipes.add_recipe('Water', 'Fire', 'Obsidian')
     cauldron = Cauldron(recipes)
     cauldron.add(AlchemicalElement('Water'))
     cauldron.add(AlchemicalElement('Wind'))
+    cauldron.add(AlchemicalElement('Fire'))
+    cauldron.add(AlchemicalElement('Earth'))
+    cauldron.add(AlchemicalElement('Fire'))
+    cauldron.add(AlchemicalElement('lava'))
     cauldron.extract()  # -> [<AE: Ice>]
