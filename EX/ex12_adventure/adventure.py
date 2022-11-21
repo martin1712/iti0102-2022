@@ -22,10 +22,7 @@ class Adventurer:
 
     def add_power(self, power: int):
         """Power."""
-        if power < 0:
-            pass
-        else:
-            self.power += power
+        self.power += power
 
     def add_experience(self, exp: int):
         """Exp."""
