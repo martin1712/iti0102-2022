@@ -41,8 +41,8 @@ class Monster:
     def __init__(self, name: str, type: str, power: int):
         """Monster data."""
         self.power = power
-        if type is "Zombie":
-            self.name = "Undead" + name
+        if type == "Zombie":
+            name = "Undead " + name
         self.type = type
         self.name = name
 
@@ -61,6 +61,15 @@ if __name__ == "__main__":
     another_friend = Adventurer("Toots", "Wizard", 40)
     annoying_friend = Adventurer("XxX_Eepiline_Sõdalane_XxX", "Tulevikurändaja ja ninja", 999999)
 
+    print("Oodake veidikene, ma tekitan natukene kolle.")
+    zombie = Monster("Rat", "Zombie", 10)
+    goblin_spear = Monster("Goblin Spearman", "Goblin", 10)
+    goblin_archer = Monster("Goblin Archer", "Goblin", 5)
+    big_ogre = Monster("Big Ogre", "Ogre", 120)
+    gargantuan_badger = Monster("Massive Badger", "Animal", 1590)
+
+    print(big_ogre)  # -> "Big Ogre of type Ogre, Power: 120."
+    print(zombie)  # -> "Undead Rat of type Zombie, Power: 10."
     print(hero)  # -> "Sander, the Paladin, Power: 50, Experience: 0."
     # Ei, tüütu sõber, sa ei saa olla tulevikurändaja ja ninja, nüüd sa pead fighter olema.
     # Ei maksa liiga tugevaks ka ennast alguses teha!
