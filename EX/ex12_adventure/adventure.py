@@ -51,7 +51,9 @@ class Monster:
 
 class World:
     """World class."""
+
     def __init__(self, python_master: str):
+        """Lists and the name of creator."""
         self.python_master = python_master
         self.graveyard = []
         self.adventurers = []
