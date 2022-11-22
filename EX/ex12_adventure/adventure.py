@@ -36,6 +36,7 @@ class Adventurer:
 
 class Monster:
     """Monster class."""
+
     def __init__(self, name: str, type: str, power: int):
         """Monster data."""
         self.power = power
