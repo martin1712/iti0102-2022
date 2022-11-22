@@ -83,7 +83,7 @@ class World:
         if isinstance(hero, Adventurer):
             self.adventurers.append(hero)
 
-    def get_active_adventures(self):
+    def get_active_adventurers(self):
         """Active."""
         return self.active_adventurers
 
