@@ -74,7 +74,7 @@ class World:
         """Get monsters."""
         return self.monsters
 
-    def add_adventurers(self, hero: Adventurer):
+    def add_adventurer(self, hero: Adventurer):
         return self.adventurers.append(hero)
 
 
