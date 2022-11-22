@@ -223,29 +223,13 @@ class Cauldron(AlchemicalStorage):
         # if element in recipes:
         # if element in cauldron:
 
-        for i in cauldron.elements:
+        self.elements.append(element.name)
+        for i in self.elements:
             result = self.recipes.get_product_name(element.name, i)
-            print(result)
+
             if result:
                 super(Cauldron, self).add(AlchemicalElement(result))
-
-
-
-
-        # print(cauldron.elements)
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print(self.elements)
 
 
 if __name__ == '__main__':
