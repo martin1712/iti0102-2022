@@ -1,11 +1,11 @@
-"""Rpg"""
+"""Rpg."""
 
 
 class Adventurer:
     """Adventurer class, wow."""
 
     def __init__(self, name: str, class_type: str, power: int, experience: int = 0):
-        """Data"""
+        """Data."""
         self.name = name
         if class_type not in ["Druid", "Wizard", "Paladin"]:
             class_type = "Fighter"
