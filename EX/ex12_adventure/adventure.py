@@ -58,7 +58,9 @@ class World:
         self.python_master = python_master
         self.graveyard = []
         self.adventurers = []
+        self.active_adventurers = []
         self.monsters = []
+        self.active_monster = []
 
     def get_python_master(self):
         """Get python master."""
@@ -81,7 +83,15 @@ class World:
         if isinstance(hero, Adventurer):
             self.adventurers.append(hero)
 
+    def get_active_adventures(self):
+        """Active."""
+        return self.active_adventurers
+
     def add_monster(self, monster: Monster):
         """Add monster."""
         if isinstance(monster, Monster):
             self.monsters.append(monster)
+
+    def get_active_monsters(self):
+        """Active."""
+        return self.active_monster
