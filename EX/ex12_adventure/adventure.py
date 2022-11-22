@@ -35,12 +35,23 @@ class Adventurer:
                 self.experience = 0
 
 
+class Monster:
+    """Monster class."""
+
+    def __init__(self, name: str, type: str, power: int):
+        """Monster data."""
+        self.power = power
+        if type is "Zombie":
+            self.name = "Undead" + name
+        self.type = type
+        self.name = name
+
+    def __repr__(self):
+        """How to represent data."""
+        return f"{self.name} of type {self.type}, Power: {self.power}."
 
 class World:
-    pass
-
-
-class Monster:
+    """World class."""
     pass
 
 
