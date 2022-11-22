@@ -59,16 +59,23 @@ class World:
         self.monsters = []
 
     def get_python_master(self):
+        """Get python master."""
         return self.python_master
 
     def get_graveyard(self):
+        """Get graveyard."""
         return self.graveyard
 
     def get_adventurers(self):
+        """Get adventurers."""
         return self.adventurers
 
     def get_monsters(self):
+        """Get monsters."""
         return self.monsters
+
+    def add_adventurers(self, hero: Adventurer):
+        return self.adventurers.append(hero)
 
 
 if __name__ == "__main__":
