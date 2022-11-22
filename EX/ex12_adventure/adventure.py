@@ -80,7 +80,10 @@ class World:
             raise TypeError
 
     def add_monster(self, monster: Monster):
-        return self.monsters.append(monster)
+        if isinstance(monster, Monster):
+            self.monsters.append(monster)
+        else:
+            raise TypeError
 
 
 if __name__ == "__main__":
