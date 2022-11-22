@@ -66,16 +66,19 @@ class World:
         """Get graveyard."""
         return self.graveyard
 
-    def get_adventurers(self):
+    def get_adventurer_list(self):
         """Get adventurers."""
         return self.adventurers
 
-    def get_monsters(self):
+    def get_monster_list(self):
         """Get monsters."""
         return self.monsters
 
     def add_adventurer(self, hero: Adventurer):
         return self.adventurers.append(hero)
+
+    def add_monster(self, monster: Monster):
+        return self.monsters.append(monster)
 
 
 if __name__ == "__main__":
