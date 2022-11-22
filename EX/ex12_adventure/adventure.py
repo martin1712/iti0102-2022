@@ -52,7 +52,23 @@ class Monster:
 
 class World:
     """World class."""
-    pass
+    def __init__(self, python_master: str):
+        self.python_master = python_master
+        self.graveyard = []
+        self.adventurers = []
+        self.monsters = []
+
+    def get_python_master(self):
+        return self.python_master
+
+    def get_graveyard(self):
+        return self.graveyard
+
+    def get_adventurers(self):
+        return self.adventurers
+
+    def get_monsters(self):
+        return self.monsters
 
 
 if __name__ == "__main__":
