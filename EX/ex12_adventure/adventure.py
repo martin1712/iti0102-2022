@@ -13,7 +13,6 @@ class Adventurer:
         if power > 99:
             power = 10
         self.power = power
-
         self.experience = max(0, experience)
 
     def __repr__(self):
@@ -75,7 +74,10 @@ class World:
         return self.monsters
 
     def add_adventurer(self, hero: Adventurer):
-        return self.adventurers.append(hero)
+        if isinstance(hero, Adventurer):
+            self.adventurers.append(hero)
+        else:
+            raise TypeError
 
     def add_monster(self, monster: Monster):
         return self.monsters.append(monster)
