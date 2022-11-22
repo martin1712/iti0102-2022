@@ -51,7 +51,7 @@ class Monster:
 
 
 class World:
-    """World class."""
+    """Rules of the world."""
 
     def __init__(self, python_master: str):
         """Lists and the name of creator."""
