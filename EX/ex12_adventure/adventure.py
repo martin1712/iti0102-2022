@@ -5,7 +5,7 @@ class Adventurer:
     """Adventurer class, wow."""
 
     def __init__(self, name: str, class_type: str, power: int, experience: int = 0):
-        """Data."""
+        """Information about adventurers."""
         self.name = name
         if class_type not in ["Druid", "Wizard", "Paladin"]:
             class_type = "Fighter"
@@ -54,7 +54,7 @@ class World:
     """Rules of the world."""
 
     def __init__(self, python_master: str):
-        """Lists and the name of creator."""
+        """Information and the name of creator."""
         self.python_master = python_master
         self.graveyard = []
         self.adventurers = []
