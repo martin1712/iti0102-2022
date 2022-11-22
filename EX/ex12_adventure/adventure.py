@@ -36,7 +36,6 @@ class Adventurer:
 
 class Monster:
     """Monster class."""
-
     def __init__(self, name: str, type: str, power: int):
         """Monster data."""
         self.power = power
@@ -48,6 +47,7 @@ class Monster:
     def __repr__(self):
         """How to represent data."""
         return f"{self.name} of type {self.type}, Power: {self.power}."
+
 
 class World:
     """World class."""
@@ -74,10 +74,12 @@ class World:
         return self.monsters
 
     def add_adventurer(self, hero: Adventurer):
+        """Add adventurer."""
         if isinstance(hero, Adventurer):
             self.adventurers.append(hero)
 
     def add_monster(self, monster: Monster):
+        """Add monster."""
         if isinstance(monster, Monster):
             self.monsters.append(monster)
 
