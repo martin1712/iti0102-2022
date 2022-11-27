@@ -52,7 +52,8 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
         rows = []
         for row in values:
             rows.append(row)
-        return rows
+        flat_list = [item for sublist in rows for item in sublist]
+        return flat_list
 
     except HttpError as err:
         print(err)
