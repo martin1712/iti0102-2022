@@ -45,7 +45,7 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
         sheet = service.spreadsheets()
         result = sheet.values().get(spreadsheetId=id,
                                     range=token_file_name).execute()
-        values = result.get('values', [])
+        values = result.get('values')
 
         if not values:
             print('No data found.')
