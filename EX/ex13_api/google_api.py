@@ -12,7 +12,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1p9Xrrlox_98iI8WRNJIoyb_X9Zh3fcq0z7wQHRX'
+SAMPLE_SPREADSHEET_ID = '1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M'
 SAMPLE_RANGE_NAME = 'A2:E'
 
 
@@ -44,12 +44,11 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
         # Call the Sheets API
         sheet = service.spreadsheets()
         result = sheet.values().get(spreadsheetId=id,
-                                    range=SAMPLE_RANGE_NAME).execute()
+                                    range=token_file_name).execute()
         values = result.get('values', [])
 
         if not values:
             print('No data found.')
-            return []
         rows = []
         for row in values:
             rows.append(row)
@@ -60,4 +59,4 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
 
 
 if __name__ == '__main__':
-    get_links_from_spreadsheet("1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M", "A2:E")
+    print(get_links_from_spreadsheet("1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M", "A2:E"))
