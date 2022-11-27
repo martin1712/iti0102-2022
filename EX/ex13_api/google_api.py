@@ -55,10 +55,9 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
             rows.append(row)
         return rows
 
-
     except HttpError as err:
         print(err)
 
 
 if __name__ == '__main__':
-    get_links_from_spreadsheet("1Ir9OZyose7rnAyCcfA6myDgSXidW3ctfFUPXW0h3RaY", "A2:E")
+    get_links_from_spreadsheet("1WrCzu4p5lFwPljqZ6tMQEJb2vSJQSGjyMsqcYt-yS4M", "A2:E")
