@@ -18,7 +18,8 @@ SAMPLE_RANGE_NAME = 'A2:E'
 
 
 def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
-    """Shows basic usage of the Sheets API.
+    """
+    Shows basic usage of the Sheets API.
 
     Prints values from a sample spreadsheet.
     """
