@@ -44,7 +44,7 @@ def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
         # Call the Sheets API
         sheet = service.spreadsheets()
         result = sheet.values().get(spreadsheetId=id,
-                                    range=token_file_name).execute()
+                                    range="A1:E4").execute()
         values = result.get('values')
 
         if not values:
