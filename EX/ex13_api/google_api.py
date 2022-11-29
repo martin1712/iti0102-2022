@@ -19,9 +19,9 @@ SAMPLE_RANGE_NAME = 'A2:E'
 
 def get_links_from_spreadsheet(id: str, token_file_name: str) -> list:
     """
-    Shows basic usage of the Sheets API.
+    Show basic usage of the Sheets API.
 
-    Prints values from a sample spreadsheet.
+    Print values from a sample spreadsheet.
     """
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
