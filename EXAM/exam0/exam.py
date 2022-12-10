@@ -41,32 +41,25 @@ def tic_tac_toe(game: list) -> int:
     :return: winning player id
     """
     for i in game:
-        if 0 not in i:
-            if sum(i) / 3 == 1:
-                return 1
-            if sum(i) / 3 == 2:
-                return 2
-    if game[0][0] and game[1][1] and game[2][2] != 0 and game[0][0] + game[1][1] + game[2][2] == 3:
-        return 1
-    if game[0][0] and game[1][1] and game[2][2] != 0 and game[0][0] + game[1][1] + game[2][2] == 6:
-        return 2
-    if game[0][0] and game[1][0] and game[2][0] != 0 and game[0][0] + game[1][0] + game[2][0] == 3:
-        return 1
-    if game[0][0] and game[1][0] and game[2][0] != 0 and game[0][0] + game[1][0] + game[2][0] == 6:
-        return 2
-    if game[0][1] and game[1][1] and game[2][1] != 0 and game[0][1] + game[1][1] + game[2][1] == 3:
-        return 1
-    if game[0][1] and game[1][1] and game[2][1] != 0 and game[0][1] + game[1][1] + game[2][1] == 6:
-        return 2
-    if game[0][2] and game[1][2] and game[2][2] != 0 and game[0][2] + game[1][2] + game[2][2] == 3:
-        return 1
-    if game[0][2] and game[1][2] and game[2][2] != 0 and game[0][2] + game[1][2] + game[2][2] == 6:
-        return 2
-    if game[0][2] and game[1][1] and game[2][0] != 0 and game[0][2] + game[1][1] + game[2][0] == 3:
-        return 1
-    if game[0][2] and game[1][1] and game[2][0] != 0 and game[0][2] + game[1][1] + game[2][0] == 6:
-        return 2
-    return 0
+        if 0 not in i and i[0] == i[1] == i[2]:
+            return i[0]
+
+    if game[0][0] == game[1][1] == game[2][2] != 0:
+        return game[0][0]
+    elif game[0][0] == game[1][0] == game[2][0] != 0:
+        return game[0][0]
+    elif game[2][0] == game[1][1] == game[0][2] != 0:
+        return game[2][0]
+    elif game[1][0] == game[1][1] == game[1][2] != 0:
+        return game[1][0]
+    elif game[0][2] == game[1][2] == game[2][2] != 0:
+        return game[0][2]
+    elif game[2][0] == game[1][1] == game[0][2] != 0:
+        return [2][0]
+    else:
+        return 0
+
+
 
 
 if __name__ == '__main__':
