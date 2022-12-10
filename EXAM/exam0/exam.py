@@ -71,23 +71,14 @@ def close_far(a: int, b: int, c: int) -> bool:
     close_far(1, 2, 3) => False
     close_far(4, 1, 3) => True
     """
-    if b - c and c - b in [-1, 0, 1]:
-        return False
-    if b - a and b - c >= 2:
-        if a - c in [-1, 0, 1]:
+    if (b == a + 1 or a - 1 or a) or (c == a + 1 or a - 1 or a):  # looking for the "close" one
+        if (c > a + 2 and b + 2) or (c <= a - 2 and b - 2):  # looking for c to be the "far" one
             return True
-    if b - a and b - c <= 2:
-        if a - c in [-1, 0, 1]:
+        elif (b > (a + 2 and c + 2)) or (b <= (a - 2 and c - 2)):  # looking for b to be the "far" one
             return True
-    if c - a and c - b >= 2:
-        if a - b in [-1, 0, 1]:
-            return True
-    if c - a and c - b <= 2:
-        if a - b in [-1, 0, 1]:
-            return True
-    return False
-
+        else:
+            return False
 
 
 if __name__ == '__main__':
-    print(close_far(4, 1, 3))
+    print(close_far(4, 19999999999999999999999999999999999, 4))
