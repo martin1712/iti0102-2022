@@ -80,12 +80,14 @@ def get_symbols_by_occurrences(text: str) -> dict:
     get_symbols_by_occurrences("hello") => {1: ['e', 'o', 'h'], 2: ['l']}
     get_symbols_by_occurrences("abcaba") => {2: ['b'], 1: ['c'], 3: ['a']}
     """
+    elements = []
     result = {}
-    for i in text:
-        if i in result:
-            result[text.count(i)] += [i]
-        else:
+    for char in text:
+        if char not in elements:
+            elements.append(char)
+        for i in text:
             result[text.count(i)] = [i]
+
     return result
 
 
