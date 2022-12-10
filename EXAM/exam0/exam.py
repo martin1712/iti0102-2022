@@ -62,8 +62,12 @@ def tic_tac_toe(game: list) -> int:
         return 1
     if game[0][2] and game[1][2] and game[2][2] != 0 and game[0][2] + game[1][2] + game[2][2] == 6:
         return 2
+    if game[0][2] and game[1][1] and game[2][0] != 0 and game[0][2] + game[1][1] + game[2][0] == 3:
+        return 1
+    if game[0][2] and game[1][1] and game[2][0] != 0 and game[0][2] + game[1][1] + game[2][0] == 6:
+        return 2
     return 0
 
 
 if __name__ == '__main__':
-    print(tic_tac_toe([[0, 1, 0], [0, 1, 0], [0, 1, 0]]))
+    print(tic_tac_toe([[0, 0, 1], [0, 1, 0], [1, 0, 0]]))
