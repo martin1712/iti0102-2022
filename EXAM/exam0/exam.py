@@ -50,12 +50,10 @@ def tic_tac_toe(game: list) -> int:
         return game[0][0]
     elif game[2][0] == game[1][1] == game[0][2] != 0:
         return game[2][0]
-    elif game[1][0] == game[1][1] == game[1][2] != 0:
-        return game[1][0]
     elif game[0][2] == game[1][2] == game[2][2] != 0:
         return game[0][2]
-    elif game[2][0] == game[1][1] == game[0][2] != 0:
-        return [2][0]
+    elif game[0][1] == game[1][1] == game[2][1]:
+        return [0][1]
     else:
         return 0
 
