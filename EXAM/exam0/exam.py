@@ -58,7 +58,28 @@ def tic_tac_toe(game: list) -> int:
         return 0
 
 
+def close_far(a: int, b: int, c: int) -> bool:
+    """
+    Return if one value is "close" and other is "far".
+
+    #2
+
+    Given three ints, a b c, return true if one of b or c is "close" (differing from a by at most 1),
+    while the other is "far", differing from both other values by 2 or more.
+
+    close_far(1, 2, 10) => True
+    close_far(1, 2, 3) => False
+    close_far(4, 1, 3) => True
+    """
+    if (b - a) <= 1 or (a - b) <= 1:
+        if (a - c) >= 2 or (c - a) >= 2 and (b - c) >= 2 or (c - b) >= 2:
+            return True
+        return False
+    elif (a - c) <= 1 or (c - a) <= 1:
+        if (a - b) >= 2 or (b - a) >= 2 and (b - c) >= 2 or (c - b) >= 2:
+            return True
+        return False
 
 
 if __name__ == '__main__':
-    print(tic_tac_toe([[0, 1, 0], [0, 1, 0], [0, 1, 0]]))
+    print(close_far(1, 2, 10))
