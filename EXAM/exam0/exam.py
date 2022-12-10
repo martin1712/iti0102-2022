@@ -53,7 +53,7 @@ def tic_tac_toe(game: list) -> int:
     elif game[0][2] == game[1][2] == game[2][2] != 0:
         return game[0][2]
     elif game[0][1] == game[1][1] == game[2][1]:
-        return [0][1]
+        return game[0][1]
     else:
         return 0
 
@@ -61,4 +61,4 @@ def tic_tac_toe(game: list) -> int:
 
 
 if __name__ == '__main__':
-    print(tic_tac_toe([[0, 0, 1], [0, 1, 0], [1, 0, 0]]))
+    print(tic_tac_toe([[0, 1, 0], [0, 1, 0], [0, 1, 0]]))
