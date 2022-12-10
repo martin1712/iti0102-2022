@@ -20,27 +20,26 @@ def find_capital_letters(input_string):
 game = [[1, 2, 1], [2, 1, 2], [2, 1, 0]]
 
 
-def tic_tac_toe(game: list) -> int:
-    zeros = 0
-    ones = 0
-    twos = 0
-    for i in game:
-         for j in i:
-             if j == 0:
-                 zeros += 1
-             if j == 1:
-                 ones += 1
-             elif j == 2:
-                 twos += 1
-
-    if ones == twos:
+def tic_tac_toe(i: list) -> int:
+    if i[0][0] == i[0][1] == i[0][2]:
+        return i[0][0]
+    elif i[0][0] == i[1][1] == i[2][2]:
+        return i[0][0]
+    elif i[0][0] == i[1][0] == i[2][0]:
+        return i[0][0]
+    elif i[1][0] == i[1][1] == i[1][2]:
+        return i[1][0]
+    elif i[2][0] == i[2][1] == i[2][2]:
+        return i[2][0]
+    elif i[0][2] == i[1][1] == i[2][0]:
+        return i[0][2]
+    elif i[0][1] == i[1][1] == i[2][1]:
+        return i[0][1]
+    elif i[0][2] == i[1][2] == i[2][2]:
+        return i[0][2]
+    else:
         return 0
-    elif ones > twos:
-        return 1
-    elif twos > ones:
-        return 2
 
 
 if __name__ == '__main__':
     print(tic_tac_toe([[1, 2, 1], [2, 1, 2], [2, 2, 1]]))
-    print(find_capital_letters())
