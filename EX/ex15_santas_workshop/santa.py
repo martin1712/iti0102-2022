@@ -4,6 +4,7 @@ import urllib.parse
 import urllib.error
 from typing import Optional
 import csv
+import requests
 
 
 class Gift:
@@ -14,62 +15,22 @@ class Gift:
         self.time = production_time
 
     def __repr__(self):
-        return f"Gift: {self.name} ({self.weight}g)"
-
-
-API_URL = "https://cs.ttu.ee/services/xmas/gift?"
-
-
-class Warehouse:
-
-    def __init__(self):
-        self.gifts: dict[str, int] = {}
-        self.gifts: dict[str, Gift] = {}
-        self.gifts_list = []
-
-    def get_product_from_factory(self, name: str) -> Optional[Gift]:
-        qs = urllib.parse.quote_plus(name)
-        try:
-            with urllib.request.urlopen(API_URL + "name=" + qs) as f:
-                # read all
-                contents = f.read()
-
-                # to convert into regular string
-                print(contents.decode("utf-8"))
-
-                # read json to python object
-                data = json.loads(contents.decode('utf-8'))
-                print(data)
-
-                gift = Gift(data['gift'], data['material_cost'],
-                            data['production_time'], data['weight_in_grams'])
-
-                if data['gift'] not in self.gifts:
-                    self.gifts[data['gift']] = []
-                self.gifts[data['gift']].append(Gift)
-                return gift
-        except urllib.error.HTTPError:
-            return None
-
-    def get_list_of_gifts(self, name: str) -> list:
-
-
-        pass
+        return f"{self.name}"
 
 
 NAUGHTY_LIST = "naughty_list"
 NICE_LIST = "nice_list"
-WISHES_LIST = "wishes"
+WISHES_LIST = "no_wishes.txt"
 
 
 class Child:
 
     def __init__(self):
+        self.all_children = []
         self.is_nice = []
         self.is_bad = []
         self.wishes_list = []
         self.gifts = []
-        ready_result = {}
 
     def read_wishes_list(self, filename: str):
         with open(WISHES_LIST, 'r') as csv_file:
@@ -78,10 +39,11 @@ class Child:
                 self.wishes_list.append(row)
         return [[x.strip() for x in row] for row in self.wishes_list]
 
-    def create_list_of_gifts(self, wishes: list) -> list:
-        for i in wishes:
-            del i[0]
-        return wishes
+    def create_list_of_all_children(self, wishes: list):
+        for i in self.wishes_list:
+            if len(i) >= 1:
+                self.all_children.append(i[0])
+        return self.all_children
 
     def read_naughty_list(self, filename: str):
         with open(NAUGHTY_LIST, "r") as csv_file:
@@ -118,42 +80,54 @@ class Child:
     def get_list_of_gifts(self, name: str) -> list:
         for i in self.wishes_list:
             if name in i:
-                del i[0]
-            return i
+                i.remove(name)
+                return [x.strip() for x in i]
 
 
+API_URL = "https://cs.ttu.ee/services/xmas/gift?"
 
-warehouse = Warehouse()
-ready_result = {}
+
+class Warehouse:
+
+    def __init__(self):
+
+        self.gifts_list = []
+
+    def get_product_from_factory(self, name: str):
+        qs = urllib.parse.quote_plus(str(name))
+        try:
+            with urllib.request.urlopen(API_URL + "name=" + qs) as f:
+                # read all
+                contents = f.read()
+                # read json to python object
+                data = json.loads(contents.decode('utf-8'))
+                if data is True:
+                    self.gifts_list.append(name)
+                return data
+        except urllib.error.HTTPError:
+            return None
+
+
 child = Child()
 warehouse = Warehouse()
+
 
 good_list = child.read_nice_list("nice_list")
 bad_list = child.read_naughty_list("naughty_list")
 wishes_list = child.read_wishes_list("wishes")
+all_children = child.create_list_of_all_children(wishes_list)
 
-# print(warehouse.get_product_from_factory("Lego death star"))
-# print(child.is_nice_child("Libby"))
-# print(child.create_list_of_gifts(wishes_list))
-print(child.get_list_of_gifts("Libby"))
-
-child_name = "Libby"
-
-if child.is_nice_child(child_name) and child.find_in_wishes_list(child_name) is True:
-    gifts = child.get_list_of_gifts(child_name)
-    for i in gifts:
+print(warehouse.get_product_from_factory("Kitten plushie"))
 
 
+def get_final_result(list_of_children: list) -> list:
+    ready_result = []
+    for name in list_of_children:
+        if child.is_nice_child(name) is True:
+            ready_result.append(name)
+            gifts = child.get_list_of_gifts(name)
+            ready_result.append(gifts)
+    return ready_result
 
 
-
-
-print(good_list)
-print(bad_list)
-
-
-
-# print(child.read_nice_list("nice_list"))
-# print(child.read_naughty_list("naughty_list"))
-# print(warehouse.get_product_from_factory("cyberpunk 2077"))
-
+print(get_final_result(all_children))
