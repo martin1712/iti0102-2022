@@ -20,7 +20,8 @@ class Gift:
 
 NAUGHTY_LIST = "naughty_list"
 NICE_LIST = "nice_list"
-WISHES_LIST = "no_wishes.txt"
+WISHES_LIST = "wishes"
+N0_WISHES = "no_wishes.txt"
 
 
 class Child:
@@ -33,7 +34,7 @@ class Child:
         self.gifts = []
 
     def read_wishes_list(self, filename: str):
-        with open(WISHES_LIST, 'r') as csv_file:
+        with open(filename, 'r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
                 self.wishes_list.append(row)
@@ -46,7 +47,7 @@ class Child:
         return self.all_children
 
     def read_naughty_list(self, filename: str):
-        with open(NAUGHTY_LIST, "r") as csv_file:
+        with open(filename, "r") as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             for row in csv_reader:
                 self.is_bad.append(row)
@@ -117,17 +118,24 @@ bad_list = child.read_naughty_list("naughty_list")
 wishes_list = child.read_wishes_list("wishes")
 all_children = child.create_list_of_all_children(wishes_list)
 
-print(warehouse.get_product_from_factory("Kitten plushie"))
+print(wishes_list)
+print(child.is_nice_child("Evelyn"))
+print(good_list)
 
+class Result:
 
-def get_final_result(list_of_children: list) -> list:
-    ready_result = []
-    for name in list_of_children:
-        if child.is_nice_child(name) is True:
-            ready_result.append(name)
-            gifts = child.get_list_of_gifts(name)
-            ready_result.append(gifts)
-    return ready_result
+    def __init__(self):
 
+        self.result = []
 
-print(get_final_result(all_children))
+    def get_final_result(self, list_of_children: list) -> list:
+        for name in list_of_children:
+            if child.is_nice_child(name) is True:
+                self.result.append(name)
+                gifts = child.get_list_of_gifts(name)
+                self.result.append(gifts)
+        return self.result
+
+result = Result()
+
+# print(result.get_final_result(all_children))
