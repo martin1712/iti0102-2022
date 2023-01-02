@@ -7,6 +7,7 @@ from santa import Result
 
 @pytest.fixture()
 def child():
+    """Wow."""
     return Child()
 
 
@@ -31,7 +32,7 @@ def test_read_wishes_from_file(child):
 
 
 def test_get_list_of_all_children(child):
-    """List of children"""
+    """List of children."""
     result = child.create_list_of_all_children(child.read_wishes_list("wishes"))
     assert len(result) == 3
 
@@ -39,16 +40,17 @@ def test_get_list_of_all_children(child):
 def test_is_nice_child_yes(child):
     """Check if child is good."""
     child.read_nice_list("nice_list")
-    assert child.is_nice_child("Evelyn") == True
+    assert child.is_nice_child("Evelyn") is True
 
 
 def test_is_naughty_child_no(child):
     """Check if child is bad."""
-    assert child.is_naughty_child("Evelyn") == False
+    assert child.is_naughty_child("Evelyn") is False
 
 
 @pytest.fixture()
 def warehouse():
+    """Wow."""
     return Warehouse()
 
 
@@ -69,6 +71,7 @@ def test_get_wrong_gift_from_factory(warehouse):
 
 @pytest.fixture()
 def result():
+    """Wow."""
     return Result()
 
 
