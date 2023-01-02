@@ -7,6 +7,7 @@ import csv
 
 
 class Gift:
+
     def __init__(self, name: str, cost: int, production_time: int, weight_in_grams: int):
         """Gift characteristics."""
         self.name = name
