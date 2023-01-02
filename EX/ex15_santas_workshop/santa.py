@@ -3,9 +3,7 @@ import urllib.request
 import json
 import urllib.parse
 import urllib.error
-from typing import Optional
 import csv
-import requests
 
 
 class Gift:
