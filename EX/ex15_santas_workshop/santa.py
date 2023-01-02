@@ -7,6 +7,7 @@ import csv
 
 
 class Gift:
+    """Representation of gift."""
 
     def __init__(self, name: str, cost: int, production_time: int, weight_in_grams: int):
         """Gift characteristics."""
@@ -27,9 +28,10 @@ N0_WISHES = "no_wishes.txt"
 
 
 class Child:
+    """Class for children."""
 
     def __init__(self):
-        """Lists for holding information of children."""
+        """List for holding information of children."""
         self.all_children = []
         self.is_nice = []
         self.is_bad = []
@@ -100,6 +102,7 @@ API_URL = "https://cs.ttu.ee/services/xmas/gift?"
 
 
 class Warehouse:
+    """Warehouse of gifts."""
 
     def __init__(self):
         """Ready result of gifts."""
@@ -131,6 +134,7 @@ all_children = child.create_list_of_all_children(wishes_list)
 
 
 class Result:
+    """Ready result."""
 
     def __init__(self):
         """Ready result."""
