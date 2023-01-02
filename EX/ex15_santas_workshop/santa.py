@@ -1,4 +1,4 @@
-"""Santa workshop."""
+"""Santa workshop ex15."""
 import urllib.request
 import json
 import urllib.parse
