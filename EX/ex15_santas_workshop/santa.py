@@ -102,7 +102,6 @@ class Warehouse:
 
     def __init__(self):
         """Ready result of gifts."""
-
         self.gifts_list = []
 
     def get_product_from_factory(self, name: str):
@@ -134,7 +133,6 @@ class Result:
 
     def __init__(self):
         """Ready result."""
-
         self.result = []
 
     def get_final_result(self, list_of_children: list) -> list:
