@@ -1,1 +1,1 @@
-return (math.sin(90))
+"sssssss"
